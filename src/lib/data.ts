@@ -5,6 +5,7 @@
 // ---------- Navigation ----------
 export const navLinks = [
   { label: "Home", href: "/" },
+  { label: "Info", href: "/info" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Portfolio", href: "/portfolio" },
@@ -708,6 +709,86 @@ export const clients: Client[] = [
   { name: "Danone", category: "Swasta" },
   { name: "Unilever", category: "Swasta" },
   { name: "Grab", category: "Swasta" },
+];
+
+// ---------- Info / News ----------
+export interface InfoPost {
+  id: string;
+  title: string;
+  description: string;
+  content: string;
+  date: string;
+  author: string;
+  images: string[]; // paths relative to /public
+  category: string;
+}
+
+export const infoPosts: InfoPost[] = [
+  {
+    id: "autonez-raih-penghargaan-eo-terbaik",
+    title: "AUTONEZ Raih Penghargaan Event Organizer Terbaik 2024",
+    description:
+      "AUTONEZ Communications berhasil meraih penghargaan bergengsi sebagai Event Organizer Terbaik tahun 2024 dari Asosiasi Profesional Event Indonesia, mengakui keunggulan dalam inovasi dan eksekusi event.",
+    content:
+      "AUTONEZ Communications kembali mengukir prestasi gemilang di industri event organizer Indonesia. Pada malam penghargaan tahunan Asosiasi Profesional Event Indonesia (APEI) yang digelar di Ballroom Hotel Mulia Jakarta, AUTONEZ berhasil menyabet gelar Event Organizer Terbaik 2024.\n\nPenghargaan ini diberikan atas kontribusi luar biasa AUTONEZ dalam menyelenggarakan lebih dari 50 event berskala nasional dan internasional sepanjang tahun 2024. Mulai dari MICE corporate hingga brand activation berskala masif, AUTONEZ konsisten menghadirkan standar kualitas tertinggi.\n\nFarid Hakim, CEO AUTONEZ Communications, mengungkapkan rasa syukur atas capaian ini. \"Penghargaan ini bukan milik kami sendiri, melainkan buah kerja keras seluruh tim dan kepercayaan klien-klien kami yang luar biasa. Ini motivasi kami untuk terus berinovasi.\"\n\nTim kreatif AUTONEZ juga diakui atas keberhasilan proyek-proyek inovatif seperti Samsung Galaxy Launch di 20 kota simultan dan BI Award Ceremony yang memukau ribuan undangan. Ke depannya, AUTONEZ berkomitmen untuk terus meningkatkan standar pelayanan dan menghadirkan pengalaman event yang tak tertandingi.",
+    date: "15 Desember 2024",
+    author: "Tim Redaksi AUTONEZ",
+    images: [
+      "/event_example_one.png",
+      "/event_example_two.jpg",
+      "/event_example_three.jpg",
+    ],
+    category: "Prestasi",
+  },
+  {
+    id: "samsung-galaxy-launch-sukses",
+    title: "Samsung Galaxy Launch: 20 Kota Serentak, 500K+ Audience",
+    description:
+      "AUTONEZ berhasil mengeksekusi peluncuran Samsung Galaxy secara simultan di 20 kota Indonesia, menjangkau lebih dari 500.000 audience online dan offline dalam satu hari penuh.",
+    content:
+      "Salah satu tantangan terbesar dalam karir AUTONEZ Communications akhirnya terlaksana dengan gemilang. Peluncuran Samsung Galaxy yang digelar secara serentak di 20 kota Indonesia menjadi tonggak baru dalam industri event organizer tanah air.\n\nEvent berlangsung mulai pukul 09.00 WIB di Jakarta sebagai hub utama, dengan koneksi live ke 19 kota lainnya melalui sistem streaming broadcast kelas dunia yang dikelola penuh oleh tim teknis AUTONEZ. Setiap kota memiliki experiential zone dengan AR dan interactive display yang disesuaikan profil konsumen lokal.\n\nHasil yang dicapai melampaui target: 500.000+ audience gabungan online-offline, 2 juta lebih live views di platform digital, dan yang paling membanggakan — pre-order sold out dalam 24 jam pasca peluncuran.\n\n\"Ini adalah bukti nyata bahwa event hybrid yang dieksekusi dengan baik mampu menciptakan dampak bisnis yang terukur,\" ujar Rina Sari, Event Director AUTONEZ yang memimpin proyek ini. Tim dari 8 kota berbeda bekerja dalam satu komando terpadu menggunakan war room digital AUTONEZ.",
+    date: "3 November 2024",
+    author: "Rina Sari",
+    images: [
+      "/event_example_two.jpg",
+      "/event_example_four.jpg",
+      "/event_example_one.png",
+    ],
+    category: "Behind the Scene",
+  },
+  {
+    id: "virtual-event-masa-depan",
+    title: "Virtual Event: Bukan Pengganti, Tapi Format Tersendiri",
+    description:
+      "Tim riset AUTONEZ merilis white paper tentang tren virtual event di Indonesia. Temuan menarik: 78% peserta justru lebih engaged di event virtual yang diproduksi dengan baik dibanding event fisik biasa.",
+    content:
+      "Pandangan lama yang menganggap virtual event sebagai 'terpaksa' kini semakin usang. Tim riset AUTONEZ Communications merilis white paper komprehensif berjudul 'Virtual Event 2025: Beyond Boundaries' yang menganalisis lebih dari 200 event virtual yang diselenggarakan dalam 3 tahun terakhir.\n\nTemuan paling mengejutkan: 78% peserta event virtual yang diproduksi dengan kualitas broadcast penuh melaporkan tingkat keterlibatan yang lebih tinggi dibanding event fisik biasa. Alasannya beragam — kemudahan akses, interaktivitas digital yang lebih kaya, dan eliminasi hambatan geografis.\n\nKey insights dari laporan ini antara lain: pertama, kualitas produksi adalah faktor pembeda utama. Event virtual dengan studio profesional, motion graphics real-time, dan interaksi yang dipersonalisasi secara konsisten menghasilkan NPS lebih tinggi. Kedua, format hybrid (gabungan fisik dan virtual) justru memperluas reach tanpa mengorbankan kualitas pengalaman.\n\nAUTONEZ sendiri telah membuktikan ini melalui proyek Beauty Star in TikTok yang meraih 10 juta penonton dan Tokopedia Virtual Festival dengan 5 juta penonton unik. Ke depan, investasi di infrastruktur virtual production akan terus ditingkatkan.",
+    date: "22 Oktober 2024",
+    author: "Dr. Andika Pratama",
+    images: [
+      "/event_example_three.jpg",
+      "/event_example_one.png",
+      "/event_example_two.jpg",
+    ],
+    category: "Insight",
+  },
+  {
+    id: "hsbc-bwf-behind-the-scene",
+    title: "Di Balik Layar HSBC BWF World Tour: 7 Hari, Zero Incident",
+    description:
+      "Bagaimana tim AUTONEZ mengelola event olahraga internasional dengan atlet dari 40+ negara, ribuan penonton, dan standar BWF yang sangat ketat — semua tanpa satu pun insiden selama 7 hari pelaksanaan.",
+    content:
+      "Ketika BWF dan HSBC mempercayakan penyelenggaraan World Tour kepada AUTONEZ Communications, tim kami sadar bahwa standar yang harus dipenuhi jauh melampaui event biasa. Ini adalah kompetisi bulu tangkis paling bergengsi di dunia, dengan atlet dari lebih dari 40 negara dan liputan media internasional.\n\nPersiapan dimulai enam bulan sebelum hari H. Tim advance AUTONEZ melakukan site survey di venue selama tiga hari, memetakan setiap sudut untuk penempatan kamera, sistem akreditasi, hospitality area, dan jalur evakuasi darurat. Koordinasi dengan tim lokal BWF dan HSBC berlangsung intens dengan lebih dari 200 meeting virtual.\n\nSalah satu tantangan terbesar adalah sistem akreditasi multi-level untuk media internasional. Tim IT AUTONEZ membangun sistem verifikasi berlapis yang memproses lebih dari 500 media credential dari 30+ negara tanpa antrian berarti.\n\nHari-H dimulai pukul 05.00 WIB untuk memastikan venue siap sebelum atlet check-in. War room AUTONEZ aktif 24 jam dengan rotasi tiga shift. Hasilnya: tujuh hari penyelenggaraan tanpa satu pun insiden teknis maupun keamanan yang berarti — sebuah pencapaian yang bahkan mendapat apresiasi langsung dari Sekjen BWF.",
+    date: "8 September 2024",
+    author: "Budi Santoso",
+    images: [
+      "/event_example_four.jpg",
+      "/event_example_three.jpg",
+      "/event_example_two.jpg",
+      "/event_example_one.png",
+    ],
+    category: "Behind the Scene",
+  },
 ];
 
 // ---------- Contact Info ----------
