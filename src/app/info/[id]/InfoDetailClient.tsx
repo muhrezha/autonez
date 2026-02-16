@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
 import type { InfoPost } from "@/lib/data";
 
 interface Props {
@@ -12,13 +12,19 @@ interface Props {
     nextPost: InfoPost | null;
 }
 
-const fadeUp = {
+const fadeUp: Variants = {
     hidden: { opacity: 0, y: 24 },
     visible: (i: number) => ({
         opacity: 1,
         y: 0,
-        transition: { duration: 0.5, delay: i * 0.1, ease: "easeOut" },
+        transition: { duration: 0.5, delay: i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] as const },
     }),
+};
+
+const slideVariants: Variants = {
+    enter: (dir: number) => ({ x: dir > 0 ? "100%" : "-100%", opacity: 0 }),
+    center: { x: 0, opacity: 1, transition: { duration: 0.45, ease: "easeInOut" } },
+    exit: (dir: number) => ({ x: dir > 0 ? "-100%" : "100%", opacity: 0, transition: { duration: 0.35 } }),
 };
 
 export default function InfoDetailClient({ post, prevPost, nextPost }: Props) {
@@ -36,12 +42,6 @@ export default function InfoDetailClient({ post, prevPost, nextPost }: Props) {
 
     const goNext = () => {
         if (activeIdx < post.images.length - 1) goTo(activeIdx + 1);
-    };
-
-    const slideVariants = {
-        enter: (dir: number) => ({ x: dir > 0 ? "100%" : "-100%", opacity: 0 }),
-        center: { x: 0, opacity: 1, transition: { duration: 0.45, ease: "easeInOut" } },
-        exit: (dir: number) => ({ x: dir > 0 ? "-100%" : "100%", opacity: 0, transition: { duration: 0.35 } }),
     };
 
     // Render content paragraphs
