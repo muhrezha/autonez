@@ -90,7 +90,7 @@ export default function ServicesPage() {
                                         <p className="text-slate-500 leading-relaxed mb-6">
                                             {svc.description}
                                         </p>
-                                        <div className="flex flex-wrap gap-2">
+                                        <div className="flex flex-wrap gap-2 mb-6">
                                             {svc.highlights.map((h) => (
                                                 <span
                                                     key={h}
@@ -100,6 +100,15 @@ export default function ServicesPage() {
                                                 </span>
                                             ))}
                                         </div>
+                                        <Link
+                                            href={`/services/${svc.id}`}
+                                            className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-dark transition-colors group/link"
+                                        >
+                                            Lihat Detail Layanan
+                                            <svg className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                            </svg>
+                                        </Link>
                                     </div>
                                 </div>
                             </motion.div>
