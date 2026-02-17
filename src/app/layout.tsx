@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import ConditionalShell from "@/components/ConditionalShell";
 
 export const metadata: Metadata = {
   title: "AUTONEZ Communications — Always There For You",
@@ -34,9 +33,7 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
-        <Navbar />
-        <main className="pt-16 md:pt-20">{children}</main>
-        <Footer />
+        <ConditionalShell>{children}</ConditionalShell>
       </body>
     </html>
   );
