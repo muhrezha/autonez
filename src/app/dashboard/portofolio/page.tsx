@@ -1,16 +1,28 @@
 "use client";
 
-import { useState } from "react";
-import { portfolioEvents as initialData } from "@/lib/data";
-import type { PortfolioEvent } from "@/lib/data";
+import { useState, useMemo, useRef, useEffect } from "react";
+import { portfolioEvents as initialData, portfolioCategories } from "@/lib/data";
+import type { PortfolioEvent, PortfolioCategory } from "@/lib/data";
 
 type Row = PortfolioEvent & { active: boolean };
 
 const seed: Row[] = initialData.map((p) => ({ ...p, active: true }));
 
+const PER_PAGE = 5;
+
+// Get unique years from data for the year picker
+const allYears = Array.from(new Set(initialData.map((e) => e.year))).sort((a, b) => b - a);
+
 export default function DashboardPortofolioPage() {
     const [rows, setRows] = useState<Row[]>(seed);
     const [search, setSearch] = useState("");
+    const [filterCategory, setFilterCategory] = useState<PortfolioCategory | "All">("All");
+    const [categorySearch, setCategorySearch] = useState("");
+    const [categoryOpen, setCategoryOpen] = useState(false);
+    const [filterYear, setFilterYear] = useState<number | null>(null);
+    const [yearOpen, setYearOpen] = useState(false);
+    const [page, setPage] = useState(1);
+
     const [editId, setEditId] = useState<string | null>(null);
     const [editTitle, setEditTitle] = useState("");
     const [editDesc, setEditDesc] = useState("");
@@ -20,12 +32,44 @@ export default function DashboardPortofolioPage() {
     const [newClient, setNewClient] = useState("");
     const [newDesc, setNewDesc] = useState("");
     const [newYear, setNewYear] = useState<string>(String(new Date().getFullYear()));
+    const [newCategory, setNewCategory] = useState<PortfolioCategory>("MICE");
+    const [newCatOpen, setNewCatOpen] = useState(false);
+    const [newCatSearch, setNewCatSearch] = useState("");
+    const [createErrors, setCreateErrors] = useState<Record<string, string>>({});
+    const [createSubmitted, setCreateSubmitted] = useState(false);
 
-    const filtered = rows.filter(
-        (r) =>
-            r.title.toLowerCase().includes(search.toLowerCase()) ||
-            r.client.toLowerCase().includes(search.toLowerCase())
+    const categoryRef = useRef<HTMLDivElement>(null);
+    const yearRef = useRef<HTMLDivElement>(null);
+
+    // Close dropdowns on outside click
+    useEffect(() => {
+        const handler = (e: MouseEvent) => {
+            if (categoryRef.current && !categoryRef.current.contains(e.target as Node)) setCategoryOpen(false);
+            if (yearRef.current && !yearRef.current.contains(e.target as Node)) setYearOpen(false);
+        };
+        document.addEventListener("mousedown", handler);
+        return () => document.removeEventListener("mousedown", handler);
+    }, []);
+
+    const filteredCategories = portfolioCategories.filter(
+        (c) => c.toLowerCase().includes(categorySearch.toLowerCase())
     );
+
+    const filtered = useMemo(() => {
+        return rows.filter((r) => {
+            const matchSearch =
+                r.title.toLowerCase().includes(search.toLowerCase()) ||
+                r.client.toLowerCase().includes(search.toLowerCase());
+            const matchCategory = filterCategory === "All" || r.category === filterCategory;
+            const matchYear = filterYear === null || r.year === filterYear;
+            return matchSearch && matchCategory && matchYear;
+        });
+    }, [rows, search, filterCategory, filterYear]);
+
+    const totalPages = Math.max(1, Math.ceil(filtered.length / PER_PAGE));
+    const safePage = Math.min(page, totalPages);
+    const paginated = filtered.slice((safePage - 1) * PER_PAGE, safePage * PER_PAGE);
+
 
     const toggleActive = (id: string) =>
         setRows((prev) => prev.map((r) => (r.id === id ? { ...r, active: !r.active } : r)));
@@ -47,16 +91,37 @@ export default function DashboardPortofolioPage() {
         setEditId(null);
     };
 
+    const validateCreate = () => {
+        const errors: Record<string, string> = {};
+        if (!newTitle.trim()) errors.title = "Judul event wajib diisi";
+        if (!newClient.trim()) errors.client = "Nama klien wajib diisi";
+        const parsedYear = parseInt(newYear);
+        if (!newYear.trim()) errors.year = "Tahun wajib diisi";
+        else if (isNaN(parsedYear) || parsedYear < 2000 || parsedYear > 2099) errors.year = "Tahun harus antara 2000–2099";
+        if (!newDesc.trim()) errors.desc = "Deskripsi wajib diisi";
+        return errors;
+    };
+
+    const clearCreateError = (field: string) => {
+        if (createErrors[field]) {
+            setCreateErrors((prev) => { const next = { ...prev }; delete next[field]; return next; });
+        }
+    };
+
     const createRow = () => {
-        if (!newTitle.trim()) return;
+        setCreateSubmitted(true);
+        const errors = validateCreate();
+        setCreateErrors(errors);
+        if (Object.keys(errors).length > 0) return;
+
         const id = `porto-${Date.now()}`;
         setRows((prev) => [
             {
                 id,
                 title: newTitle,
                 client: newClient,
-                category: "MICE" as const,
-                year: parseInt(newYear) || new Date().getFullYear(),
+                category: newCategory,
+                year: parseInt(newYear),
                 description: newDesc,
                 challenge: "",
                 solution: "",
@@ -71,6 +136,11 @@ export default function DashboardPortofolioPage() {
         setNewClient("");
         setNewDesc("");
         setNewYear(String(new Date().getFullYear()));
+        setNewCategory("MICE");
+        setNewCatOpen(false);
+        setNewCatSearch("");
+        setCreateErrors({});
+        setCreateSubmitted(false);
         setShowCreate(false);
     };
 
@@ -92,15 +162,109 @@ export default function DashboardPortofolioPage() {
                 </button>
             </div>
 
-            {/* Search */}
-            <div className="mb-4">
-                <input
-                    type="text"
-                    placeholder="Cari berdasarkan judul atau klien..."
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    className="w-full max-w-sm px-4 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
-                />
+            {/* Filters */}
+            <div className="flex flex-wrap items-end gap-3 mb-4">
+                {/* Search */}
+                <div>
+                    <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Pencarian</label>
+                    <input
+                        type="text"
+                        placeholder="Cari judul atau klien..."
+                        value={search}
+                        onChange={(e) => { setSearch(e.target.value); setPage(1); }}
+                        className="w-56 px-4 py-2 text-sm border border-slate-200 rounded-lg bg-white hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
+                    />
+                </div>
+
+                {/* Category dropdown with search */}
+                <div ref={categoryRef} className="relative">
+                    <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Kategori</label>
+                    <button
+                        onClick={() => { setCategoryOpen(!categoryOpen); setYearOpen(false); }}
+                        className="flex items-center gap-2 w-48 px-4 py-2 text-sm border border-slate-200 rounded-lg bg-white hover:border-slate-300 transition-colors text-left"
+                    >
+                        <span className={`flex-1 truncate ${filterCategory === "All" ? "text-slate-400" : "text-navy"}`}>{filterCategory === "All" ? "Semua Kategori" : filterCategory}</span>
+                        <svg className={`w-4 h-4 text-slate-400 transition-transform ${categoryOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    {categoryOpen && (
+                        <div className="absolute z-20 mt-1 w-56 bg-white border border-slate-200 rounded-xl shadow-lg overflow-hidden">
+                            <div className="p-2 border-b border-slate-100">
+                                <input
+                                    type="text"
+                                    placeholder="Cari kategori..."
+                                    value={categorySearch}
+                                    onChange={(e) => setCategorySearch(e.target.value)}
+                                    className="w-full px-3 py-1.5 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                                    autoFocus
+                                />
+                            </div>
+                            <div className="max-h-48 overflow-y-auto py-1">
+                                {filteredCategories.map((cat) => (
+                                    <button
+                                        key={cat}
+                                        onClick={() => { setFilterCategory(cat); setCategoryOpen(false); setCategorySearch(""); setPage(1); }}
+                                        className={`w-full text-left px-4 py-2 text-sm transition-colors ${filterCategory === cat ? "bg-primary/10 text-primary font-medium" : "text-slate-600 hover:bg-slate-50"}`}
+                                    >
+                                        {cat === "All" ? "Semua Kategori" : cat}
+                                    </button>
+                                ))}
+                                {filteredCategories.length === 0 && (
+                                    <div className="px-4 py-3 text-sm text-slate-400 text-center">Tidak ditemukan</div>
+                                )}
+                            </div>
+                        </div>
+                    )}
+                </div>
+
+                {/* Year picker */}
+                <div ref={yearRef} className="relative">
+                    <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Tahun</label>
+                    <button
+                        onClick={() => { setYearOpen(!yearOpen); setCategoryOpen(false); }}
+                        className="flex items-center gap-2 w-36 px-4 py-2 text-sm border border-slate-200 rounded-lg bg-white hover:border-slate-300 transition-colors text-left"
+                    >
+                        <svg className="w-4 h-4 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <span className={`flex-1 ${filterYear === null ? "text-slate-400" : "text-navy"}`}>{filterYear ?? "Semua"}</span>
+                        <svg className={`w-4 h-4 text-slate-400 transition-transform ${yearOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    {yearOpen && (
+                        <div className="absolute z-20 mt-1 w-36 bg-white border border-slate-200 rounded-xl shadow-lg overflow-hidden">
+                            <div className="max-h-48 overflow-y-auto py-1">
+                                <button
+                                    onClick={() => { setFilterYear(null); setYearOpen(false); setPage(1); }}
+                                    className={`w-full text-left px-4 py-2 text-sm transition-colors ${filterYear === null ? "bg-primary/10 text-primary font-medium" : "text-slate-600 hover:bg-slate-50"}`}
+                                >
+                                    Semua
+                                </button>
+                                {allYears.map((yr) => (
+                                    <button
+                                        key={yr}
+                                        onClick={() => { setFilterYear(yr); setYearOpen(false); setPage(1); }}
+                                        className={`w-full text-left px-4 py-2 text-sm transition-colors ${filterYear === yr ? "bg-primary/10 text-primary font-medium" : "text-slate-600 hover:bg-slate-50"}`}
+                                    >
+                                        {yr}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                </div>
+
+                {/* Reset filters */}
+                {(filterCategory !== "All" || filterYear !== null || search) && (
+                    <button
+                        onClick={() => { setFilterCategory("All"); setFilterYear(null); setSearch(""); setPage(1); }}
+                        className="px-3 py-2 text-xs font-medium text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors"
+                    >
+                        Reset Filter
+                    </button>
+                )}
             </div>
 
             {/* Create modal */}
@@ -109,37 +273,90 @@ export default function DashboardPortofolioPage() {
                     <div className="bg-white rounded-2xl p-6 w-full max-w-md shadow-2xl">
                         <h2 className="text-lg font-bold text-navy mb-4">Tambah Portofolio Baru</h2>
                         <div className="space-y-3">
-                            <input
-                                type="text"
-                                placeholder="Judul Event"
-                                value={newTitle}
-                                onChange={(e) => setNewTitle(e.target.value)}
-                                className="w-full px-4 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
-                            />
-                            <input
-                                type="text"
-                                placeholder="Nama Klien"
-                                value={newClient}
-                                onChange={(e) => setNewClient(e.target.value)}
-                                className="w-full px-4 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
-                            />
-                            <input
-                                type="number"
-                                placeholder="Tahun"
-                                value={newYear}
-                                onChange={(e) => setNewYear(e.target.value)}
-                                className="w-full px-4 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
-                            />
-                            <textarea
-                                placeholder="Deskripsi"
-                                rows={3}
-                                value={newDesc}
-                                onChange={(e) => setNewDesc(e.target.value)}
-                                className="w-full px-4 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 resize-none"
-                            />
+                            <div>
+                                <input
+                                    type="text"
+                                    placeholder="Judul Event"
+                                    value={newTitle}
+                                    onChange={(e) => { setNewTitle(e.target.value); clearCreateError("title"); }}
+                                    className={`w-full px-4 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 ${createErrors.title ? "border-red-400 focus:ring-red-200" : "border-slate-200"}`}
+                                />
+                                {createErrors.title && <p className="mt-1 text-xs text-red-500">{createErrors.title}</p>}
+                            </div>
+                            <div>
+                                <input
+                                    type="text"
+                                    placeholder="Nama Klien"
+                                    value={newClient}
+                                    onChange={(e) => { setNewClient(e.target.value); clearCreateError("client"); }}
+                                    className={`w-full px-4 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 ${createErrors.client ? "border-red-400 focus:ring-red-200" : "border-slate-200"}`}
+                                />
+                                {createErrors.client && <p className="mt-1 text-xs text-red-500">{createErrors.client}</p>}
+                            </div>
+                            <div>
+                                <input
+                                    type="number"
+                                    placeholder="Tahun"
+                                    value={newYear}
+                                    onChange={(e) => { setNewYear(e.target.value); clearCreateError("year"); }}
+                                    className={`w-full px-4 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 ${createErrors.year ? "border-red-400 focus:ring-red-200" : "border-slate-200"}`}
+                                />
+                                {createErrors.year && <p className="mt-1 text-xs text-red-500">{createErrors.year}</p>}
+                            </div>
+                            <div className="relative">
+                                <button
+                                    type="button"
+                                    onClick={() => setNewCatOpen(!newCatOpen)}
+                                    className="flex items-center gap-2 w-full px-4 py-2 text-sm border border-slate-200 rounded-lg bg-white hover:border-slate-300 transition-colors text-left"
+                                >
+                                    <span className="flex-1 truncate text-navy">{newCategory}</span>
+                                    <svg className={`w-4 h-4 text-slate-400 transition-transform ${newCatOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </button>
+                                {newCatOpen && (
+                                    <div className="absolute z-20 mt-1 w-full bg-white border border-slate-200 rounded-xl shadow-lg overflow-hidden">
+                                        <div className="p-2 border-b border-slate-100">
+                                            <input
+                                                type="text"
+                                                placeholder="Cari kategori..."
+                                                value={newCatSearch}
+                                                onChange={(e) => setNewCatSearch(e.target.value)}
+                                                className="w-full px-3 py-1.5 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                                                autoFocus
+                                            />
+                                        </div>
+                                        <div className="max-h-48 overflow-y-auto py-1">
+                                            {portfolioCategories.filter((c) => c !== "All" && c.toLowerCase().includes(newCatSearch.toLowerCase())).map((cat) => (
+                                                <button
+                                                    key={cat}
+                                                    type="button"
+                                                    onClick={() => { setNewCategory(cat as PortfolioCategory); setNewCatOpen(false); setNewCatSearch(""); }}
+                                                    className={`w-full text-left px-4 py-2 text-sm transition-colors ${newCategory === cat ? "bg-primary/10 text-primary font-medium" : "text-slate-600 hover:bg-slate-50"}`}
+                                                >
+                                                    {cat}
+                                                </button>
+                                            ))}
+                                            {portfolioCategories.filter((c) => c !== "All" && c.toLowerCase().includes(newCatSearch.toLowerCase())).length === 0 && (
+                                                <div className="px-4 py-3 text-sm text-slate-400 text-center">Tidak ditemukan</div>
+                                            )}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                            <div>
+                                <textarea
+                                    placeholder="Deskripsi"
+                                    rows={3}
+                                    value={newDesc}
+                                    onChange={(e) => { setNewDesc(e.target.value); clearCreateError("desc"); }}
+                                    className={`w-full px-4 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 resize-none ${createErrors.desc ? "border-red-400 focus:ring-red-200" : "border-slate-200"}`}
+                                />
+                                {createErrors.desc && <p className="mt-1 text-xs text-red-500">{createErrors.desc}</p>}
+                            </div>
                         </div>
                         <div className="flex justify-end gap-2 mt-5">
-                            <button onClick={() => setShowCreate(false)} className="px-4 py-2 text-sm text-slate-600 hover:bg-slate-100 rounded-lg transition-colors">Batal</button>
+                            <button onClick={() => { setShowCreate(false); setCreateErrors({}); setCreateSubmitted(false); }} className="px-4 py-2 text-sm text-slate-600 hover:bg-slate-100 rounded-lg transition-colors">Batal</button>
                             <button onClick={createRow} className="px-4 py-2 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primary/90 transition-colors">Simpan</button>
                         </div>
                     </div>
@@ -197,12 +414,12 @@ export default function DashboardPortofolioPage() {
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-slate-50">
-                            {filtered.length === 0 && (
+                            {paginated.length === 0 && (
                                 <tr>
                                     <td colSpan={6} className="px-5 py-10 text-center text-slate-400 text-sm">Tidak ada data.</td>
                                 </tr>
                             )}
-                            {filtered.map((row) => (
+                            {paginated.map((row) => (
                                 <tr key={row.id} className="hover:bg-slate-50/50 transition-colors">
                                     <td className="px-5 py-3 font-medium text-navy max-w-[200px] truncate">{row.title}</td>
                                     <td className="px-5 py-3 text-slate-500 whitespace-nowrap">{row.client}</td>
@@ -227,8 +444,43 @@ export default function DashboardPortofolioPage() {
                         </tbody>
                     </table>
                 </div>
-                <div className="px-5 py-3 border-t border-slate-100 text-xs text-slate-400">
-                    Menampilkan {filtered.length} dari {rows.length} data
+
+                {/* Footer with pagination */}
+                <div className="px-5 py-3 border-t border-slate-100 flex items-center justify-between">
+                    <span className="text-xs text-slate-400">
+                        Menampilkan {filtered.length === 0 ? 0 : (safePage - 1) * PER_PAGE + 1}–{Math.min(safePage * PER_PAGE, filtered.length)} dari {filtered.length} data
+                    </span>
+                    {totalPages > 1 && (
+                        <div className="flex items-center gap-1">
+                            <button
+                                onClick={() => setPage((p) => Math.max(1, p - 1))}
+                                disabled={safePage === 1}
+                                className="w-8 h-8 flex items-center justify-center rounded-lg text-sm text-slate-500 hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                            >
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </button>
+                            {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+                                <button
+                                    key={p}
+                                    onClick={() => setPage(p)}
+                                    className={`w-8 h-8 flex items-center justify-center rounded-lg text-sm font-medium transition-colors ${p === safePage ? "bg-primary text-white" : "text-slate-500 hover:bg-slate-100"}`}
+                                >
+                                    {p}
+                                </button>
+                            ))}
+                            <button
+                                onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                                disabled={safePage === totalPages}
+                                className="w-8 h-8 flex items-center justify-center rounded-lg text-sm text-slate-500 hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                            >
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

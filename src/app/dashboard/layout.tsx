@@ -4,7 +4,19 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
-const menuItems = [
+interface SubMenuItem {
+    label: string;
+    href: string;
+}
+
+interface MenuItem {
+    label: string;
+    href?: string;
+    icon: React.ReactNode;
+    children?: SubMenuItem[];
+}
+
+const menuItems: MenuItem[] = [
     {
         label: "Dashboard",
         href: "/dashboard/dashboard",
@@ -15,13 +27,17 @@ const menuItems = [
         ),
     },
     {
-        label: "Kelola Info",
-        href: "/dashboard/info",
+        label: "Profil",
         icon: (
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
         ),
+        children: [
+            { label: "Kelola Info", href: "/dashboard/info" },
+            { label: "Kelola Kontak", href: "/dashboard/contact" },
+            { label: "Kelola Tentang", href: "/dashboard/about" },
+        ],
     },
     {
         label: "Kelola Services",
@@ -48,6 +64,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     const router = useRouter();
     const [collapsed, setCollapsed] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
+    const [openMenus, setOpenMenus] = useState<Record<string, boolean>>({});
 
     // Guard: redirect to login if not authenticated
     useEffect(() => {
@@ -104,11 +121,74 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 {/* Nav */}
                 <nav className="flex-1 py-4 overflow-y-auto">
                     {menuItems.map((item) => {
+                        if (item.children) {
+                            const isChildActive = item.children.some(
+                                (child) => pathname === child.href || pathname.startsWith(child.href + "/")
+                            );
+                            const isOpen = openMenus[item.label] ?? isChildActive;
+                            const toggleMenu = () =>
+                                setOpenMenus((prev) => ({ ...prev, [item.label]: !isOpen }));
+
+                            return (
+                                <div key={item.label}>
+                                    <button
+                                        onClick={toggleMenu}
+                                        className={`
+                                            flex items-center gap-3 mx-2 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 w-[calc(100%-16px)]
+                                            ${isChildActive
+                                                ? "text-white bg-white/10"
+                                                : "text-slate-300 hover:text-white hover:bg-white/10"
+                                            }
+                                            ${collapsed ? "justify-center" : ""}
+                                        `}
+                                        title={collapsed ? item.label : undefined}
+                                    >
+                                        <span className="flex-shrink-0">{item.icon}</span>
+                                        {!collapsed && (
+                                            <>
+                                                <span className="flex-1 text-left">{item.label}</span>
+                                                <svg
+                                                    className={`w-4 h-4 flex-shrink-0 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+                                                    fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}
+                                                >
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                                                </svg>
+                                            </>
+                                        )}
+                                    </button>
+                                    {isOpen && !collapsed && (
+                                        <div className="mt-1 ml-4 space-y-0.5">
+                                            {item.children.map((child) => {
+                                                const childActive = pathname === child.href || pathname.startsWith(child.href + "/");
+                                                return (
+                                                    <Link
+                                                        key={child.href}
+                                                        href={child.href}
+                                                        onClick={() => setMobileOpen(false)}
+                                                        className={`
+                                                            flex items-center gap-3 mx-2 px-3 py-2 rounded-lg text-sm transition-all duration-200
+                                                            ${childActive
+                                                                ? "bg-primary text-white font-medium"
+                                                                : "text-slate-400 hover:text-white hover:bg-white/10"
+                                                            }
+                                                        `}
+                                                    >
+                                                        <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${childActive ? "bg-white" : "bg-slate-500"}`} />
+                                                        <span>{child.label}</span>
+                                                    </Link>
+                                                );
+                                            })}
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                        }
+
                         const active = pathname === item.href || pathname.startsWith(item.href + "/");
                         return (
                             <Link
                                 key={item.href}
-                                href={item.href}
+                                href={item.href!}
                                 onClick={() => setMobileOpen(false)}
                                 className={`
                                     flex items-center gap-3 mx-2 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200
@@ -156,7 +236,16 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                         </svg>
                     </button>
                     <span className="text-sm font-semibold text-slate-600">
-                        {menuItems.find((m) => pathname === m.href || pathname.startsWith(m.href + "/"))?.label ?? "Dashboard"}
+                        {(() => {
+                            for (const m of menuItems) {
+                                if (m.href && (pathname === m.href || pathname.startsWith(m.href + "/"))) return m.label;
+                                if (m.children) {
+                                    const child = m.children.find((c) => pathname === c.href || pathname.startsWith(c.href + "/"));
+                                    if (child) return child.label;
+                                }
+                            }
+                            return "Dashboard";
+                        })()}
                     </span>
                     <div className="ml-auto flex items-center gap-2">
                         <span className="text-xs text-slate-400 hidden sm:block">admin@autonez.com</span>
