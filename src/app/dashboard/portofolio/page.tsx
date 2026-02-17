@@ -36,10 +36,12 @@ export default function DashboardPortofolioPage() {
     const [newCatOpen, setNewCatOpen] = useState(false);
     const [newCatSearch, setNewCatSearch] = useState("");
     const [createErrors, setCreateErrors] = useState<Record<string, string>>({});
-    const [createSubmitted, setCreateSubmitted] = useState(false);
+    const [, setCreateSubmitted] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const categoryRef = useRef<HTMLDivElement>(null);
     const yearRef = useRef<HTMLDivElement>(null);
+    const loadingTimerRef = useRef<NodeJS.Timeout | null>(null);
 
     // Close dropdowns on outside click
     useEffect(() => {
@@ -49,6 +51,20 @@ export default function DashboardPortofolioPage() {
         };
         document.addEventListener("mousedown", handler);
         return () => document.removeEventListener("mousedown", handler);
+    }, []);
+
+    // Simulate API loading delay
+    const simulateLoading = () => {
+        setIsLoading(true);
+        if (loadingTimerRef.current) clearTimeout(loadingTimerRef.current);
+        loadingTimerRef.current = setTimeout(() => setIsLoading(false), 1000);
+    };
+
+    // Cleanup timer on unmount
+    useEffect(() => {
+        return () => {
+            if (loadingTimerRef.current) clearTimeout(loadingTimerRef.current);
+        };
     }, []);
 
     const filteredCategories = portfolioCategories.filter(
@@ -97,7 +113,7 @@ export default function DashboardPortofolioPage() {
         if (!newClient.trim()) errors.client = "Nama klien wajib diisi";
         const parsedYear = parseInt(newYear);
         if (!newYear.trim()) errors.year = "Tahun wajib diisi";
-        else if (isNaN(parsedYear) || parsedYear < 2000 || parsedYear > 2099) errors.year = "Tahun harus antara 2000–2099";
+        else if (isNaN(parsedYear) || parsedYear < 2000 || parsedYear > 3000) errors.year = "Tahun harus antara 2000–3000";
         if (!newDesc.trim()) errors.desc = "Deskripsi wajib diisi";
         return errors;
     };
@@ -171,7 +187,7 @@ export default function DashboardPortofolioPage() {
                         type="text"
                         placeholder="Cari judul atau klien..."
                         value={search}
-                        onChange={(e) => { setSearch(e.target.value); setPage(1); }}
+                        onChange={(e) => { setSearch(e.target.value); setPage(1); simulateLoading(); }}
                         className="w-56 px-4 py-2 text-sm border border-slate-200 rounded-lg bg-white hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
                     />
                 </div>
@@ -204,7 +220,7 @@ export default function DashboardPortofolioPage() {
                                 {filteredCategories.map((cat) => (
                                     <button
                                         key={cat}
-                                        onClick={() => { setFilterCategory(cat); setCategoryOpen(false); setCategorySearch(""); setPage(1); }}
+                                        onClick={() => { setFilterCategory(cat); setCategoryOpen(false); setCategorySearch(""); setPage(1); simulateLoading(); }}
                                         className={`w-full text-left px-4 py-2 text-sm transition-colors ${filterCategory === cat ? "bg-primary/10 text-primary font-medium" : "text-slate-600 hover:bg-slate-50"}`}
                                     >
                                         {cat === "All" ? "Semua Kategori" : cat}
@@ -237,7 +253,7 @@ export default function DashboardPortofolioPage() {
                         <div className="absolute z-20 mt-1 w-36 bg-white border border-slate-200 rounded-xl shadow-lg overflow-hidden">
                             <div className="max-h-48 overflow-y-auto py-1">
                                 <button
-                                    onClick={() => { setFilterYear(null); setYearOpen(false); setPage(1); }}
+                                    onClick={() => { setFilterYear(null); setYearOpen(false); setPage(1); simulateLoading(); }}
                                     className={`w-full text-left px-4 py-2 text-sm transition-colors ${filterYear === null ? "bg-primary/10 text-primary font-medium" : "text-slate-600 hover:bg-slate-50"}`}
                                 >
                                     Semua
@@ -245,7 +261,7 @@ export default function DashboardPortofolioPage() {
                                 {allYears.map((yr) => (
                                     <button
                                         key={yr}
-                                        onClick={() => { setFilterYear(yr); setYearOpen(false); setPage(1); }}
+                                        onClick={() => { setFilterYear(yr); setYearOpen(false); setPage(1); simulateLoading(); }}
                                         className={`w-full text-left px-4 py-2 text-sm transition-colors ${filterYear === yr ? "bg-primary/10 text-primary font-medium" : "text-slate-600 hover:bg-slate-50"}`}
                                     >
                                         {yr}
@@ -259,7 +275,7 @@ export default function DashboardPortofolioPage() {
                 {/* Reset filters */}
                 {(filterCategory !== "All" || filterYear !== null || search) && (
                     <button
-                        onClick={() => { setFilterCategory("All"); setFilterYear(null); setSearch(""); setPage(1); }}
+                        onClick={() => { setFilterCategory("All"); setFilterYear(null); setSearch(""); setPage(1); simulateLoading(); }}
                         className="px-3 py-2 text-xs font-medium text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors"
                     >
                         Reset Filter
@@ -414,47 +430,75 @@ export default function DashboardPortofolioPage() {
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-slate-50">
-                            {paginated.length === 0 && (
+                            {isLoading ? (
+                                Array.from({ length: PER_PAGE }).map((_, i) => (
+                                    <tr key={`skeleton-${i}`} className="animate-pulse">
+                                        <td className="px-5 py-3"><div className="skeleton h-4 w-36" style={{ animationDelay: `${i * 0.08}s` }} /></td>
+                                        <td className="px-5 py-3"><div className="skeleton h-4 w-24" style={{ animationDelay: `${i * 0.08 + 0.04}s` }} /></td>
+                                        <td className="px-5 py-3"><div className="skeleton h-4 w-20" style={{ animationDelay: `${i * 0.08 + 0.08}s` }} /></td>
+                                        <td className="px-5 py-3"><div className="skeleton h-4 w-12" style={{ animationDelay: `${i * 0.08 + 0.12}s` }} /></td>
+                                        <td className="px-5 py-3"><div className="skeleton h-5 w-16 rounded-full" style={{ animationDelay: `${i * 0.08 + 0.16}s` }} /></td>
+                                        <td className="px-5 py-3">
+                                            <div className="flex items-center justify-end gap-2">
+                                                <div className="skeleton h-7 w-12 rounded-lg" style={{ animationDelay: `${i * 0.08 + 0.2}s` }} />
+                                                <div className="skeleton h-7 w-20 rounded-lg" style={{ animationDelay: `${i * 0.08 + 0.24}s` }} />
+                                                <div className="skeleton h-7 w-14 rounded-lg" style={{ animationDelay: `${i * 0.08 + 0.28}s` }} />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ))
+                            ) : paginated.length === 0 ? (
                                 <tr>
                                     <td colSpan={6} className="px-5 py-10 text-center text-slate-400 text-sm">Tidak ada data.</td>
                                 </tr>
+                            ) : (
+                                paginated.map((row) => (
+                                    <tr key={row.id} className="hover:bg-slate-50/50 transition-colors">
+                                        <td className="px-5 py-3 font-medium text-navy max-w-[200px] truncate">{row.title}</td>
+                                        <td className="px-5 py-3 text-slate-500 whitespace-nowrap">{row.client}</td>
+                                        <td className="px-5 py-3 text-slate-500">{row.category}</td>
+                                        <td className="px-5 py-3 text-slate-500">{row.year}</td>
+                                        <td className="px-5 py-3">
+                                            <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${row.active ? "bg-emerald-50 text-emerald-700" : "bg-slate-100 text-slate-500"}`}>
+                                                {row.active ? "Aktif" : "Nonaktif"}
+                                            </span>
+                                        </td>
+                                        <td className="px-5 py-3">
+                                            <div className="flex items-center justify-end gap-2">
+                                                <button onClick={() => openEdit(row)} className="px-3 py-1.5 text-xs font-medium text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors">Edit</button>
+                                                <button onClick={() => toggleActive(row.id)} className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors ${row.active ? "text-amber-700 bg-amber-50 hover:bg-amber-100" : "text-emerald-700 bg-emerald-50 hover:bg-emerald-100"}`}>
+                                                    {row.active ? "Nonaktifkan" : "Aktifkan"}
+                                                </button>
+                                                <button onClick={() => deleteRow(row.id)} className="px-3 py-1.5 text-xs font-medium text-red-600 bg-red-50 hover:bg-red-100 rounded-lg transition-colors">Hapus</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ))
                             )}
-                            {paginated.map((row) => (
-                                <tr key={row.id} className="hover:bg-slate-50/50 transition-colors">
-                                    <td className="px-5 py-3 font-medium text-navy max-w-[200px] truncate">{row.title}</td>
-                                    <td className="px-5 py-3 text-slate-500 whitespace-nowrap">{row.client}</td>
-                                    <td className="px-5 py-3 text-slate-500">{row.category}</td>
-                                    <td className="px-5 py-3 text-slate-500">{row.year}</td>
-                                    <td className="px-5 py-3">
-                                        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${row.active ? "bg-emerald-50 text-emerald-700" : "bg-slate-100 text-slate-500"}`}>
-                                            {row.active ? "Aktif" : "Nonaktif"}
-                                        </span>
-                                    </td>
-                                    <td className="px-5 py-3">
-                                        <div className="flex items-center justify-end gap-2">
-                                            <button onClick={() => openEdit(row)} className="px-3 py-1.5 text-xs font-medium text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors">Edit</button>
-                                            <button onClick={() => toggleActive(row.id)} className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors ${row.active ? "text-amber-700 bg-amber-50 hover:bg-amber-100" : "text-emerald-700 bg-emerald-50 hover:bg-emerald-100"}`}>
-                                                {row.active ? "Nonaktifkan" : "Aktifkan"}
-                                            </button>
-                                            <button onClick={() => deleteRow(row.id)} className="px-3 py-1.5 text-xs font-medium text-red-600 bg-red-50 hover:bg-red-100 rounded-lg transition-colors">Hapus</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            ))}
                         </tbody>
                     </table>
                 </div>
 
                 {/* Footer with pagination */}
                 <div className="px-5 py-3 border-t border-slate-100 flex items-center justify-between">
-                    <span className="text-xs text-slate-400">
-                        Menampilkan {filtered.length === 0 ? 0 : (safePage - 1) * PER_PAGE + 1}–{Math.min(safePage * PER_PAGE, filtered.length)} dari {filtered.length} data
+                    <span className="text-xs text-slate-400 flex items-center gap-2">
+                        {isLoading ? (
+                            <>
+                                <svg className="w-3.5 h-3.5 animate-spin text-primary" fill="none" viewBox="0 0 24 24">
+                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                                </svg>
+                                <span>Memuat data...</span>
+                            </>
+                        ) : (
+                            `Menampilkan ${filtered.length === 0 ? 0 : (safePage - 1) * PER_PAGE + 1}–${Math.min(safePage * PER_PAGE, filtered.length)} dari ${filtered.length} data`
+                        )}
                     </span>
                     {totalPages > 1 && (
                         <div className="flex items-center gap-1">
                             <button
-                                onClick={() => setPage((p) => Math.max(1, p - 1))}
-                                disabled={safePage === 1}
+                                onClick={() => { setPage((p) => Math.max(1, p - 1)); simulateLoading(); }}
+                                disabled={safePage === 1 || isLoading}
                                 className="w-8 h-8 flex items-center justify-center rounded-lg text-sm text-slate-500 hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                             >
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
@@ -464,15 +508,16 @@ export default function DashboardPortofolioPage() {
                             {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
                                 <button
                                     key={p}
-                                    onClick={() => setPage(p)}
-                                    className={`w-8 h-8 flex items-center justify-center rounded-lg text-sm font-medium transition-colors ${p === safePage ? "bg-primary text-white" : "text-slate-500 hover:bg-slate-100"}`}
+                                    onClick={() => { setPage(p); simulateLoading(); }}
+                                    disabled={isLoading}
+                                    className={`w-8 h-8 flex items-center justify-center rounded-lg text-sm font-medium transition-colors ${p === safePage ? "bg-primary text-white" : "text-slate-500 hover:bg-slate-100"} disabled:opacity-50 disabled:cursor-not-allowed`}
                                 >
                                     {p}
                                 </button>
                             ))}
                             <button
-                                onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-                                disabled={safePage === totalPages}
+                                onClick={() => { setPage((p) => Math.min(totalPages, p + 1)); simulateLoading(); }}
+                                disabled={safePage === totalPages || isLoading}
                                 className="w-8 h-8 flex items-center justify-center rounded-lg text-sm text-slate-500 hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                             >
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
