@@ -25,57 +25,62 @@ export default function DashboardContactPage() {
                 <p className="text-sm text-slate-500">Edit informasi kontak yang tampil di halaman Contact.</p>
             </div>
 
-            <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 max-w-2xl">
-                <form onSubmit={handleSave} className="space-y-5">
-                    <div>
-                        <label className="block text-xs font-bold tracking-widest uppercase text-slate-400 mb-2">WhatsApp</label>
-                        <input
-                            type="text"
-                            value={whatsapp}
-                            onChange={(e) => setWhatsapp(e.target.value)}
-                            placeholder="+62 812-3456-7890"
-                            className="w-full px-4 py-2.5 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
-                        />
+            <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
+                <form onSubmit={handleSave} className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                        <div>
+                            <label className="block text-xs font-bold tracking-widest uppercase text-slate-400 mb-2">WhatsApp</label>
+                            <input
+                                type="text"
+                                value={whatsapp}
+                                onChange={(e) => setWhatsapp(e.target.value)}
+                                placeholder="+62 812-3456-7890"
+                                className="w-full px-4 py-2.5 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-xs font-bold tracking-widest uppercase text-slate-400 mb-2">Email</label>
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="hello@autonez.com"
+                                className="w-full px-4 py-2.5 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-xs font-bold tracking-widest uppercase text-slate-400 mb-2">Instagram</label>
+                            <input
+                                type="text"
+                                value={instagram}
+                                onChange={(e) => setInstagram(e.target.value)}
+                                placeholder="@autonez.communications"
+                                className="w-full px-4 py-2.5 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
+                            />
+                        </div>
                     </div>
-                    <div>
-                        <label className="block text-xs font-bold tracking-widest uppercase text-slate-400 mb-2">Email</label>
-                        <input
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder="hello@autonez.com"
-                            className="w-full px-4 py-2.5 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
-                        />
-                    </div>
-                    <div>
-                        <label className="block text-xs font-bold tracking-widest uppercase text-slate-400 mb-2">Instagram</label>
-                        <input
-                            type="text"
-                            value={instagram}
-                            onChange={(e) => setInstagram(e.target.value)}
-                            placeholder="@autonez.communications"
-                            className="w-full px-4 py-2.5 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
-                        />
-                    </div>
-                    <div>
-                        <label className="block text-xs font-bold tracking-widest uppercase text-slate-400 mb-2">Alamat</label>
-                        <input
-                            type="text"
-                            value={address}
-                            onChange={(e) => setAddress(e.target.value)}
-                            placeholder="Jakarta, Indonesia"
-                            className="w-full px-4 py-2.5 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
-                        />
-                    </div>
-                    <div>
-                        <label className="block text-xs font-bold tracking-widest uppercase text-slate-400 mb-2">Tagline</label>
-                        <input
-                            type="text"
-                            value={tagline}
-                            onChange={(e) => setTagline(e.target.value)}
-                            placeholder="Always There For You"
-                            className="w-full px-4 py-2.5 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
-                        />
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div>
+                            <label className="block text-xs font-bold tracking-widest uppercase text-slate-400 mb-2">Alamat</label>
+                            <textarea
+                                value={address}
+                                onChange={(e) => setAddress(e.target.value)}
+                                placeholder="Jakarta, Indonesia"
+                                rows={3}
+                                className="w-full px-4 py-2.5 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary resize-none"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-xs font-bold tracking-widest uppercase text-slate-400 mb-2">Tagline</label>
+                            <textarea
+                                value={tagline}
+                                onChange={(e) => setTagline(e.target.value)}
+                                placeholder="Always There For You"
+                                rows={3}
+                                className="w-full px-4 py-2.5 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary resize-none"
+                            />
+                        </div>
                     </div>
 
                     <div className="flex items-center gap-3 pt-2">

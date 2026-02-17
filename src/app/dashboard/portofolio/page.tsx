@@ -453,7 +453,7 @@ export default function DashboardPortofolioPage() {
                                 </tr>
                             ) : (
                                 paginated.map((row) => (
-                                    <tr key={row.id} className="hover:bg-slate-50/50 transition-colors">
+                                    <tr key={row.id} className="hover:bg-blue-600 [&:hover>td]:text-white transition-colors cursor-pointer">
                                         <td className="px-5 py-3 font-medium text-navy max-w-[200px] truncate">{row.title}</td>
                                         <td className="px-5 py-3 text-slate-500 whitespace-nowrap">{row.client}</td>
                                         <td className="px-5 py-3 text-slate-500">{row.category}</td>

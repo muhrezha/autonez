@@ -446,7 +446,7 @@ export default function DashboardInfoPage() {
                                 </tr>
                             )}
                             {paginated.map((row) => (
-                                <tr key={row.id} className="hover:bg-slate-50/50 transition-colors">
+                                <tr key={row.id} className="hover:bg-blue-600 [&:hover>td]:text-white transition-colors cursor-pointer">
                                     <td className="px-5 py-3 font-medium text-navy max-w-xs truncate">{row.title}</td>
                                     <td className="px-5 py-3 text-slate-500">{row.category}</td>
                                     <td className="px-5 py-3 text-slate-500 whitespace-nowrap">{row.date}</td>
