@@ -17,38 +17,32 @@ const itemVariants = {
 export default function ServicesPage() {
     return (
         <>
-            {/* Hero */}
-            <section className="relative pt-36 pb-20 bg-gradient-to-br from-navy via-navy-light to-navy overflow-hidden">
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:3rem_3rem]" />
-                <div className="absolute top-1/2 left-1/3 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
-                <div className="relative z-10 w-full max-w-4xl mx-auto px-6 lg:px-8 text-center text-white">
-                    <motion.span
+
+            {/* Section Header */}
+            <SectionWrapper className="section-padding bg-white">
+                <div className="w-full max-w-6xl mx-auto">
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-widest uppercase bg-white/10 rounded-full"
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-center mb-14"
                     >
-                        Layanan Kami
-                    </motion.span>
-                    <motion.h1
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-6xl font-black mb-6"
-                        style={{ fontFamily: 'var(--font-heading)' }}
-                    >
-                        Solusi <span className="gradient-text">Event Lengkap</span>
-                    </motion.h1>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="text-base md:text-lg text-slate-300 max-w-2xl mx-auto"
-                    >
-                        Dari konsep kreatif hingga eksekusi sempurna, kami menyediakan
-                        layanan komprehensif untuk setiap kebutuhan event Anda.
-                    </motion.p>
+                        <span className="inline-block px-4 py-1 mb-4 text-xs font-bold tracking-widest uppercase text-primary bg-primary/8 rounded-full">
+                            Informasi Kontak
+                        </span>
+                        <h2
+                            className="text-3xl md:text-4xl font-black text-navy mb-4"
+                            style={{ fontFamily: 'var(--font-heading)' }}
+                        >
+                            Saluran Komunikasi Resmi
+                        </h2>
+                        <p className="text-slate-500 max-w-lg mx-auto text-sm md:text-base leading-relaxed">
+                            Hubungi kami melalui saluran di bawah ini. Tim kami akan merespons dengan cepat dan profesional.
+                        </p>
+                    </motion.div>
                 </div>
-            </section>
+            </SectionWrapper>
+
 
             {/* Services Detail */}
             <SectionWrapper className="section-padding bg-white">
@@ -100,7 +94,7 @@ export default function ServicesPage() {
                                                 </span>
                                             ))}
                                         </div>
-                                        <Link
+                                        {/* <Link
                                             href={`/services/${svc.id}`}
                                             className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-dark transition-colors group/link"
                                         >
@@ -108,7 +102,7 @@ export default function ServicesPage() {
                                             <svg className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                             </svg>
-                                        </Link>
+                                        </Link> */}
                                     </div>
                                 </div>
                             </motion.div>

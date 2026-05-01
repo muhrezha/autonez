@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { PortfolioEvent } from "@/lib/data";
 
 interface Props {
@@ -35,49 +36,70 @@ export default function PortfolioDetailClient({ event, prevEvent, nextEvent, rel
 
     return (
         <>
-            {/* ── Hero ──────────────────────────────────────────────── */}
-            <section className="relative pt-36 pb-24 bg-gradient-to-br from-navy via-navy-light to-navy overflow-hidden">
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:3rem_3rem]" />
-                <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
-                {/* Big year watermark */}
-                <div
-                    className="absolute bottom-0 right-8 text-[180px] font-black leading-none opacity-5 text-white select-none"
-                    style={{ fontFamily: "var(--font-heading)" }}
-                >
-                    {event.year}
-                </div>
-
-                <div className="relative z-10 w-full max-w-5xl mx-auto px-6 lg:px-8">
-                    {/* Breadcrumb */}
+            {/* ── Breadcrumb ────────────────────────────────────────── */}
+            <section className="bg-white border-b border-slate-100 pt-24 pb-4">
+                <div className="w-full max-w-5xl mx-auto px-6 lg:px-8">
                     <motion.nav
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="flex items-center gap-2 text-sm text-slate-400 mb-10"
+                        className="flex items-center gap-2 text-sm text-slate-400"
                     >
-                        <Link href="/" className="hover:text-white transition-colors">Home</Link>
+                        <Link href="/" className="hover:text-navy transition-colors">Home</Link>
                         <span>/</span>
-                        <Link href="/portfolio" className="hover:text-white transition-colors">Portfolio</Link>
+                        <Link href="/portfolio" className="hover:text-navy transition-colors">Portfolio</Link>
                         <span>/</span>
-                        <span className="text-white">{event.title}</span>
+                        <span className="text-slate-600 line-clamp-1">{event.title}</span>
                     </motion.nav>
+                </div>
+            </section>
 
-                    {/* Category + Year badge */}
+            {/* ── Hero Image ────────────────────────────────────────── */}
+            <section className="bg-white pt-6">
+                <div className="w-full max-w-5xl mx-auto px-6 lg:px-8">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="relative w-full aspect-[16/7] rounded-2xl overflow-hidden shadow-lg"
+                    >
+                        <Image
+                            src={event.image}
+                            alt={event.title}
+                            fill
+                            className="object-cover"
+                            priority
+                            sizes="(max-width: 1024px) 100vw, 1024px"
+                        />
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* ── Hero Content ──────────────────────────────────────── */}
+            <section className="bg-white pb-12">
+                <div className="w-full max-w-5xl mx-auto px-6 lg:px-8 pt-8">
+                    {/* Category + Date */}
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.15 }}
                         className="flex items-center gap-3 mb-5"
                     >
                         <span className={`px-4 py-1.5 text-xs font-bold tracking-widest uppercase rounded-full bg-gradient-to-r ${gradientClass} text-white`}>
                             {event.category}
                         </span>
-                        <span className="text-xs text-slate-400 font-medium">{event.year}</span>
+                        <span className="flex items-center gap-1.5 text-xs text-slate-400 font-medium">
+                            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            {event.date}
+                        </span>
                     </motion.div>
 
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 leading-tight"
+                        transition={{ delay: 0.2 }}
+                        className="text-4xl md:text-5xl lg:text-6xl font-black text-navy mb-4 leading-tight"
                         style={{ fontFamily: "var(--font-heading)" }}
                     >
                         {event.title}
@@ -86,8 +108,8 @@ export default function PortfolioDetailClient({ event, prevEvent, nextEvent, rel
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.15 }}
-                        className="text-primary-light font-semibold text-base mb-3"
+                        transition={{ delay: 0.25 }}
+                        className="text-primary font-semibold text-base mb-3"
                     >
                         {event.client}
                     </motion.p>
@@ -95,22 +117,22 @@ export default function PortfolioDetailClient({ event, prevEvent, nextEvent, rel
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="text-lg text-slate-300 max-w-2xl leading-relaxed"
+                        transition={{ delay: 0.3 }}
+                        className="text-base text-slate-500 max-w-2xl leading-relaxed"
                     >
                         {event.description}
                     </motion.p>
 
-                    {/* Stats row */}
+                    {/* Stats */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
-                        className="flex flex-wrap gap-6 mt-10 pt-10 border-t border-white/10"
+                        transition={{ delay: 0.4 }}
+                        className="flex flex-wrap gap-6 mt-10 pt-10 border-t border-slate-100"
                     >
                         {event.stats.map((stat) => (
-                            <div key={stat.label}>
-                                <div className="text-2xl md:text-3xl font-black text-white" style={{ fontFamily: "var(--font-heading)" }}>
+                            <div key={stat.label} className="text-center">
+                                <div className="text-2xl md:text-3xl font-black gradient-text" style={{ fontFamily: "var(--font-heading)" }}>
                                     {stat.value}
                                 </div>
                                 <div className="text-xs text-slate-400 font-medium mt-0.5">{stat.label}</div>
@@ -306,13 +328,15 @@ export default function PortfolioDetailClient({ event, prevEvent, nextEvent, rel
                                         className="group block rounded-2xl border border-slate-100 overflow-hidden hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 transition-all duration-300"
                                     >
                                         {/* Mini visual header */}
-                                        <div className="h-32 bg-gradient-to-br from-navy via-navy-light to-primary/80 relative">
-                                            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:1.5rem_1.5rem]" />
-                                            <div className="absolute inset-0 flex items-center justify-center">
-                                                <span className="text-4xl font-black opacity-20 text-white" style={{ fontFamily: "var(--font-heading)" }}>
-                                                    {item.year}
-                                                </span>
-                                            </div>
+                                        <div className="h-32 relative overflow-hidden">
+                                            <Image
+                                                src={item.image}
+                                                alt={item.title}
+                                                fill
+                                                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/20 to-transparent" />
                                             <div className="absolute top-3 left-3">
                                                 <span className="px-2.5 py-1 text-[10px] font-bold tracking-wider uppercase bg-white/20 text-white rounded-full backdrop-blur-sm">
                                                     {item.category}
