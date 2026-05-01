@@ -138,6 +138,8 @@ export default function DashboardPortofolioPage() {
                 client: newClient,
                 category: newCategory,
                 year: parseInt(newYear),
+                date: "",
+                image: "",
                 description: newDesc,
                 challenge: "",
                 solution: "",
