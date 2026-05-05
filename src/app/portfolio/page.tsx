@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
 import Image from "next/image";
 import SectionWrapper from "@/components/SectionWrapper";
 import {
@@ -13,6 +12,7 @@ import {
 
 export default function PortfolioPage() {
     const [activeCategory, setActiveCategory] = useState<PortfolioCategory>("All");
+    const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
 
     const filteredEvents =
         activeCategory === "All"
@@ -53,9 +53,9 @@ export default function PortfolioPage() {
                                     exit={{ opacity: 0, scale: 0.9 }}
                                     transition={{ duration: 0.4 }}
                                 >
-                                    <Link
-                                        href={`/portfolio/${event.id}`}
-                                        className="group relative rounded-2xl bg-white border border-slate-100 overflow-hidden hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 hover:-translate-y-1 block"
+                                    <div
+                                        onClick={() => setSelectedImage({ src: event.image, alt: event.title })}
+                                        className="group relative rounded-2xl bg-white border border-slate-100 overflow-hidden hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 hover:-translate-y-1 block cursor-pointer"
                                     >
                                         {/* Visual Header */}
                                         <div className="h-44 relative overflow-hidden">
@@ -83,17 +83,17 @@ export default function PortfolioPage() {
                                             <h3 className="text-lg font-bold text-navy mb-3 group-hover:text-primary transition-colors" style={{ fontFamily: 'var(--font-heading)' }}>
                                                 {event.title}
                                             </h3>
-                                            <p className="text-sm text-slate-500 leading-relaxed mb-4">
+                                            {/* <p className="text-sm text-slate-500 leading-relaxed mb-4">
                                                 {event.description}
-                                            </p>
-                                            <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary group-hover:gap-2.5 transition-all duration-300">
+                                            </p> */}
+                                            {/* <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary group-hover:gap-2.5 transition-all duration-300">
                                                 Lihat Detail
                                                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
                                                     <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                                 </svg>
-                                            </span>
+                                            </span> */}
                                         </div>
-                                    </Link>
+                                    </div>
                                 </motion.div>
                             ))}
                         </AnimatePresence>
@@ -107,6 +107,46 @@ export default function PortfolioPage() {
                     )}
                 </div>
             </SectionWrapper>
+
+            {/* Image Modal */}
+            <AnimatePresence>
+                {selectedImage && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.25 }}
+                        className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+                        onClick={() => setSelectedImage(null)}
+                    >
+                        <button
+                            onClick={() => setSelectedImage(null)}
+                            className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/25 text-white transition-colors duration-200"
+                            aria-label="Close"
+                        >
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                        <motion.div
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.9, opacity: 0 }}
+                            transition={{ duration: 0.25 }}
+                            className="relative w-full max-w-4xl max-h-[90vh] aspect-video"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <Image
+                                src={selectedImage.src}
+                                alt={selectedImage.alt}
+                                fill
+                                className="object-contain"
+                                sizes="100vw"
+                            />
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </>
     );
 }

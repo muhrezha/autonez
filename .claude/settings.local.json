@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(mkdir -p /Volumes/DATA/Projects/nextjs/autonez/public/data)"
+    ],
+    "additionalDirectories": [
+      "/Volumes/DATA/Projects/nextjs/autonez/public"
     ]
   }
 }
