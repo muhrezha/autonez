@@ -93,7 +93,7 @@ export default function ContactPage() {
                         animate={{ opacity: 1, y: 0 }}
                         className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest uppercase bg-primary/8 border border-primary/15 text-primary rounded-full"
                     >
-                        Hubungi Kami
+                        LET&apos;S TALK
                     </motion.span>
                     {/* <motion.h1
                         initial={{ opacity: 0, y: 30 }}
@@ -111,7 +111,7 @@ export default function ContactPage() {
                         transition={{ delay: 0.2 }}
                         className="text-base md:text-lg text-slate-500 max-w-xl mx-auto leading-relaxed"
                     >
-                        Kami siap mendampingi Anda dari konsep hingga eksekusi. Pilih saluran komunikasi yang paling nyaman untuk Anda.
+                        Have an exciting idea or need help with your next event? We’re here to support you every step of the way. Feel free to reach out through your preferred channel..
                     </motion.p>
                 </div>
             </section>
@@ -169,9 +169,9 @@ export default function ContactPage() {
                                         <div className="text-base font-bold text-navy truncate mb-1">
                                             {ch.value}
                                         </div>
-                                        <div className="text-xs text-slate-400 leading-relaxed">
+                                        {/* <div className="text-xs text-slate-400 leading-relaxed">
                                             {ch.description}
-                                        </div>
+                                        </div> */}
                                     </div>
 
                                     {/* Arrow for clickable cards */}
@@ -201,10 +201,10 @@ export default function ContactPage() {
                     </div>
 
                     {/* Divider */}
-                    <div className="my-14 border-t border-slate-100" />
+                    <div className="my-0 border-t border-slate-100" />
 
                     {/* Business Hours */}
-                    <motion.div
+                    {/* <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -239,7 +239,7 @@ export default function ContactPage() {
                                 Mulai Percakapan
                             </a>
                         </div>
-                    </motion.div>
+                    </motion.div> */}
                 </div>
             </SectionWrapper>
 

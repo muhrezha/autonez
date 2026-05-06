@@ -841,8 +841,8 @@ export const infoPosts: InfoPost[] = [
 
 // ---------- Contact Info ----------
 export const contactInfo = {
-  whatsapp: "+62 812-3456-7890",
-  email: "hello@autonez.com",
+  whatsapp: "+62 878-7799-4035",
+  email: "autonez.eo@gmail.com",
   instagram: "@autonez.communications",
   address: "Jakarta, Indonesia",
   tagline: "Always There For You",

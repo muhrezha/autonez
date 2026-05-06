@@ -18,17 +18,9 @@ export default function AboutPage() {
                             </h2>
                             <div className="space-y-4 text-slate-500 leading-relaxed">
                                 <p>
-                                    is a company that focuses on providing solutions for
-                                    events and digital consultants, since 2015 we have begun to open up
-                                    opportunities in the world of event management, previously we have focused
-                                    on digital industries such as: design, website creation, multimedia, and digital
-                                    marketing.
-                                    We operate with a team that is trained, professional and efficient in carrying
-                                    out activities that are part of our service. So that we are the best solution for
-                                    the needs of companies or individuals
-                                    Autonez is a company that has a wealth of experience in services, especially
-                                    event organizers and Digital consultant. so we are not only consultants, but we
-                                    are a circle of positive energy with one goal, namely client satisfaction.                                </p>
+                                    Since 2015, Autonez Communications has been a leading force in the <strong>Event Management and Production</strong> industry. We offer a comprehensive <strong>One-Stop Solution</strong>, streamlining the complex process of event planning into a single, seamless experience.
+                                    Our expertise spans from conceptualizing innovative ideas to delivering flawless execution. We take pride in our in-house production capabilities, providing custom-built booths, stages, and high-quality backdrops. Equipped with professional sound, lighting, and premium LED technology, alongside curated talent management, we ensure every element of your event is handled with precision.
+                                    At Autonez, we are more than just consultants—we are a team fueled by positive energy and a shared vision. Our mission is simple: To achieve absolute client satisfaction by delivering excellence that stands above the rest.                                </p>
                             </div>
                         </div>
                         <div className="relative">

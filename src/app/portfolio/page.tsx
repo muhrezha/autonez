@@ -26,7 +26,7 @@ export default function PortfolioPage() {
             <SectionWrapper className="section-padding bg-white">
                 <div className="w-full max-w-7xl mx-auto">
                     {/* Filter Tabs */}
-                    <div className="flex flex-wrap justify-center gap-2 mb-12">
+                    {/* <div className="flex flex-wrap justify-center gap-2 mb-12">
                         {portfolioCategories.map((cat) => (
                             <button
                                 key={cat}
@@ -39,7 +39,7 @@ export default function PortfolioPage() {
                                 {cat}
                             </button>
                         ))}
-                    </div>
+                    </div> */}
 
                     {/* Events Grid */}
                     <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
