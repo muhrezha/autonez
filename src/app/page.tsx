@@ -1,9 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import SectionWrapper from "@/components/SectionWrapper";
 import { services, clients, processSteps } from "@/lib/data";
+import { IdeasSection } from "@/components/home/IdeasSection";
+import { dataIdeasOne } from "@/components/home/data";
+
 
 const containerVariants = {
   hidden: {},
@@ -56,7 +60,8 @@ export default function HomePage() {
             &ldquo;Always There For You&rdquo;
           </motion.p>
 
-          <motion.p
+          {/* Old */}
+          {/* <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -65,6 +70,16 @@ export default function HomePage() {
             A circle of positive energy with one goal:{" "}
             <span className="text-navy font-semibold">client satisfaction</span>.
             Kami menghadirkan pengalaman event yang tak terlupakan sejak 2015.
+          </motion.p> */}
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="max-w-2xl mx-auto text-slate-500 text-sm md:text-base lg:text-lg leading-relaxed mb-8 md:mb-10"
+          >
+            We are a circle of positive energy with one
+            goal client satisfaction.
           </motion.p>
 
           <motion.div
@@ -105,8 +120,8 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* ============ QUICK ABOUT ============ */}
-      <SectionWrapper className="section-padding bg-white">
+      {/* ============ QUICK ABOUT / TENTANG KAMI============ */}
+      {/* <SectionWrapper className="section-padding bg-white">
         <div className="w-full max-w-7xl mx-auto px-4 text-center">
           <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-widest uppercase bg-accent/10 text-accent rounded-full">
             Tentang Kami
@@ -146,118 +161,26 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </SectionWrapper>
+      </SectionWrapper> */}
 
-      {/* ============ FEATURED SERVICES ============ */}
-      <SectionWrapper className="section-padding bg-gradient-to-b from-slate-50 to-white">
-        <div className="w-full max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12 md:mb-16">
-            <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-widest uppercase bg-primary/10 text-primary rounded-full">
-              Layanan Kami
-            </span>
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-navy mb-3 md:mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
-              Solusi Event yang Komprehensif
-            </h2>
-            <p className="max-w-2xl mx-auto text-slate-500 text-sm md:text-base">
-              Dari konsep hingga eksekusi, kami menghadirkan layanan terbaik untuk setiap kebutuhan event Anda.
-            </p>
-          </div>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {services.map((svc) => (
-              <motion.div
-                key={svc.id}
-                variants={itemVariants}
-                className="group relative p-8 rounded-2xl bg-white border border-slate-100 hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 hover:-translate-y-1"
-              >
-                <div className="text-4xl mb-4">{svc.icon}</div>
-                <h3 className="text-xl font-bold text-navy mb-3 group-hover:text-primary transition-colors" style={{ fontFamily: 'var(--font-heading)' }}>
-                  {svc.title}
-                </h3>
-                <p className="text-slate-500 text-sm leading-relaxed mb-4">{svc.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {svc.highlights.slice(0, 3).map((h) => (
-                    <span key={h} className="px-2.5 py-1 text-[11px] font-medium bg-slate-50 text-slate-500 rounded-full group-hover:bg-primary/5 group-hover:text-primary transition-colors">
-                      {h}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          <div className="text-center mt-12">
-            <Link href="/services" className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-primary border-2 border-primary/20 rounded-full hover:bg-primary hover:text-white transition-all duration-300">
-              Lihat Semua Layanan
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
-          </div>
+      {/* ============ OUR IDEAS ============ */}
+      <SectionWrapper className="bg-white">
+        <div className="w-full max-w-7xl mx-auto text-center">
+          <IdeasSection imgPos="left" data={dataIdeasOne} />
         </div>
       </SectionWrapper>
 
-      {/* ============ PROCESS ============ */}
-      <SectionWrapper className="section-padding bg-navy text-white">
-        <div className="w-full max-w-7xl mx-auto px-4">
+      {/* ============ CLIENT EXPERIENCES ============ */}
+      <SectionWrapper className="bg-white">
+        <div className="w-full max-w-7xl mx-auto px-12">
           <div className="text-center mb-12 md:mb-16">
-            <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-widest uppercase bg-accent/20 text-accent rounded-full">
-              Proses Kerja
-            </span>
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
-              Dari Ide hingga Perayaan
-            </h2>
-            <p className="max-w-2xl mx-auto text-slate-400 text-sm md:text-base">
-              Bagi kami, hasil akhir bukan sekadar evaluasi — melainkan{" "}
-              <span className="text-accent font-semibold">perayaan</span> atas keberhasilan tanggung jawab yang diberikan.
-            </p>
-          </div>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4"
-          >
-            {processSteps.map((step, i) => (
-              <motion.div key={step.step} variants={itemVariants} className="relative group">
-                <div className="p-6 rounded-2xl bg-white/5 border border-white/10 text-center hover:bg-white/10 hover:border-accent/30 transition-all duration-500">
-                  <div className="text-3xl mb-3">{step.icon}</div>
-                  <div className="text-[10px] font-semibold tracking-widest uppercase text-slate-500 mb-1">Step {step.step}</div>
-                  <div className="text-sm font-bold mb-2" style={{ fontFamily: 'var(--font-heading)' }}>{step.title}</div>
-                  <p className="text-[11px] text-slate-400 leading-relaxed">{step.description}</p>
-                </div>
-                {i < processSteps.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-3 text-slate-600 text-sm">→</div>
-                )}
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </SectionWrapper>
-
-      {/* ============ CLIENT LOGOS ============ */}
-      <SectionWrapper className="section-padding bg-white">
-        <div className="w-full max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12 md:mb-16">
-            <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-widest uppercase bg-primary/10 text-primary rounded-full">
-              Client Experience
-            </span>
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-navy mb-3 md:mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
-              Dipercaya oleh Brand Terbaik
+              Our Clients
             </h2>
             <p className="max-w-2xl mx-auto text-slate-500 text-sm md:text-base">
               Dari BUMN hingga perusahaan swasta terkemuka, kami bangga menjadi mitra terpercaya dalam menghadirkan event berkualitas.
             </p>
           </div>
-
           {/* BUMN */}
           <div className="mb-12">
             <h3 className="text-xs font-bold tracking-widest uppercase text-slate-400 mb-6 text-center">
@@ -272,14 +195,24 @@ export default function HomePage() {
             >
               {clients.filter((c) => c.category === "BUMN").map((c) => (
                 <motion.div key={c.name} variants={itemVariants}
-                  className="flex items-center justify-center p-4 h-20 rounded-xl bg-slate-50 border border-slate-100 hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group"
+                  className="relative flex items-center justify-center p-3 h-20 rounded-xl bg-white border border-slate-100 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 group"
                 >
-                  <span className="text-xs font-semibold text-slate-400 group-hover:text-primary transition-colors text-center">{c.name}</span>
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={c.logo}
+                      alt={c.name}
+                      fill
+                      className="object-contain mix-blend-multiply"
+                      sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 14vw"
+                    />
+                  </div>
+                  <span className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[calc(100%+6px)] z-20 whitespace-nowrap rounded-md bg-navy px-2.5 py-1 text-xs font-medium text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                    {c.name}
+                  </span>
                 </motion.div>
               ))}
             </motion.div>
           </div>
-
           {/* Swasta */}
           <div>
             <h3 className="text-xs font-bold tracking-widest uppercase text-slate-400 mb-6 text-center">
@@ -294,15 +227,28 @@ export default function HomePage() {
             >
               {clients.filter((c) => c.category === "Swasta").map((c) => (
                 <motion.div key={c.name} variants={itemVariants}
-                  className="flex items-center justify-center p-4 h-20 rounded-xl bg-slate-50 border border-slate-100 hover:border-accent/20 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300 group"
+                  className="relative flex items-center justify-center p-3 h-20 rounded-xl bg-white border border-slate-100 hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10 transition-all duration-300 group"
                 >
-                  <span className="text-xs font-semibold text-slate-400 group-hover:text-accent transition-colors text-center">{c.name}</span>
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={c.logo}
+                      alt={c.name}
+                      fill
+                      className="object-contain mix-blend-multiply"
+                      sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 12vw"
+                    />
+                  </div>
+                  <span className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[calc(100%+6px)] z-20 whitespace-nowrap rounded-md bg-navy px-2.5 py-1 text-xs font-medium text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                    {c.name}
+                  </span>
                 </motion.div>
               ))}
             </motion.div>
           </div>
         </div>
       </SectionWrapper>
+
+      <div className="h-17" /> {/* Spacer */}
 
       {/* ============ CTA ============ */}
       <SectionWrapper className="section-padding bg-gradient-to-r from-primary to-primary-dark text-white">

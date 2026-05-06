@@ -1,0 +1,103 @@
+[
+  {
+    "category": "Sound System",
+    "icon": "🔊",
+    "color": "from-blue-500 to-indigo-600",
+    "badge": "bg-blue-50 text-blue-700",
+    "items": [
+      { "id": "sub-plv-218", "title": "Sub PLV 218 Pro HD", "quantity": "8 Unit", "subcategory": "Subwoofer" },
+      { "id": "sub-plv-118", "title": "Sub PLV 118 Pro HD", "quantity": "6 Unit", "subcategory": "Subwoofer" },
+      { "id": "sub-plv-115", "title": "Sub PLV 115 Pro HD", "quantity": "4 Unit", "subcategory": "Subwoofer" },
+      { "id": "midas-m32-live", "title": "Midas M32 Live", "quantity": "6 Unit", "subcategory": "Mixer Sound" },
+      { "id": "midas-m32r-live", "title": "Midas M32R Live", "quantity": "4 Unit", "subcategory": "Mixer Sound" },
+      { "id": "midas-mr18", "title": "Midas MR18", "quantity": "2 Unit", "subcategory": "Mixer Sound" },
+      { "id": "behringer-x32", "title": "Behringer X32", "quantity": "4 Unit", "subcategory": "Mixer Sound" },
+      { "id": "yamaha-mgp16", "title": "Yamaha MGP16", "quantity": "8 Unit", "subcategory": "Mixer Sound" },
+      { "id": "yamaha-mg16xu", "title": "Yamaha MG16XU", "quantity": "2 Unit", "subcategory": "Mixer Sound" },
+      { "id": "plv-dgm1640", "title": "PLV Dgm1640", "quantity": "6 Unit", "subcategory": "Mixer Sound" },
+      { "id": "midas-dl32", "title": "Midas DL32", "quantity": "6 Unit", "subcategory": "Mixer Sound" },
+      { "id": "splitter-32ch", "title": "Splitter 32 Channel", "quantity": "3 Set", "subcategory": "Mixer Sound" },
+      { "id": "sennheiser-ew100-g4", "title": "Mic Sennheiser EW 100 G4 Germany", "quantity": "48 Set", "subcategory": "Wireless System" },
+      { "id": "sennheiser-ew100-g3", "title": "Sennheiser EW 100 G3 Germany", "quantity": "16 Set", "subcategory": "Wireless System" },
+      { "id": "mipro-act31b", "title": "Mipro ACT 31B", "quantity": "12 Unit", "subcategory": "Wireless System" },
+      { "id": "sennheiser-ew100-g4-headset", "title": "Headset Sennheiser EW 100 G4 + Bodypack", "quantity": "18 Unit", "subcategory": "Wireless System" },
+      { "id": "sennheiser-ew500-g3-iem", "title": "IEM Sennheiser EW 500 G3 Germany", "quantity": "16 Set", "subcategory": "Wireless System" },
+      { "id": "shure-sm58", "title": "Shure SM58", "quantity": "25 Pcs", "subcategory": "Mic Cable" },
+      { "id": "shure-sm57", "title": "Shure SM57", "quantity": "12 Pcs", "subcategory": "Mic Cable" },
+      { "id": "shure-beta58a", "title": "Shure Beta 58A", "quantity": "12 Pcs", "subcategory": "Mic Cable" },
+      { "id": "shure-beta57a", "title": "Shure Beta 57A", "quantity": "6 Pcs", "subcategory": "Mic Cable" },
+      { "id": "mic-podium-jts", "title": "Mic Podium JTS", "quantity": "4 Pcs", "subcategory": "Mic Cable" },
+      { "id": "akg-c1000s", "title": "AKG C1000s", "quantity": "8 Pcs", "subcategory": "Mic Cable" },
+      { "id": "mipro-mm707", "title": "Mipro MM-707", "quantity": "8 Pcs", "subcategory": "Mic Cable" },
+      { "id": "mic-drum-akg-harman", "title": "Mic Drum AKG By Harman", "quantity": "1 Set", "subcategory": "Mic Cable" },
+      { "id": "marshall-jcm900", "title": "Marshall JCM900", "quantity": "3 Set", "subcategory": "Backlines Set" },
+      { "id": "roland-jc120", "title": "Roland Jazz Chorus 120", "quantity": "4 Unit", "subcategory": "Backlines Set" },
+      { "id": "roland-kc550", "title": "Roland KC 550", "quantity": "4 Unit", "subcategory": "Backlines Set" },
+      { "id": "roland-rd300gx", "title": "Roland RD 300 GX", "quantity": "1 Unit", "subcategory": "Backlines Set" },
+      { "id": "roland-rd700", "title": "Roland RD 700", "quantity": "1 Unit", "subcategory": "Backlines Set" },
+      { "id": "roland-rd700sx", "title": "Roland RD 700 SX", "quantity": "1 Unit", "subcategory": "Backlines Set" },
+      { "id": "roland-rd700nx", "title": "Roland RD 700 NX", "quantity": "1 Unit", "subcategory": "Backlines Set" },
+      { "id": "amply-gk1001rb", "title": "Amply Bass GK 1001rb", "quantity": "2 Set", "subcategory": "Backlines Set" },
+      { "id": "amply-swr-neo400", "title": "Amply Bass SWR Neo 400", "quantity": "2 Set", "subcategory": "Backlines Set" },
+      { "id": "drum-tama-imperial", "title": "Drum Tama Imperial Mate", "quantity": "1 Set", "subcategory": "Backlines Set" },
+      { "id": "drum-tama-rhythm-red", "title": "Drum Tama Rhythm Mate Red", "quantity": "1 Set", "subcategory": "Backlines Set" },
+      { "id": "dibox-behringer-ultrag", "title": "Di Box Behringer Ultra G", "quantity": "24 Pcs", "subcategory": "Backlines Set" },
+      { "id": "xlr-canare", "title": "XLR Cable Canare", "quantity": "350 Roll", "subcategory": "Aneka Cable" },
+      { "id": "ts-cable", "title": "TS Cable", "quantity": "60 Roll", "subcategory": "Aneka Cable" },
+      { "id": "cable-listrik-10m", "title": "Cable Listrik 10 Metre", "quantity": "250 Roll", "subcategory": "Aneka Cable" },
+      { "id": "cable-lan-75m", "title": "Cable LAN 75 Metre", "quantity": "4 Roll", "subcategory": "Aneka Cable" }
+    ]
+  },
+  {
+    "category": "Lighting System",
+    "icon": "💡",
+    "color": "from-amber-400 to-orange-500",
+    "badge": "bg-amber-50 text-amber-700",
+    "items": [
+      { "id": "moving-beam-230w", "title": "Moving Beam 230w PLV", "quantity": "98 Unit", "subcategory": "Moving Beam" },
+      { "id": "moving-beam-260w", "title": "Moving Beam 260w PLV", "quantity": "284 Unit", "subcategory": "Moving Beam" },
+      { "id": "led-par-54x3w", "title": "LED Par 54x3w", "quantity": "79 Unit", "subcategory": "LED Par" },
+      { "id": "led-par-18x15w", "title": "LED Par 18x15w", "quantity": "92 Unit", "subcategory": "LED Par" },
+      { "id": "freshnell-led-300w", "title": "Freshnell LED SuperWhite 300w", "quantity": "55 Unit", "subcategory": "Freshnell" },
+      { "id": "minibrute-led-4cell", "title": "Minibrute LED 4 Cell", "quantity": "35 Unit", "subcategory": "Freshnell" },
+      { "id": "followspot-led-400w", "title": "Followspot LED 400w", "quantity": "4 Unit", "subcategory": "Followspot" },
+      { "id": "tripod-lighting", "title": "Tripod Lighting", "quantity": "45 Set", "subcategory": "Aksesoris" },
+      { "id": "mixer-avolites-pearl2010", "title": "Mixer Avolites Pearl 2010", "quantity": "4 Unit", "subcategory": "Mixer Lighting" },
+      { "id": "mixer-avolites-mini-pearl", "title": "Mixer Avolites Mini Pearl", "quantity": "6 Unit", "subcategory": "Mixer Lighting" },
+      { "id": "mixer-avolites-tiger-touch", "title": "Mixer Avolites Tiger Touch II", "quantity": "4 Unit", "subcategory": "Mixer Lighting" },
+      { "id": "hazer-smoke-1500", "title": "Hazer Smoke 1500", "quantity": "12 Unit", "subcategory": "Special Effect" },
+      { "id": "antari-smoke", "title": "Antari Smoke", "quantity": "8 Unit", "subcategory": "Special Effect" },
+      { "id": "disco-ball-motor", "title": "Disco Ball + Motor", "quantity": "8 Unit", "subcategory": "Special Effect" }
+    ]
+  },
+  {
+    "category": "Rigging System",
+    "icon": "🏗️",
+    "color": "from-slate-500 to-gray-700",
+    "badge": "bg-slate-100 text-slate-700",
+    "items": [
+      { "id": "stage-6x8", "title": "Stage 6x8", "quantity": "Available", "subcategory": "Stage" },
+      { "id": "stage-8x10", "title": "Stage 8x10", "quantity": "Available", "subcategory": "Stage" },
+      { "id": "stage-8x12", "title": "Stage 8x12", "quantity": "Available", "subcategory": "Stage" },
+      { "id": "stage-10x12", "title": "Stage 10x12", "quantity": "Available", "subcategory": "Stage" },
+      { "id": "cover-sound-2x8", "title": "Cover Sound 2x8", "quantity": "Available", "subcategory": "Cover Sound" },
+      { "id": "cover-screen-6x4", "title": "Cover Screen / LED 6x4", "quantity": "Available", "subcategory": "Cover Screen/LED" },
+      { "id": "base-led-gawangan-2x6", "title": "Base LED + Gawangan 2x6", "quantity": "Available", "subcategory": "Base LED + Gawangan" },
+      { "id": "base-led-gawangan-2x8", "title": "Base LED + Gawangan 2x8", "quantity": "Available", "subcategory": "Base LED + Gawangan" },
+      { "id": "base-led-gawangan-2x10", "title": "Base LED + Gawangan 2x10", "quantity": "Available", "subcategory": "Base LED + Gawangan" },
+      { "id": "base-led-gawangan-2x12", "title": "Base LED + Gawangan 2x12", "quantity": "Available", "subcategory": "Base LED + Gawangan" }
+    ]
+  },
+  {
+    "category": "LED Display",
+    "icon": "📺",
+    "color": "from-emerald-500 to-teal-600",
+    "badge": "bg-emerald-50 text-emerald-700",
+    "items": [
+      { "id": "led-p26-indoor", "title": "LED Display P2.6 Indoor", "quantity": "400 m²", "subcategory": "Indoor" },
+      { "id": "led-p29-indoor", "title": "LED Display P2.9 Indoor", "quantity": "450 m²", "subcategory": "Indoor" },
+      { "id": "led-p39-indoor", "title": "LED Display P3.9 Indoor", "quantity": "250 m²", "subcategory": "Indoor" },
+      { "id": "led-p39-outdoor", "title": "LED Display P3.9 Outdoor", "quantity": "150 m²", "subcategory": "Outdoor" }
+    ]
+  }
+]

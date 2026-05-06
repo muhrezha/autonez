@@ -5,10 +5,11 @@
 // ---------- Navigation ----------
 export const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Info", href: "/info" },
+  // { label: "Info", href: "/info" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Portfolio", href: "/portfolio" },
+  { label: "Handling", href: "/handling" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -353,6 +354,8 @@ export interface PortfolioEvent {
   client: string;
   category: PortfolioCategory;
   year: number;
+  date: string;
+  image: string;
   description: string;
   challenge: string;
   solution: string;
@@ -368,6 +371,8 @@ export const portfolioEvents: PortfolioEvent[] = [
     client: "Bank Mandiri Taspen",
     category: "MICE",
     year: 2025,
+    date: "10 Januari 2025",
+    image: "/portofolio/portofolio_example.jpg",
     description:
       "Sesi strategis tahunan untuk manajemen senior Bank Mandiri Taspen dengan diskusi panel dan workshop interaktif.",
     challenge:
@@ -394,6 +399,8 @@ export const portfolioEvents: PortfolioEvent[] = [
     client: "HSBC / BWF",
     category: "Sports",
     year: 2024,
+    date: "15 Maret 2024",
+    image: "/portofolio/portofolio_example.jpg",
     description:
       "Event management untuk turnamen bulu tangkis internasional HSBC BWF World Tour di Indonesia.",
     challenge:
@@ -420,6 +427,8 @@ export const portfolioEvents: PortfolioEvent[] = [
     client: "TikTok Indonesia",
     category: "Virtual Event",
     year: 2024,
+    date: "22 April 2024",
+    image: "/portofolio/portofolio_example.jpg",
     description:
       "Kampanye digital kreatif dan event virtual kolaborasi dengan content creator TikTok di industri kecantikan.",
     challenge:
@@ -446,6 +455,8 @@ export const portfolioEvents: PortfolioEvent[] = [
     client: "Bank Indonesia",
     category: "Awarding",
     year: 2024,
+    date: "5 Juni 2024",
+    image: "/portofolio/portofolio_example.jpg",
     description:
       "Upacara penghargaan tahunan Bank Indonesia dengan gala dinner dan entertainment kelas dunia.",
     challenge:
@@ -472,6 +483,8 @@ export const portfolioEvents: PortfolioEvent[] = [
     client: "Telkom Indonesia",
     category: "MICE",
     year: 2024,
+    date: "18 Juli 2024",
+    image: "/portofolio/portofolio_example.jpg",
     description:
       "Summit inovasi digital dengan keynote speakers internasional dan pameran teknologi mutakhir.",
     challenge:
@@ -498,6 +511,8 @@ export const portfolioEvents: PortfolioEvent[] = [
     client: "Samsung Indonesia",
     category: "Brand Activation",
     year: 2024,
+    date: "3 November 2024",
+    image: "/portofolio/portofolio_example.jpg",
     description:
       "Peluncuran produk Samsung Galaxy dengan experiential zone dan live streaming ke seluruh Indonesia.",
     challenge:
@@ -524,6 +539,8 @@ export const portfolioEvents: PortfolioEvent[] = [
     client: "Bank BNI",
     category: "Special Event",
     year: 2023,
+    date: "10 November 2023",
+    image: "/portofolio/portofolio_example.jpg",
     description:
       "Perayaan anniversary BNI dengan konsep immersive dan pertunjukan multimedia spektakuler.",
     challenge:
@@ -550,6 +567,8 @@ export const portfolioEvents: PortfolioEvent[] = [
     client: "Aqua / Danone",
     category: "Brand Activation",
     year: 2023,
+    date: "14 Februari 2023",
+    image: "/portofolio/portofolio_example.jpg",
     description:
       "Kampanye brand activation bertema sustainability dengan roadshow ke 10 kota besar di Indonesia.",
     challenge:
@@ -576,6 +595,8 @@ export const portfolioEvents: PortfolioEvent[] = [
     client: "Tokopedia",
     category: "Virtual Event",
     year: 2023,
+    date: "20 Maret 2023",
+    image: "/portofolio/portofolio_example.jpg",
     description:
       "Festival virtual tahunan Tokopedia dengan konser musik, flash sale interaktif, dan talkshow inspiratif.",
     challenge:
@@ -602,6 +623,8 @@ export const portfolioEvents: PortfolioEvent[] = [
     client: "Bank Mandiri",
     category: "Awarding",
     year: 2023,
+    date: "7 Desember 2023",
+    image: "/portofolio/portofolio_example.jpg",
     description:
       "Penghargaan tahunan Bank Mandiri untuk unit bisnis terbaik dengan produksi panggung mewah.",
     challenge:
@@ -628,6 +651,8 @@ export const portfolioEvents: PortfolioEvent[] = [
     client: "Pertamina",
     category: "MICE",
     year: 2024,
+    date: "25 September 2024",
+    image: "/portofolio/portofolio_example.jpg",
     description:
       "Gathering nasional Pertamina dengan 2000+ peserta, team building, dan strategic planning session.",
     challenge:
@@ -654,6 +679,8 @@ export const portfolioEvents: PortfolioEvent[] = [
     client: "XL Axiata",
     category: "Sports",
     year: 2023,
+    date: "12 Agustus 2023",
+    image: "/portofolio/portofolio_example.jpg",
     description:
       "Turnamen esports nasional dari XL Axiata dengan live streaming dan prize pool jutaan rupiah.",
     challenge:
@@ -690,25 +717,46 @@ export const portfolioCategories: PortfolioCategory[] = [
 export interface Client {
   name: string;
   category: "BUMN" | "Swasta";
+  logo: string;
 }
 
 export const clients: Client[] = [
-  { name: "Bank Indonesia", category: "BUMN" },
-  { name: "Bank Mandiri", category: "BUMN" },
-  { name: "Bank BNI", category: "BUMN" },
-  { name: "Telkom Indonesia", category: "BUMN" },
-  { name: "Pertamina", category: "BUMN" },
-  { name: "PLN", category: "BUMN" },
-  { name: "Bank Mandiri Taspen", category: "BUMN" },
-  { name: "Samsung", category: "Swasta" },
-  { name: "TikTok", category: "Swasta" },
-  { name: "Tokopedia", category: "Swasta" },
-  { name: "Aqua", category: "Swasta" },
-  { name: "HSBC", category: "Swasta" },
-  { name: "XL Axiata", category: "Swasta" },
-  { name: "Danone", category: "Swasta" },
-  { name: "Unilever", category: "Swasta" },
-  { name: "Grab", category: "Swasta" },
+  { name: "Bank Indonesia", category: "BUMN", logo: "/home/img_clients/bumn/bi_indonesia.png" },
+  { name: "Bank BTN", category: "BUMN", logo: "/home/img_clients/bumn/bank_btn.png" },
+  { name: "Bank Mandiri", category: "BUMN", logo: "/home/img_clients/bumn/bank_mandiri.png" },
+  { name: "Bank BNI", category: "BUMN", logo: "/home/img_clients/bumn/bank_bni.png" },
+  { name: "Bank BRI", category: "BUMN", logo: "/home/img_clients/bumn/bank_bri.png" },
+  { name: "Telkom Indonesia", category: "BUMN", logo: "/home/img_clients/bumn/telkom_indo.png" },
+  { name: "Kementerian Perdagangan", category: "BUMN", logo: "/home/img_clients/bumn/kem_perdagangan_ri.png" },
+  { name: "Pegadaian", category: "BUMN", logo: "/home/img_clients/bumn/pegadaian.png" },
+  { name: "Ristekdikti", category: "BUMN", logo: "/home/img_clients/bumn/ristekdikti.png" },
+  { name: "Pupuk Indonesia", category: "BUMN", logo: "/home/img_clients/bumn/pupuk_indonesia.png" },
+  { name: "BPJS Ketenagakerjaan", category: "BUMN", logo: "/home/img_clients/bumn/bpjs_ket.png" },
+  { name: "Bank Mandiri Taspen", category: "BUMN", logo: "/home/img_clients/bumn/mandiri_taspen.png" },
+  { name: "TNP2K", category: "BUMN", logo: "/home/img_clients/bumn/tnp2k.png" },
+
+  { name: "MNC", category: "Swasta", logo: "/home/img_clients/swasta/mnc.png" },
+  { name: "RCTI", category: "Swasta", logo: "/home/img_clients/swasta/rcti.png" },
+  { name: "Samsung", category: "Swasta", logo: "/home/img_clients/swasta/samsung.png" },
+  { name: "HSBC", category: "Swasta", logo: "/home/img_clients/swasta/hsbc.png" },
+  { name: "Daihatsu", category: "Swasta", logo: "/home/img_clients/swasta/daihatsu.png" },
+  { name: "XL Axiata", category: "Swasta", logo: "/home/img_clients/swasta/xl.png" },
+  { name: "Greenfields", category: "Swasta", logo: "/home/img_clients/swasta/greenfields.png" },
+  { name: "Beiersdorf", category: "Swasta", logo: "/home/img_clients/swasta/beiersdorf.png" },
+  { name: "Nivea", category: "Swasta", logo: "/home/img_clients/swasta/nivea.png" },
+  { name: "Nivea Men", category: "Swasta", logo: "/home/img_clients/swasta/nivea_men.png" },
+  { name: "AQUA Japan", category: "Swasta", logo: "/home/img_clients/swasta/aqua_japan.png" },
+  { name: "AQUA Mineral", category: "Swasta", logo: "/home/img_clients/swasta/aqua_mineral.png" },
+  { name: "Inaspac", category: "Swasta", logo: "/home/img_clients/swasta/inaspac.png" },
+  { name: "Tiktok", category: "Swasta", logo: "/home/img_clients/swasta/tiktik.png" },
+  { name: "Niu Oceana", category: "Swasta", logo: "/home/img_clients/swasta/eceana.png" },
+  { name: "Meatguy", category: "Swasta", logo: "/home/img_clients/swasta/meatguy.png" },
+  { name: "Yili", category: "Swasta", logo: "/home/img_clients/swasta/yili.png" },
+  { name: "97.1Fm RDI", category: "Swasta", logo: "/home/img_clients/swasta/97_1_fm_rdi_jakarta.png" },
+  { name: "Nutragen", category: "Swasta", logo: "/home/img_clients/swasta/nutragen.png" },
+  { name: "Sutra", category: "Swasta", logo: "/home/img_clients/swasta/sutra.png" },
+  { name: "Tokopedia", category: "Swasta", logo: "/home/img_clients/swasta/tokopedia.png" },
+  { name: "Smartfren", category: "Swasta", logo: "/home/img_clients/swasta/smartfren.png" },
 ];
 
 // ---------- Info / News ----------

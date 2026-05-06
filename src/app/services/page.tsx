@@ -1,121 +1,211 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import SectionWrapper from "@/components/SectionWrapper";
-import { services } from "@/lib/data";
 import Link from "next/link";
 
-const containerVariants = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.15 } },
-};
-const itemVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
 
 export default function ServicesPage() {
     return (
         <>
-            {/* Hero */}
-            <section className="relative pt-36 pb-20 bg-gradient-to-br from-navy via-navy-light to-navy overflow-hidden">
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:3rem_3rem]" />
-                <div className="absolute top-1/2 left-1/3 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
-                <div className="relative z-10 w-full max-w-4xl mx-auto px-6 lg:px-8 text-center text-white">
-                    <motion.span
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-widest uppercase bg-white/10 rounded-full"
-                    >
-                        Layanan Kami
-                    </motion.span>
-                    <motion.h1
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-6xl font-black mb-6"
-                        style={{ fontFamily: 'var(--font-heading)' }}
-                    >
-                        Solusi <span className="gradient-text">Event Lengkap</span>
-                    </motion.h1>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="text-base md:text-lg text-slate-300 max-w-2xl mx-auto"
-                    >
-                        Dari konsep kreatif hingga eksekusi sempurna, kami menyediakan
-                        layanan komprehensif untuk setiap kebutuhan event Anda.
-                    </motion.p>
-                </div>
-            </section>
+            {/* Section Header */}
+            <div className="w-full max-w-6xl mx-auto">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="text-center mt-12 mb-8"
+                >
+                    <span className="inline-block px-4 py-1 mb-4 text-xs font-bold tracking-widest uppercase text-primary bg-primary/8 rounded-full">
+                        Our Services
+                    </span>
+                </motion.div>
+            </div>
 
-            {/* Services Detail */}
-            <SectionWrapper className="section-padding bg-white">
-                <div className="w-full max-w-6xl mx-auto">
-                    <motion.div
-                        variants={containerVariants}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        className="flex flex-col gap-8"
-                    >
-                        {services.map((svc, i) => (
-                            <motion.div
-                                key={svc.id}
-                                variants={itemVariants}
-                                className="group relative rounded-3xl border border-slate-100 overflow-hidden hover:shadow-2xl hover:shadow-primary/5 transition-all duration-700"
+            <SectionWrapper className="px-12 bg-white">
+
+                {/* What We Do Section */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    className="w-full flex flex-col md:flex-row overflow-hidden"
+                >
+                    {/* Left 60% — white panel: title + illustration */}
+                    <div className="w-full md:w-3/5 bg-white flex flex-col justify-center px-8 py-12 sm:px-10 sm:py-14 lg:px-16 lg:py-16">
+                        <motion.div
+                            initial={{ opacity: 0, x: -40 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.7 }}
+                        >
+                            <div className="flex items-center gap-3 mb-6 sm:mb-8">
+                                <div className="w-8 sm:w-10 h-[2px] bg-gray-900 flex-shrink-0" />
+                                <h2
+                                    className="text-3xl sm:text-4xl lg:text-5xl font-bold"
+                                    style={{ fontFamily: "var(--font-heading)" }}
+                                >
+                                    What{" "}
+                                    <span className="text-accent">We Do ?</span>
+                                </h2>
+                            </div>
+                            <div className="flex justify-center mt-4">
+                                <Image
+                                    src="/services/what_we_do.png"
+                                    alt="What We Do Illustration"
+                                    width={480}
+                                    height={420}
+                                    className="object-contain w-full max-w-[480px] max-h-[360px] sm:max-h-[420px]"
+                                />
+                            </div>
+                        </motion.div>
+                    </div>
+
+                    {/* Right 40% — dark panel: 2 overlapping studio photos */}
+                    <div className="w-full md:w-2/5 bg-navy relative overflow-hidden 
+                        flex items-center justify-center 
+                        py-20 px-6 sm:py-14 sm:px-0 min-h-[400px] sm:min-h-[480px]">
+                        {/* Decorative accent lines top-right */}
+                        <div className="absolute top-6 right-6 flex flex-col items-end gap-[6px]">
+                            <div className="w-12 h-[3px] bg-accent" />
+                            <div className="w-7 h-[3px] bg-accent" />
+                        </div>
+                        {/* Decorative accent line bottom-right */}
+                        <div className="absolute bottom-6 right-6">
+                            <div className="w-12 h-[3px] bg-accent" />
+                        </div>
+
+                        <motion.div
+                            initial={{ opacity: 0, x: 40 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.7, delay: 0.2 }}
+                            className="relative w-full h-[400px] sm:h-[360px] lg:h-[400px]"
+                        >
+                            {/* Image 1 — main, right */}
+                            <div className="absolute right-0 top-0 w-[62%] h-full overflow-hidden shadow-2xl">
+                                <Image
+                                    src="/event_example_two.jpg"
+                                    alt="Studio Production"
+                                    fill
+                                    className="object-cover"
+                                />
+                            </div>
+                            {/* Image 2 — floating, left, overlapping */}
+                            <div className="absolute left-0 top-8 sm:top-10 w-[55%] h-[78%] overflow-hidden shadow-2xl border-[3px] border-navy">
+                                <Image
+                                    src="/event_example_three.jpg"
+                                    alt="Studio Production"
+                                    fill
+                                    className="object-cover"
+                                />
+                            </div>
+                        </motion.div>
+                    </div>
+                </motion.div>
+
+                {/* Event Management Section */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    className="w-full flex flex-col md:flex-row overflow-hidden"
+                >
+                    {/* Left 40% — dark panel: 2 overlapping images floating toward right edge */}
+                    <div className="w-full md:w-2/5 relative overflow-hidden min-h-[400px] sm:min-h-[520px]">
+                        {/* Background image — full bleed */}
+                        <div className="absolute inset-0">
+                            <Image
+                                src="/event_example_two.jpg"
+                                alt="Event Production Background"
+                                fill
+                                className="object-cover"
+                            />
+                            <div className="absolute inset-0 bg-navy/50" />
+                        </div>
+
+                        {/* Decorative dark blocks — top right */}
+                        <div className="absolute top-0 right-0 z-10 flex gap-1">
+                            <div className="w-10 h-16 sm:w-12 sm:h-20 bg-[#3a3a3a]" />
+                            <div className="w-5 h-10 sm:w-6 sm:h-12 bg-[#2a2a2a] self-end" />
+                        </div>
+
+                        {/* Foreground image — floating toward right edge with white border */}
+                        <motion.div
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.7, delay: 0.25 }}
+                            className="absolute top-1/2 -translate-y-1/2 right-3 sm:right-5 w-[72%] sm:w-[68%] h-[58%] sm:h-[62%] border-[4px] sm:border-[5px] border-white shadow-2xl overflow-hidden z-20"
+                        >
+                            <Image
+                                src="/event_example_four.jpg"
+                                alt="Event Management"
+                                fill
+                                className="object-cover"
+                            />
+                        </motion.div>
+
+                        {/* Decorative dark blocks — bottom right */}
+                        <div className="absolute bottom-0 right-0 z-10 flex gap-1 items-end">
+                            <div className="w-5 h-10 sm:w-6 sm:h-12 bg-[#2a2a2a]" />
+                            <div className="w-10 h-16 sm:w-12 sm:h-20 bg-[#3a3a3a]" />
+                        </div>
+                    </div>
+
+                    {/* Right 60% — white panel: title + bullet list */}
+                    <div className="w-full md:w-3/5 bg-white flex flex-col justify-center px-8 py-12 sm:px-10 sm:py-14 lg:px-16 lg:py-16">
+                        <motion.div
+                            initial={{ opacity: 0, x: 40 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.7 }}
+                        >
+                            <h2
+                                className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-2"
+                                style={{ fontFamily: "var(--font-heading)" }}
                             >
-                                <div className={`flex flex-col lg:flex-row ${i % 2 !== 0 ? "lg:flex-row-reverse" : ""}`}>
-                                    {/* Icon/Visual Side */}
-                                    <div className="lg:w-72 flex-shrink-0 bg-gradient-to-br from-slate-50 to-white flex items-center justify-center p-10 lg:p-12">
-                                        <div className="text-center">
-                                            <div className="text-7xl mb-4 group-hover:scale-110 transition-transform duration-500">
-                                                {svc.icon}
-                                            </div>
-                                            <div className="text-[10px] font-bold tracking-widest uppercase text-slate-400">
-                                                Service {String(i + 1).padStart(2, "0")}
-                                            </div>
-                                        </div>
-                                    </div>
+                                Event <span className="text-accent">Management</span>
+                            </h2>
+                            <div className="w-20 sm:w-24 h-[3px] bg-accent mb-8 sm:mb-10" />
 
-                                    {/* Content Side */}
-                                    <div className="flex-1 p-8 lg:p-12 flex flex-col justify-center">
-                                        <h2
-                                            className="text-2xl md:text-3xl font-bold text-navy mb-4 group-hover:text-primary transition-colors"
-                                            style={{ fontFamily: 'var(--font-heading)' }}
-                                        >
-                                            {svc.title}
-                                        </h2>
-                                        <p className="text-slate-500 leading-relaxed mb-6">
-                                            {svc.description}
-                                        </p>
-                                        <div className="flex flex-wrap gap-2 mb-6">
-                                            {svc.highlights.map((h) => (
-                                                <span
-                                                    key={h}
-                                                    className="px-4 py-2 text-xs font-medium bg-slate-50 text-slate-600 rounded-full group-hover:bg-primary/5 group-hover:text-primary transition-colors duration-300"
-                                                >
-                                                    {h}
-                                                </span>
-                                            ))}
-                                        </div>
-                                        <Link
-                                            href={`/services/${svc.id}`}
-                                            className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-dark transition-colors group/link"
-                                        >
-                                            Lihat Detail Layanan
-                                            <svg className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                            </svg>
-                                        </Link>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </motion.div>
-                </div>
+                            <ul className="space-y-4 sm:space-y-5">
+                                {[
+                                    "BRAND ACTIVATION",
+                                    "MEETING INCENTIVE CONVENTION EXHIBITION",
+                                    "SPECIAL EVENT",
+                                    "VIRTUAL EVENT",
+                                    "PRODUCTIONS HANDLING",
+                                ].map((item, i) => (
+                                    <motion.li
+                                        key={item}
+                                        initial={{ opacity: 0, x: 20 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.45, delay: 0.08 * i }}
+                                        className="flex items-center gap-4"
+                                    >
+                                        <span className="w-5 h-5 sm:w-6 sm:h-6 bg-accent flex-shrink-0" />
+                                        <span className="text-gray-800 font-semibold tracking-widest text-sm sm:text-base uppercase">
+                                            {item}
+                                        </span>
+                                    </motion.li>
+                                ))}
+                            </ul>
+
+                            {/* 3 yellow squares — bottom right decoration */}
+                            <div className="flex gap-2 sm:gap-3 mt-10 sm:mt-12 justify-end">
+                                <div className="w-7 h-7 sm:w-8 sm:h-8 bg-accent" />
+                                <div className="w-7 h-7 sm:w-8 sm:h-8 bg-accent" />
+                                <div className="w-7 h-7 sm:w-8 sm:h-8 bg-accent" />
+                            </div>
+                        </motion.div>
+                    </div>
+                </motion.div>
+
             </SectionWrapper>
+
 
             {/* CTA */}
             <SectionWrapper className="section-padding bg-gradient-to-r from-primary to-primary-dark text-white">

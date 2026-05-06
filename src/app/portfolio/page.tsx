@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
+import Image from "next/image";
 import SectionWrapper from "@/components/SectionWrapper";
 import {
     portfolioEvents,
@@ -12,6 +12,7 @@ import {
 
 export default function PortfolioPage() {
     const [activeCategory, setActiveCategory] = useState<PortfolioCategory>("All");
+    const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
 
     const filteredEvents =
         activeCategory === "All"
@@ -20,37 +21,6 @@ export default function PortfolioPage() {
 
     return (
         <>
-            {/* Hero */}
-            <section className="relative pt-36 pb-20 bg-gradient-to-br from-navy via-navy-light to-navy overflow-hidden">
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:3rem_3rem]" />
-                <div className="absolute bottom-1/3 right-1/3 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
-                <div className="relative z-10 w-full max-w-4xl mx-auto px-6 lg:px-8 text-center text-white">
-                    <motion.span
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-widest uppercase bg-white/10 rounded-full"
-                    >
-                        Event Experience
-                    </motion.span>
-                    <motion.h1
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-6xl font-black mb-6"
-                        style={{ fontFamily: 'var(--font-heading)' }}
-                    >
-                        Portfolio <span className="gradient-text">Kami</span>
-                    </motion.h1>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="text-base md:text-lg text-slate-300 max-w-2xl mx-auto"
-                    >
-                        Jelajahi koleksi event yang telah kami selenggarakan untuk klien-klien terbaik di Indonesia.
-                    </motion.p>
-                </div>
-            </section>
 
             {/* Portfolio Grid */}
             <SectionWrapper className="section-padding bg-white">
@@ -83,18 +53,20 @@ export default function PortfolioPage() {
                                     exit={{ opacity: 0, scale: 0.9 }}
                                     transition={{ duration: 0.4 }}
                                 >
-                                    <Link
-                                        href={`/portfolio/${event.id}`}
-                                        className="group relative rounded-2xl bg-white border border-slate-100 overflow-hidden hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 hover:-translate-y-1 block"
+                                    <div
+                                        onClick={() => setSelectedImage({ src: event.image, alt: event.title })}
+                                        className="group relative rounded-2xl bg-white border border-slate-100 overflow-hidden hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 hover:-translate-y-1 block cursor-pointer"
                                     >
                                         {/* Visual Header */}
-                                        <div className="h-44 bg-gradient-to-br from-navy via-navy-light to-primary/80 relative overflow-hidden">
-                                            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:2rem_2rem]" />
-                                            <div className="absolute inset-0 flex items-center justify-center">
-                                                <div className="text-4xl font-black opacity-20 text-white" style={{ fontFamily: 'var(--font-heading)' }}>
-                                                    {event.year}
-                                                </div>
-                                            </div>
+                                        <div className="h-44 relative overflow-hidden">
+                                            <Image
+                                                src={event.image}
+                                                alt={event.title}
+                                                fill
+                                                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/20 to-transparent" />
                                             <div className="absolute top-4 left-4">
                                                 <span className="px-3 py-1 text-[10px] font-bold tracking-wider uppercase bg-white/20 text-white rounded-full backdrop-blur-sm">
                                                     {event.category}
@@ -111,17 +83,17 @@ export default function PortfolioPage() {
                                             <h3 className="text-lg font-bold text-navy mb-3 group-hover:text-primary transition-colors" style={{ fontFamily: 'var(--font-heading)' }}>
                                                 {event.title}
                                             </h3>
-                                            <p className="text-sm text-slate-500 leading-relaxed mb-4">
+                                            {/* <p className="text-sm text-slate-500 leading-relaxed mb-4">
                                                 {event.description}
-                                            </p>
-                                            <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary group-hover:gap-2.5 transition-all duration-300">
+                                            </p> */}
+                                            {/* <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary group-hover:gap-2.5 transition-all duration-300">
                                                 Lihat Detail
                                                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
                                                     <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                                 </svg>
-                                            </span>
+                                            </span> */}
                                         </div>
-                                    </Link>
+                                    </div>
                                 </motion.div>
                             ))}
                         </AnimatePresence>
@@ -135,6 +107,46 @@ export default function PortfolioPage() {
                     )}
                 </div>
             </SectionWrapper>
+
+            {/* Image Modal */}
+            <AnimatePresence>
+                {selectedImage && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.25 }}
+                        className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+                        onClick={() => setSelectedImage(null)}
+                    >
+                        <button
+                            onClick={() => setSelectedImage(null)}
+                            className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/25 text-white transition-colors duration-200"
+                            aria-label="Close"
+                        >
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                        <motion.div
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.9, opacity: 0 }}
+                            transition={{ duration: 0.25 }}
+                            className="relative w-full max-w-4xl max-h-[90vh] aspect-video"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <Image
+                                src={selectedImage.src}
+                                alt={selectedImage.alt}
+                                fill
+                                className="object-contain"
+                                sizes="100vw"
+                            />
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </>
     );
 }
