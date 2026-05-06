@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -48,10 +49,15 @@ export default function LoginPage() {
                         </svg>
                         Kembali ke beranda
                     </Link>
-                    <h1 className="text-3xl font-black text-white" style={{ fontFamily: "var(--font-heading)" }}>
-                        AUTONEZ
-                    </h1>
-                    <p className="text-slate-400 text-sm mt-1">CMS Dashboard</p>
+                    <Image
+                        src="/autonez_logo_font_white.png"
+                        alt="Autonez Communications"
+                        width={160}
+                        height={45}
+                        className="h-12 w-auto object-contain mx-auto"
+                        unoptimized
+                    />
+                    <p className="text-slate-400 text-sm mt-2">CMS Dashboard</p>
                 </div>
 
                 {/* Card */}
@@ -72,7 +78,7 @@ export default function LoginPage() {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="admin@autonez.com"
-                                className="w-full px-4 py-2.5 rounded-lg border border-slate-200 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition"
+                                className="w-full px-4 py-2.5 rounded-lg border border-slate-200 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition"
                             />
                         </div>
                         <div>
@@ -87,7 +93,7 @@ export default function LoginPage() {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeholder="••••••••"
-                                className="w-full px-4 py-2.5 rounded-lg border border-slate-200 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition"
+                                className="w-full px-4 py-2.5 rounded-lg border border-slate-200 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition"
                             />
                         </div>
 
@@ -98,7 +104,7 @@ export default function LoginPage() {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full py-2.5 bg-primary text-white font-bold rounded-lg text-sm hover:bg-primary/90 disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+                            className="w-full py-2.5 bg-accent text-white font-bold rounded-lg text-sm hover:bg-accent/90 disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
                         >
                             {loading ? "Memproses..." : "Masuk"}
                         </button>

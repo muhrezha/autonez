@@ -194,7 +194,7 @@ export default function DashboardInfoPage() {
                 </div>
                 <button
                     onClick={() => setShowCreate(true)}
-                    className="px-4 py-2 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primary/90 transition-colors flex items-center gap-2"
+                    className="px-4 py-2 bg-accent text-white text-sm font-semibold rounded-lg hover:bg-accent/90 transition-colors flex items-center gap-2"
                 >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
@@ -213,7 +213,7 @@ export default function DashboardInfoPage() {
                         placeholder="Cari berdasarkan judul..."
                         value={search}
                         onChange={(e) => { setSearch(e.target.value); setPage(1); }}
-                        className="w-56 px-4 py-2 text-sm border border-slate-200 rounded-lg bg-white hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
+                        className="w-56 px-4 py-2 text-sm border border-slate-200 rounded-lg bg-white hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent"
                     />
                 </div>
 
@@ -237,7 +237,7 @@ export default function DashboardInfoPage() {
                                     placeholder="Cari kategori..."
                                     value={categorySearch}
                                     onChange={(e) => setCategorySearch(e.target.value)}
-                                    className="w-full px-3 py-1.5 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                                    className="w-full px-3 py-1.5 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/30"
                                     autoFocus
                                 />
                             </div>
@@ -246,7 +246,7 @@ export default function DashboardInfoPage() {
                                     <button
                                         key={cat}
                                         onClick={() => { setFilterCategory(cat); setCategoryOpen(false); setCategorySearch(""); setPage(1); }}
-                                        className={`w-full text-left px-4 py-2 text-sm transition-colors ${filterCategory === cat ? "bg-primary/10 text-primary font-medium" : "text-slate-600 hover:bg-slate-50"}`}
+                                        className={`w-full text-left px-4 py-2 text-sm transition-colors ${filterCategory === cat ? "bg-accent/10 text-accent font-medium" : "text-slate-600 hover:bg-slate-50"}`}
                                     >
                                         {cat === "All" ? "Semua Kategori" : cat}
                                     </button>
@@ -310,8 +310,8 @@ export default function DashboardInfoPage() {
                                             key={day}
                                             onClick={() => selectDay(day)}
                                             className={`w-8 h-8 flex items-center justify-center rounded-lg text-sm transition-colors
-                                                ${isSelected ? "bg-primary text-white font-semibold" : ""}
-                                                ${!isSelected && isToday ? "bg-primary/10 text-primary font-medium" : ""}
+                                                ${isSelected ? "bg-accent text-white font-semibold" : ""}
+                                                ${!isSelected && isToday ? "bg-accent/10 text-accent font-medium" : ""}
                                                 ${!isSelected && !isToday ? "text-slate-600 hover:bg-slate-100" : ""}
                                             `}
                                         >
@@ -328,7 +328,7 @@ export default function DashboardInfoPage() {
                                         setCalYear(today.getFullYear());
                                         setCalMonth(today.getMonth());
                                     }}
-                                    className="text-xs text-primary hover:text-primary/80 font-medium transition-colors"
+                                    className="text-xs text-accent hover:text-accent/80 font-medium transition-colors"
                                 >
                                     Hari Ini
                                 </button>
@@ -366,7 +366,7 @@ export default function DashboardInfoPage() {
                                     placeholder="Judul"
                                     value={newTitle}
                                     onChange={(e) => { setNewTitle(e.target.value); clearCreateError("title"); }}
-                                    className={`w-full px-4 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 ${createErrors.title ? "border-red-400 focus:ring-red-200" : "border-slate-200"}`}
+                                    className={`w-full px-4 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/30 ${createErrors.title ? "border-red-400 focus:ring-red-200" : "border-slate-200"}`}
                                 />
                                 {createErrors.title && <p className="mt-1 text-xs text-red-500">{createErrors.title}</p>}
                             </div>
@@ -376,7 +376,7 @@ export default function DashboardInfoPage() {
                                     placeholder="Kategori"
                                     value={newCategory}
                                     onChange={(e) => { setNewCategory(e.target.value); clearCreateError("category"); }}
-                                    className={`w-full px-4 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 ${createErrors.category ? "border-red-400 focus:ring-red-200" : "border-slate-200"}`}
+                                    className={`w-full px-4 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/30 ${createErrors.category ? "border-red-400 focus:ring-red-200" : "border-slate-200"}`}
                                 />
                                 {createErrors.category && <p className="mt-1 text-xs text-red-500">{createErrors.category}</p>}
                             </div>
@@ -386,14 +386,14 @@ export default function DashboardInfoPage() {
                                     rows={3}
                                     value={newDesc}
                                     onChange={(e) => { setNewDesc(e.target.value); clearCreateError("desc"); }}
-                                    className={`w-full px-4 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 resize-none ${createErrors.desc ? "border-red-400 focus:ring-red-200" : "border-slate-200"}`}
+                                    className={`w-full px-4 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/30 resize-none ${createErrors.desc ? "border-red-400 focus:ring-red-200" : "border-slate-200"}`}
                                 />
                                 {createErrors.desc && <p className="mt-1 text-xs text-red-500">{createErrors.desc}</p>}
                             </div>
                         </div>
                         <div className="flex justify-end gap-2 mt-5">
                             <button onClick={() => { setShowCreate(false); setCreateErrors({}); }} className="px-4 py-2 text-sm text-slate-600 hover:bg-slate-100 rounded-lg transition-colors">Batal</button>
-                            <button onClick={createRow} className="px-4 py-2 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primary/90 transition-colors">Simpan</button>
+                            <button onClick={createRow} className="px-4 py-2 bg-accent text-white text-sm font-semibold rounded-lg hover:bg-accent/90 transition-colors">Simpan</button>
                         </div>
                     </div>
                 </div>
@@ -409,18 +409,18 @@ export default function DashboardInfoPage() {
                                 type="text"
                                 value={editTitle}
                                 onChange={(e) => setEditTitle(e.target.value)}
-                                className="w-full px-4 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                                className="w-full px-4 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/30"
                             />
                             <textarea
                                 rows={3}
                                 value={editDesc}
                                 onChange={(e) => setEditDesc(e.target.value)}
-                                className="w-full px-4 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 resize-none"
+                                className="w-full px-4 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/30 resize-none"
                             />
                         </div>
                         <div className="flex justify-end gap-2 mt-5">
                             <button onClick={() => setEditId(null)} className="px-4 py-2 text-sm text-slate-600 hover:bg-slate-100 rounded-lg transition-colors">Batal</button>
-                            <button onClick={saveEdit} className="px-4 py-2 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primary/90 transition-colors">Simpan</button>
+                            <button onClick={saveEdit} className="px-4 py-2 bg-accent text-white text-sm font-semibold rounded-lg hover:bg-accent/90 transition-colors">Simpan</button>
                         </div>
                     </div>
                 </div>
@@ -503,7 +503,7 @@ export default function DashboardInfoPage() {
                                 <button
                                     key={p}
                                     onClick={() => setPage(p)}
-                                    className={`w-8 h-8 flex items-center justify-center rounded-lg text-sm font-medium transition-colors ${p === safePage ? "bg-primary text-white" : "text-slate-500 hover:bg-slate-100"}`}
+                                    className={`w-8 h-8 flex items-center justify-center rounded-lg text-sm font-medium transition-colors ${p === safePage ? "bg-accent text-white" : "text-slate-500 hover:bg-slate-100"}`}
                                 >
                                     {p}
                                 </button>

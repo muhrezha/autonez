@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -99,9 +100,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 {/* Logo */}
                 <div className={`flex items-center gap-3 px-4 h-16 border-b border-white/10 flex-shrink-0 ${collapsed ? "justify-center" : ""}`}>
                     {!collapsed && (
-                        <span className="text-white font-black text-lg tracking-tight" style={{ fontFamily: "var(--font-heading)" }}>
-                            AUTONEZ
-                        </span>
+                        <Image
+                            src="/autonez_logo_font_white.png"
+                            alt="Autonez Communications"
+                            width={130}
+                            height={36}
+                            className="h-8 w-auto object-contain"
+                            unoptimized
+                        />
                     )}
                     <button
                         onClick={() => setCollapsed((c) => !c)}
@@ -168,7 +174,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                                                         className={`
                                                             flex items-center gap-3 mx-2 px-3 py-2 rounded-lg text-sm transition-all duration-200
                                                             ${childActive
-                                                                ? "bg-primary text-white font-medium"
+                                                                ? "bg-accent text-white font-medium"
                                                                 : "text-slate-400 hover:text-white hover:bg-white/10"
                                                             }
                                                         `}
@@ -193,7 +199,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                                 className={`
                                     flex items-center gap-3 mx-2 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200
                                     ${active
-                                        ? "bg-primary text-white"
+                                        ? "bg-accent text-white"
                                         : "text-slate-300 hover:text-white hover:bg-white/10"
                                     }
                                     ${collapsed ? "justify-center" : ""}
@@ -249,7 +255,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                     </span>
                     <div className="ml-auto flex items-center gap-2">
                         <span className="text-xs text-slate-400 hidden sm:block">admin@autonez.com</span>
-                        <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold">A</div>
+                        <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-white text-xs font-bold">A</div>
                     </div>
                 </header>
 

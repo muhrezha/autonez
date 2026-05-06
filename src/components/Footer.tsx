@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { navLinks, contactInfo } from "@/lib/data";
 
@@ -8,18 +9,15 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
                     {/* Brand */}
                     <div className="lg:col-span-1">
-                        <div className="flex items-center gap-2 mb-4">
-                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-lg font-heading shadow-lg">
-                                A
-                            </div>
-                            <div className="flex flex-col">
-                                <span className="text-sm font-bold tracking-wider font-heading leading-tight">
-                                    AUTONEZ
-                                </span>
-                                <span className="text-[10px] text-gray-400 tracking-widest uppercase leading-tight">
-                                    Communications
-                                </span>
-                            </div>
+                        <div className="mb-4">
+                            <Image
+                                src="/autonez_logo_font_white.png"
+                                alt="Autonez Communications"
+                                width={160}
+                                height={45}
+                                className="h-12 w-auto object-contain"
+                                unoptimized
+                            />
                         </div>
                         <p className="text-gray-400 text-sm leading-relaxed mb-4">
                             A circle of positive energy with one goal: client satisfaction.
@@ -118,7 +116,7 @@ export default function Footer() {
                             href="https://instagram.com/autonez.communications"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all duration-300"
+                            className="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-accent hover:text-white transition-all duration-300"
                             aria-label="Instagram"
                         >
                             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">

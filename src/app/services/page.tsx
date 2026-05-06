@@ -17,9 +17,9 @@ export default function ServicesPage() {
                     viewport={{ once: true }}
                     className="text-center mt-12 mb-8"
                 >
-                    <span className="inline-block px-4 py-1 mb-4 text-xs font-bold tracking-widest uppercase text-primary bg-primary/8 rounded-full">
+                    {/* <span className="inline-block px-4 py-1 mb-4 text-xs font-bold tracking-widest uppercase text-accent bg-accent/8 rounded-full">
                         Our Services
-                    </span>
+                    </span> */}
                 </motion.div>
             </div>
 
@@ -208,7 +208,7 @@ export default function ServicesPage() {
 
 
             {/* CTA */}
-            <SectionWrapper className="section-padding bg-gradient-to-r from-primary to-primary-dark text-white">
+            <SectionWrapper className="section-padding bg-gradient-to-r from-accent to-accent-light text-white">
                 <div className="w-full max-w-4xl mx-auto text-center">
                     <h2 className="text-3xl md:text-4xl font-bold mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
                         Tertarik dengan Layanan Kami?
@@ -218,7 +218,7 @@ export default function ServicesPage() {
                     </p>
                     <Link
                         href="/contact"
-                        className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary font-bold rounded-full hover:shadow-2xl hover:shadow-black/20 transition-all duration-300 hover:-translate-y-1"
+                        className="inline-flex items-center gap-2 px-8 py-4 bg-white text-accent font-bold rounded-full hover:shadow-2xl hover:shadow-black/20 transition-all duration-300 hover:-translate-y-1"
                     >
                         Hubungi Kami Sekarang
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>

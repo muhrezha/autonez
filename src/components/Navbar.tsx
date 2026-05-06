@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
@@ -29,18 +30,15 @@ export default function Navbar() {
         >
             <div className="mx-auto w-full max-w-7xl px-6 lg:px-8 flex items-center justify-between">
                 {/* Logo */}
-                <Link href="/" className="flex items-center gap-3 group">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-primary/25 group-hover:shadow-primary/40 transition-shadow">
-                        A
-                    </div>
-                    <div className="flex flex-col">
-                        <span className="text-sm font-bold tracking-wider text-navy leading-tight" style={{ fontFamily: 'var(--font-heading)' }}>
-                            AUTONEZ
-                        </span>
-                        <span className="text-[10px] text-slate-400 tracking-widest uppercase leading-tight">
-                            Communications
-                        </span>
-                    </div>
+                <Link href="/" className="flex items-center group">
+                    <Image
+                        src="/autonez_logo_font_black.png"
+                        alt="Autonez Communications"
+                        width={160}
+                        height={45}
+                        className="h-10 w-auto object-contain"
+                        unoptimized
+                    />
                 </Link>
 
                 {/* Desktop Links */}
@@ -52,15 +50,15 @@ export default function Navbar() {
                                 key={link.href}
                                 href={link.href}
                                 className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${isActive
-                                    ? "text-primary bg-primary/10"
-                                    : "text-slate-600 hover:text-navy hover:bg-slate-50"
+                                    ? "text-accent bg-accent/5"
+                                    : "text-slate-600 hover:text-navy hover:bg-slate-200"
                                     }`}
                             >
                                 {link.label}
                                 {isActive && (
                                     <motion.div
                                         layoutId="nav-indicator"
-                                        className="absolute inset-0 bg-primary/10 rounded-full -z-10"
+                                        className="absolute inset-0 bg-accent/5 rounded-full -z-10"
                                         transition={{ type: "spring", stiffness: 350, damping: 30 }}
                                     />
                                 )}
@@ -69,7 +67,7 @@ export default function Navbar() {
                     })}
                     <Link
                         href="/contact"
-                        className="ml-3 px-6 py-2.5 bg-gradient-to-r from-primary to-primary-dark text-white text-sm font-semibold rounded-full hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 hover:-translate-y-0.5"
+                        className="ml-3 px-6 py-2.5 bg-gradient-to-r from-accent to-accent-light text-white text-sm font-semibold rounded-full hover:shadow-lg hover:shadow-accent/25 transition-all duration-300 hover:-translate-y-0.5"
                     >
                         Get in Touch
                     </Link>
@@ -121,7 +119,7 @@ export default function Navbar() {
                                         <Link
                                             href={link.href}
                                             className={`block px-4 py-3 rounded-xl text-sm font-medium transition-all ${isActive
-                                                ? "bg-primary/10 text-primary"
+                                                ? "bg-accent/10 text-accent"
                                                 : "text-slate-600 hover:bg-slate-50 hover:text-navy"
                                                 }`}
                                         >
@@ -138,7 +136,7 @@ export default function Navbar() {
                             >
                                 <Link
                                     href="/contact"
-                                    className="block text-center px-4 py-3 bg-gradient-to-r from-primary to-primary-dark text-white text-sm font-semibold rounded-xl"
+                                    className="block text-center px-4 py-3 bg-gradient-to-r from-accent to-accent-light text-white text-sm font-semibold rounded-xl"
                                 >
                                     Get in Touch
                                 </Link>

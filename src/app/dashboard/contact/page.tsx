@@ -35,7 +35,7 @@ export default function DashboardContactPage() {
                                 value={whatsapp}
                                 onChange={(e) => setWhatsapp(e.target.value)}
                                 placeholder="+62 812-3456-7890"
-                                className="w-full px-4 py-2.5 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
+                                className="w-full px-4 py-2.5 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent"
                             />
                         </div>
                         <div>
@@ -45,7 +45,7 @@ export default function DashboardContactPage() {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="hello@autonez.com"
-                                className="w-full px-4 py-2.5 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
+                                className="w-full px-4 py-2.5 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent"
                             />
                         </div>
                         <div>
@@ -55,7 +55,7 @@ export default function DashboardContactPage() {
                                 value={instagram}
                                 onChange={(e) => setInstagram(e.target.value)}
                                 placeholder="@autonez.communications"
-                                className="w-full px-4 py-2.5 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
+                                className="w-full px-4 py-2.5 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent"
                             />
                         </div>
                     </div>
@@ -68,7 +68,7 @@ export default function DashboardContactPage() {
                                 onChange={(e) => setAddress(e.target.value)}
                                 placeholder="Jakarta, Indonesia"
                                 rows={3}
-                                className="w-full px-4 py-2.5 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary resize-none"
+                                className="w-full px-4 py-2.5 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent resize-none"
                             />
                         </div>
                         <div>
@@ -78,7 +78,7 @@ export default function DashboardContactPage() {
                                 onChange={(e) => setTagline(e.target.value)}
                                 placeholder="Always There For You"
                                 rows={3}
-                                className="w-full px-4 py-2.5 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary resize-none"
+                                className="w-full px-4 py-2.5 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent resize-none"
                             />
                         </div>
                     </div>
@@ -86,7 +86,7 @@ export default function DashboardContactPage() {
                     <div className="flex items-center gap-3 pt-2">
                         <button
                             type="submit"
-                            className="px-5 py-2.5 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primary/90 transition-colors"
+                            className="px-5 py-2.5 bg-accent text-white text-sm font-semibold rounded-lg hover:bg-accent/90 transition-colors"
                         >
                             Simpan
                         </button>

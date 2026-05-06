@@ -39,7 +39,7 @@ export default function HandlingClient({ sections: initialSections }: { sections
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder="Cari nama peralatan..."
-                    className="w-full pl-12 pr-10 py-3.5 rounded-2xl border border-slate-200 bg-slate-50 text-sm text-navy placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
+                    className="w-full pl-12 pr-10 py-3.5 rounded-2xl border border-slate-200 bg-slate-50 text-sm text-navy placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors"
                 />
                 {search && (
                     <button
@@ -90,7 +90,7 @@ export default function HandlingClient({ sections: initialSections }: { sections
                                             <span className={`inline-block text-[9px] font-bold tracking-wider uppercase px-2 py-0.5 rounded-full mb-1.5 ${section.badge}`}>
                                                 {item.subcategory}
                                             </span>
-                                            <h3 className="text-xs font-semibold text-navy leading-snug mb-1.5 line-clamp-2 group-hover:text-primary transition-colors" style={{ fontFamily: "var(--font-heading)" }}>
+                                            <h3 className="text-xs font-semibold text-navy leading-snug mb-1.5 line-clamp-2 group-hover:text-accent transition-colors" style={{ fontFamily: "var(--font-heading)" }}>
                                                 {item.title}
                                             </h3>
                                             <p className="text-[11px] text-slate-400 font-medium">{item.quantity}</p>

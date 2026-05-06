@@ -32,7 +32,7 @@ const CATEGORY_COLORS: Record<string, string> = {
 };
 
 export default function PortfolioDetailClient({ event, prevEvent, nextEvent, relatedEvents }: Props) {
-    const gradientClass = CATEGORY_COLORS[event.category] ?? "from-primary to-primary-dark";
+    const gradientClass = CATEGORY_COLORS[event.category] ?? "from-accent to-accent-light";
 
     return (
         <>
@@ -109,7 +109,7 @@ export default function PortfolioDetailClient({ event, prevEvent, nextEvent, rel
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.25 }}
-                        className="text-primary font-semibold text-base mb-3"
+                        className="text-accent font-semibold text-base mb-3"
                     >
                         {event.client}
                     </motion.p>
@@ -174,10 +174,10 @@ export default function PortfolioDetailClient({ event, prevEvent, nextEvent, rel
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true }}
-                            className="rounded-2xl bg-primary/5 border border-primary/10 p-8"
+                            className="rounded-2xl bg-accent/5 border border-accent/10 p-8"
                         >
                             <div className="flex items-center gap-3 mb-4">
-                                <div className="w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center text-lg">
+                                <div className="w-9 h-9 rounded-xl bg-accent/10 text-accent flex items-center justify-center text-lg">
                                     💡
                                 </div>
                                 <h2 className="text-lg font-bold text-navy" style={{ fontFamily: "var(--font-heading)" }}>
@@ -205,7 +205,7 @@ export default function PortfolioDetailClient({ event, prevEvent, nextEvent, rel
                                 viewport={{ once: true }}
                                 className="mb-8"
                             >
-                                <span className="text-xs font-bold tracking-widest uppercase text-primary">
+                                <span className="text-xs font-bold tracking-widest uppercase text-accent">
                                     Hasil & Pencapaian
                                 </span>
                                 <h2
@@ -226,7 +226,7 @@ export default function PortfolioDetailClient({ event, prevEvent, nextEvent, rel
                                         viewport={{ once: true }}
                                         className="flex items-start gap-4 p-5 bg-white rounded-xl border border-slate-100 shadow-sm"
                                     >
-                                        <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
+                                        <div className="w-8 h-8 rounded-full bg-accent/10 text-accent flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
                                             {String(i + 1).padStart(2, "0")}
                                         </div>
                                         <p className="text-sm font-medium text-navy leading-relaxed">{h}</p>
@@ -243,7 +243,7 @@ export default function PortfolioDetailClient({ event, prevEvent, nextEvent, rel
                             whileInView="visible"
                             viewport={{ once: true }}
                         >
-                            <span className="text-xs font-bold tracking-widest uppercase text-primary">
+                            <span className="text-xs font-bold tracking-widest uppercase text-accent">
                                 Layanan yang Digunakan
                             </span>
                             <h2
@@ -258,7 +258,7 @@ export default function PortfolioDetailClient({ event, prevEvent, nextEvent, rel
                                         key={svc}
                                         className="flex items-center gap-3 p-4 bg-white rounded-xl border border-slate-100"
                                     >
-                                        <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
+                                        <div className="w-2 h-2 rounded-full bg-accent flex-shrink-0" />
                                         <span className="text-sm font-semibold text-navy">{svc}</span>
                                     </div>
                                 ))}
@@ -267,7 +267,7 @@ export default function PortfolioDetailClient({ event, prevEvent, nextEvent, rel
                             <div className="mt-6">
                                 <Link
                                     href="/services"
-                                    className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-dark transition-colors"
+                                    className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent transition-colors"
                                 >
                                     Lihat Detail Layanan
                                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
@@ -292,7 +292,7 @@ export default function PortfolioDetailClient({ event, prevEvent, nextEvent, rel
                             className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10"
                         >
                             <div>
-                                <span className="text-xs font-bold tracking-widest uppercase text-primary">
+                                <span className="text-xs font-bold tracking-widest uppercase text-accent">
                                     Kategori Serupa
                                 </span>
                                 <h2
@@ -304,7 +304,7 @@ export default function PortfolioDetailClient({ event, prevEvent, nextEvent, rel
                             </div>
                             <Link
                                 href="/portfolio"
-                                className="text-sm font-semibold text-primary hover:text-primary-dark flex items-center gap-1.5 transition-colors"
+                                className="text-sm font-semibold text-accent hover:text-accent flex items-center gap-1.5 transition-colors"
                             >
                                 Semua Portfolio
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
@@ -325,7 +325,7 @@ export default function PortfolioDetailClient({ event, prevEvent, nextEvent, rel
                                 >
                                     <Link
                                         href={`/portfolio/${item.id}`}
-                                        className="group block rounded-2xl border border-slate-100 overflow-hidden hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 transition-all duration-300"
+                                        className="group block rounded-2xl border border-slate-100 overflow-hidden hover:shadow-xl hover:shadow-accent/5 hover:-translate-y-1 transition-all duration-300"
                                     >
                                         {/* Mini visual header */}
                                         <div className="h-32 relative overflow-hidden">
@@ -344,8 +344,8 @@ export default function PortfolioDetailClient({ event, prevEvent, nextEvent, rel
                                             </div>
                                         </div>
                                         <div className="p-5 bg-white">
-                                            <p className="text-[10px] font-bold tracking-widest uppercase text-primary mb-1">{item.client}</p>
-                                            <h3 className="text-base font-bold text-navy group-hover:text-primary transition-colors" style={{ fontFamily: "var(--font-heading)" }}>
+                                            <p className="text-[10px] font-bold tracking-widest uppercase text-accent mb-1">{item.client}</p>
+                                            <h3 className="text-base font-bold text-navy group-hover:text-accent transition-colors" style={{ fontFamily: "var(--font-heading)" }}>
                                                 {item.title}
                                             </h3>
                                         </div>
@@ -363,15 +363,15 @@ export default function PortfolioDetailClient({ event, prevEvent, nextEvent, rel
                     {prevEvent ? (
                         <Link
                             href={`/portfolio/${prevEvent.id}`}
-                            className="group flex items-center gap-3 p-5 rounded-2xl border border-slate-200 bg-white hover:border-primary/20 hover:bg-primary/5 transition-all duration-300"
+                            className="group flex items-center gap-3 p-5 rounded-2xl border border-slate-200 bg-white hover:border-accent/20 hover:bg-accent/5 transition-all duration-300"
                         >
-                            <svg className="w-5 h-5 text-slate-400 group-hover:text-primary transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                            <svg className="w-5 h-5 text-slate-400 group-hover:text-accent transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
                             </svg>
                             <div>
                                 <p className="text-[11px] text-slate-400 font-medium uppercase tracking-wider">Sebelumnya</p>
-                                <p className="text-sm font-bold text-navy group-hover:text-primary transition-colors line-clamp-1">{prevEvent.title}</p>
-                                <p className="text-[11px] text-primary font-medium">{prevEvent.client}</p>
+                                <p className="text-sm font-bold text-navy group-hover:text-accent transition-colors line-clamp-1">{prevEvent.title}</p>
+                                <p className="text-[11px] text-accent font-medium">{prevEvent.client}</p>
                             </div>
                         </Link>
                     ) : (
@@ -381,14 +381,14 @@ export default function PortfolioDetailClient({ event, prevEvent, nextEvent, rel
                     {nextEvent ? (
                         <Link
                             href={`/portfolio/${nextEvent.id}`}
-                            className="group flex items-center justify-end gap-3 p-5 rounded-2xl border border-slate-200 bg-white hover:border-primary/20 hover:bg-primary/5 transition-all duration-300 text-right"
+                            className="group flex items-center justify-end gap-3 p-5 rounded-2xl border border-slate-200 bg-white hover:border-accent/20 hover:bg-accent/5 transition-all duration-300 text-right"
                         >
                             <div>
                                 <p className="text-[11px] text-slate-400 font-medium uppercase tracking-wider">Berikutnya</p>
-                                <p className="text-sm font-bold text-navy group-hover:text-primary transition-colors line-clamp-1">{nextEvent.title}</p>
-                                <p className="text-[11px] text-primary font-medium">{nextEvent.client}</p>
+                                <p className="text-sm font-bold text-navy group-hover:text-accent transition-colors line-clamp-1">{nextEvent.title}</p>
+                                <p className="text-[11px] text-accent font-medium">{nextEvent.client}</p>
                             </div>
-                            <svg className="w-5 h-5 text-slate-400 group-hover:text-primary transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                            <svg className="w-5 h-5 text-slate-400 group-hover:text-accent transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
                         </Link>
@@ -399,7 +399,7 @@ export default function PortfolioDetailClient({ event, prevEvent, nextEvent, rel
             </section>
 
             {/* ── CTA ──────────────────────────────────────────────── */}
-            <section className="section-padding bg-gradient-to-r from-primary to-primary-dark text-white">
+            <section className="section-padding bg-gradient-to-r from-accent to-accent-light text-white">
                 <div className="w-full max-w-4xl mx-auto text-center">
                     <motion.h2
                         variants={fadeUp}
@@ -432,7 +432,7 @@ export default function PortfolioDetailClient({ event, prevEvent, nextEvent, rel
                     >
                         <Link
                             href="/contact"
-                            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary font-bold rounded-full hover:shadow-2xl hover:shadow-black/20 transition-all duration-300 hover:-translate-y-1"
+                            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-accent font-bold rounded-full hover:shadow-2xl hover:shadow-black/20 transition-all duration-300 hover:-translate-y-1"
                         >
                             Konsultasi Gratis
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>

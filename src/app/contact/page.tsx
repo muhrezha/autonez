@@ -86,12 +86,12 @@ export default function ContactPage() {
             {/* Hero */}
             <section className="relative pt-36 pb-24 bg-white overflow-hidden">
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.025)_1px,transparent_1px)] bg-[size:3rem_3rem]" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[36rem] h-[36rem] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[36rem] h-[36rem] bg-accent/5 rounded-full blur-3xl pointer-events-none" />
                 <div className="relative z-10 w-full max-w-3xl mx-auto px-6 lg:px-8 text-center">
                     <motion.span
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest uppercase bg-primary/8 border border-primary/15 text-primary rounded-full"
+                        className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest uppercase bg-accent/8 border border-accent/15 text-accent rounded-full"
                     >
                         LET&apos;S TALK
                     </motion.span>
@@ -127,7 +127,7 @@ export default function ContactPage() {
                         viewport={{ once: true }}
                         className="text-center mb-14"
                     >
-                        <span className="inline-block px-4 py-1 mb-4 text-xs font-bold tracking-widest uppercase text-primary bg-primary/8 rounded-full">
+                        <span className="inline-block px-4 py-1 mb-4 text-xs font-bold tracking-widest uppercase text-accent bg-accent/8 rounded-full">
                             Informasi Kontak
                         </span>
                         <h2
@@ -245,7 +245,7 @@ export default function ContactPage() {
 
             {/* Map */}
             <section className="h-72 bg-slate-100 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-navy/5 to-primary/5 flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-br from-navy/5 to-accent/5 flex items-center justify-center">
                     <div className="text-center">
                         <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-navy/10 flex items-center justify-center">
                             <svg className="w-5 h-5 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
