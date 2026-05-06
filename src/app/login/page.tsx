@@ -11,21 +11,30 @@ export default function LoginPage() {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError("");
         setLoading(true);
 
-        // Dummy auth
-        setTimeout(() => {
-            if (email === "admin@autonez.com" && password === "autonez2025") {
+        try {
+            const res = await fetch("/api/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password }),
+            });
+
+            if (res.ok) {
                 localStorage.setItem("cms_auth", "1");
                 router.push("/dashboard/dashboard");
             } else {
-                setError("Email atau password salah.");
+                const data = await res.json();
+                setError(data.error ?? "Email atau password salah.");
                 setLoading(false);
             }
-        }, 600);
+        } catch {
+            setError("Terjadi kesalahan. Coba lagi.");
+            setLoading(false);
+        }
     };
 
     return (
