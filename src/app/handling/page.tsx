@@ -1,15 +1,15 @@
-import { readFile } from "fs/promises";
-import path from "path";
+"use client";
+
 import SectionWrapper from "@/components/SectionWrapper";
 import HandlingClient from "./HandlingClient";
+import sectionsData from "@/data/handling.json";
 
 type Item = { id: string; title: string; quantity: string; subcategory: string };
 type Section = { category: string; icon: string; color: string; badge: string; items: Item[] };
 
-export default async function HandlingPage() {
-    const filePath = path.join(process.cwd(), "public", "data", "handling.json");
-    const raw = await readFile(filePath, "utf-8");
-    const sections: Section[] = JSON.parse(raw);
+const sections = sectionsData as Section[];
+
+export default function HandlingPage() {
 
     return (
         <SectionWrapper className="section-padding bg-white">
