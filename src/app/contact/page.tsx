@@ -111,7 +111,7 @@ export default function ContactPage() {
                         transition={{ delay: 0.2 }}
                         className="text-base md:text-lg text-slate-500 max-w-xl mx-auto leading-relaxed"
                     >
-                        Have an exciting idea or need help with your next event? We’re here to support you every step of the way. Feel free to reach out through your preferred channel..
+                        Have an exciting idea or need help with your next event? We’re here to support you every step of the way. Feel free to reach out through your preferred channel.
                     </motion.p>
                 </div>
             </section>
