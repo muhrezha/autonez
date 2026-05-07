@@ -7,16 +7,16 @@ import SectionWrapper from "@/components/SectionWrapper";
 import Link from "next/link";
 
 const equipmentSlides = [
-    { src: "/services/image_right.png", label: "Custom-Built Booth", category: "Booth" },
-    { src: "/services/image_right.png", label: "Exhibition Booth", category: "Booth" },
-    { src: "/services/image_left.png", label: "Main Stage Structure", category: "Stage" },
-    { src: "/services/image_left.png", label: "Outdoor Stage", category: "Stage" },
-    { src: "/services/what_we_do.png", label: "Premium Backdrop", category: "Backdrop" },
-    { src: "/services/what_we_do.png", label: "Custom Branded Backdrop", category: "Backdrop" },
-    { src: "/services/image_right.png", label: "LED Videotron Wall", category: "LED Screen" },
-    { src: "/services/image_right.png", label: "Panoramic LED Screen", category: "LED Screen" },
-    { src: "/services/image_left.png", label: "Professional Sound System", category: "Audio" },
-    { src: "/services/what_we_do.png", label: "Architectural Lighting", category: "Lighting" },
+    { src: "/services/handling/photo_area.jpeg", label: "Custom-Built Booth", category: "Booth" },
+    // { src: "/services/handling/photo_area.jpeg", label: "Exhibition Booth", category: "Booth" },
+    { src: "/services/handling/stages.jpeg", label: "Main Stage Structure", category: "Stage" },
+    { src: "/services/handling/stages_2.jpeg", label: "Outdoor Stage", category: "Stage" },
+    // { src: "/services/handling/backdrop.jpeg", label: "Premium Backdrop", category: "Backdrop" },
+    { src: "/services/handling/backdrop.jpeg", label: "Custom Branded Backdrop", category: "Backdrop" },
+    // { src: "/services/handling/photo_area.jpeg", label: "LED Videotron Wall", category: "LED Screen" },
+    // { src: "/services/handling/photo_area.jpeg", label: "Panoramic LED Screen", category: "LED Screen" },
+    { src: "/services/handling/gates.jpeg", label: "Professional Sound System", category: "Gate" },
+    { src: "/services/handling/kerangka_panggung.JPG", label: "Architectural Lighting", category: "Stage" },
 ];
 
 
