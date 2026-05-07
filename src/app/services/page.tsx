@@ -1,12 +1,43 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import SectionWrapper from "@/components/SectionWrapper";
 import Link from "next/link";
 
+const equipmentSlides = [
+    { src: "/services/image_right.png", label: "Custom-Built Booth", category: "Booth" },
+    { src: "/services/image_right.png", label: "Exhibition Booth", category: "Booth" },
+    { src: "/services/image_left.png", label: "Main Stage Structure", category: "Stage" },
+    { src: "/services/image_left.png", label: "Outdoor Stage", category: "Stage" },
+    { src: "/services/what_we_do.png", label: "Premium Backdrop", category: "Backdrop" },
+    { src: "/services/what_we_do.png", label: "Custom Branded Backdrop", category: "Backdrop" },
+    { src: "/services/image_right.png", label: "LED Videotron Wall", category: "LED Screen" },
+    { src: "/services/image_right.png", label: "Panoramic LED Screen", category: "LED Screen" },
+    { src: "/services/image_left.png", label: "Professional Sound System", category: "Audio" },
+    { src: "/services/what_we_do.png", label: "Architectural Lighting", category: "Lighting" },
+];
+
 
 export default function ServicesPage() {
+    const [activeSlide, setActiveSlide] = useState(0);
+    const [isPaused, setIsPaused] = useState(false);
+
+    const nextSlide = useCallback(() => {
+        setActiveSlide(prev => (prev + 1) % equipmentSlides.length);
+    }, []);
+
+    const prevSlide = useCallback(() => {
+        setActiveSlide(prev => (prev - 1 + equipmentSlides.length) % equipmentSlides.length);
+    }, []);
+
+    useEffect(() => {
+        if (isPaused) return;
+        const timer = setInterval(nextSlide, 3500);
+        return () => clearInterval(timer);
+    }, [isPaused, nextSlide]);
+
     return (
         <>
             {/* Section Header */}
@@ -191,6 +222,186 @@ export default function ServicesPage() {
                 </motion.div>
 
             </SectionWrapper >
+
+            <div className="w-full h-[1px] my-10 pb-8" />
+
+            <SectionWrapper className="w-full">
+                {/* Header */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="px-0 md:px-0 pt-0 pb-0"
+                >
+                    <div className="w-full max-w-7xl mx-auto px-6">
+                        <div className="text-center md:mb-16">
+                            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold md:mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
+                                Productions Handling
+                            </h2>
+                        </div>
+                    </div>
+                </motion.div>
+            </SectionWrapper>
+
+            {/* ============ Equipment for Rent Section ============ */}
+            <SectionWrapper className="px-0 bg-[var(--color-navy)] overflow-hidden py-0">
+                <div className="w-full">
+                    {/* Header */}
+                    {/* <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="px-8 md:px-16 pt-16 pb-10"
+                    >
+                        <div className="flex items-center gap-3 mb-3">
+                            <div className="w-8 h-[2px] bg-accent" />
+                            <span className="text-accent text-xs font-bold tracking-widest uppercase">Equipment for Rent</span>
+                        </div>
+                        <h2
+                            className="text-4xl sm:text-5xl font-bold text-white"
+                            style={{ fontFamily: "var(--font-heading)" }}
+                        >
+                            Our <span className="text-accent">Rental</span> Equipment
+                        </h2>
+                    </motion.div> */}
+
+                    {/* Row: Slider (left) + Text (right) */}
+                    <div className="flex flex-col lg:flex-row">
+
+                        {/* Slider */}
+                        <div
+                            className="w-full lg:w-[60%] relative"
+                            onMouseEnter={() => setIsPaused(true)}
+                            onMouseLeave={() => setIsPaused(false)}
+                        >
+                            <div className="relative h-[400px] sm:h-[520px] overflow-hidden">
+                                <AnimatePresence mode="wait">
+                                    <motion.div
+                                        key={activeSlide}
+                                        initial={{ opacity: 0, scale: 1.04 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0, scale: 0.97 }}
+                                        transition={{ duration: 0.55, ease: "easeInOut" }}
+                                        className="absolute inset-0"
+                                    >
+                                        <Image
+                                            src={equipmentSlides[activeSlide].src}
+                                            alt={equipmentSlides[activeSlide].label}
+                                            fill
+                                            className="object-cover"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-navy)] via-black/20 to-transparent" />
+
+                                        {/* Category tag */}
+                                        <div className="absolute top-5 left-5">
+                                            <span className="px-3 py-1 bg-accent text-white text-xs font-bold tracking-widest uppercase">
+                                                {equipmentSlides[activeSlide].category}
+                                            </span>
+                                        </div>
+
+                                        {/* Slide label */}
+                                        <div className="absolute bottom-8 left-6 right-16">
+                                            <motion.p
+                                                initial={{ opacity: 0, y: 10 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                transition={{ delay: 0.2 }}
+                                                className="text-white text-xl sm:text-2xl font-bold"
+                                                style={{ fontFamily: "var(--font-heading)" }}
+                                            >
+                                                {equipmentSlides[activeSlide].label}
+                                            </motion.p>
+                                        </div>
+                                    </motion.div>
+                                </AnimatePresence>
+
+                                {/* Slide counter */}
+                                <div className="absolute top-5 right-5 bg-black/50 backdrop-blur-sm text-white text-sm font-mono px-3 py-1 tabular-nums">
+                                    {String(activeSlide + 1).padStart(2, "0")}&nbsp;/&nbsp;{String(equipmentSlides.length).padStart(2, "0")}
+                                </div>
+
+                                {/* Arrows */}
+                                <button
+                                    onClick={prevSlide}
+                                    className="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 bg-white/10 hover:bg-accent transition-all duration-200 flex items-center justify-center text-white backdrop-blur-sm"
+                                    aria-label="Previous"
+                                >
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                    </svg>
+                                </button>
+                                <button
+                                    onClick={nextSlide}
+                                    className="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 bg-white/10 hover:bg-accent transition-all duration-200 flex items-center justify-center text-white backdrop-blur-sm"
+                                    aria-label="Next"
+                                >
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </button>
+                            </div>
+
+                            {/* Dot indicators */}
+                            <div className="flex gap-2 justify-center py-6 bg-[var(--color-navy)]">
+                                {equipmentSlides.map((_, i) => (
+                                    <button
+                                        key={i}
+                                        onClick={() => setActiveSlide(i)}
+                                        aria-label={`Slide ${i + 1}`}
+                                        className={`transition-all duration-300 rounded-full ${i === activeSlide
+                                            ? "w-8 h-2 bg-accent"
+                                            : "w-2 h-2 bg-white/25 hover:bg-white/50"
+                                            }`}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Text panel */}
+                        <div className="w-full lg:w-[40%] px-8 lg:px-14 py-10 lg:py-0 flex flex-col justify-center">
+                            <motion.div
+                                initial={{ opacity: 0, x: 40 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.65 }}
+                            >
+                                <p className="text-white/40 text-xs font-bold uppercase tracking-widest mb-6">
+                                    Available for your event
+                                </p>
+
+                                <ul className="space-y-6">
+                                    {[
+                                        { title: "Custom-built Booths", icon: "▪" },
+                                        { title: "Stages", icon: "▪" },
+                                        { title: "Backdrops", icon: "▪" },
+                                        { title: "Professional Sound, Lighting, and Premium LED Videotron Technology", icon: "▪" },
+                                    ].map((item, i) => (
+                                        <motion.li
+                                            key={item.title}
+                                            initial={{ opacity: 0, x: 30 }}
+                                            whileInView={{ opacity: 1, x: 0 }}
+                                            viewport={{ once: true }}
+                                            transition={{ duration: 0.45, delay: 0.1 * i }}
+                                            className="flex items-start gap-4 group"
+                                        >
+                                            <span className="w-2 h-2 rounded-sm bg-accent flex-shrink-0 mt-2 group-hover:scale-125 transition-transform duration-200" />
+                                            <span className="text-white/85 font-medium text-base sm:text-lg leading-snug group-hover:text-white transition-colors duration-200">
+                                                {item.title}
+                                            </span>
+                                        </motion.li>
+                                    ))}
+                                </ul>
+
+                                {/* Decorative accent bars */}
+                                <div className="flex items-center gap-2 mt-12">
+                                    <div className="w-10 h-[3px] bg-accent" />
+                                    <div className="w-5 h-[3px] bg-accent/50" />
+                                    <div className="w-2 h-[3px] bg-accent/25" />
+                                </div>
+                            </motion.div>
+                        </div>
+                    </div>
+                </div>
+            </SectionWrapper>
 
             <div className="w-full h-[1px] my-10" />
 
