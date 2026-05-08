@@ -40,7 +40,6 @@ export default function ServicesPage() {
 
     return (
         <>
-            {/* Section Header */}
             <div className="w-full max-w-6xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -93,7 +92,7 @@ export default function ServicesPage() {
                     </div>
 
                     {/* Right 40% — dark panel: 2 overlapping studio photos */}
-                    <div className="w-full md:w-3/5 bg-navy relative overflow-hidden
+                    <div className="w-full md:w-3/5 bg-white relative overflow-hidden
                         flex items-center justify-center
                         py-20 px-0 sm:py-14 sm:px-0 min-h-[400px] sm:min-h-[480px]">
                         {/* Decorative accent lines top-right */}
@@ -110,17 +109,14 @@ export default function ServicesPage() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.7, delay: 0.2 }}
-                            className="relative w-full h-[400px] sm:h-[360px] lg:h-[400px]"
+                            className="relative w-full h-[400px] sm:h-[360px] lg:h-[450px] rounded-2xl overflow-hidden shadow-2xl"
                         >
-                            {/* Image 1 — main, right */}
-                            <div className="absolute right-0 top-0 w-[100%] h-full overflow-hidden shadow-2xl">
-                                <Image
-                                    src="/services/image_right.png"
-                                    alt="Studio Production"
-                                    fill
-                                    className="object-cover"
-                                />
-                            </div>
+                            <Image
+                                src="/services/image_right.png"
+                                alt="Studio Production"
+                                fill
+                                className="object-cover"
+                            />
                         </motion.div>
                     </div>
                 </motion.div>
@@ -135,7 +131,7 @@ export default function ServicesPage() {
                     className="w-full flex flex-col md:flex-row overflow-hidden"
                 >
                     {/* Left 60% — white panel: title + illustration */}
-                    <div className="w-full md:w-3/5 bg-navy relative overflow-hidden
+                    <div className="w-full md:w-3/5 bg-white relative overflow-hidden
                         flex items-center justify-center
                         py-20 px-0 sm:py-14 sm:px-0 min-h-[400px] sm:min-h-[480px]">
                         {/* Decorative accent lines top-right */}
@@ -152,17 +148,14 @@ export default function ServicesPage() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.7, delay: 0.2 }}
-                            className="relative w-full h-[400px] sm:h-[360px] lg:h-[400px]"
+                            className="relative w-full h-[400px] sm:h-[360px] lg:h-[450px] rounded-2xl overflow-hidden shadow-2xl"
                         >
-                            {/* Image 1 — main, right */}
-                            <div className="absolute right-0 top-0 w-[100%] h-full overflow-hidden shadow-2xl">
-                                <Image
-                                    src="/services/image_left.png"
-                                    alt="Studio Production"
-                                    fill
-                                    className="object-cover"
-                                />
-                            </div>
+                            <Image
+                                src="/services/image_left.png"
+                                alt="Studio Production"
+                                fill
+                                className="object-cover"
+                            />
                         </motion.div>
                     </div>
 
@@ -244,27 +237,8 @@ export default function ServicesPage() {
             </SectionWrapper>
 
             {/* ============ Equipment for Rent Section ============ */}
-            <SectionWrapper className="px-0 bg-[var(--color-navy)] overflow-hidden py-0">
+            <SectionWrapper className="px-0 bg-white overflow-hidden py-0">
                 <div className="w-full">
-                    {/* Header */}
-                    {/* <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="px-8 md:px-16 pt-16 pb-10"
-                    >
-                        <div className="flex items-center gap-3 mb-3">
-                            <div className="w-8 h-[2px] bg-accent" />
-                            <span className="text-accent text-xs font-bold tracking-widest uppercase">Equipment for Rent</span>
-                        </div>
-                        <h2
-                            className="text-4xl sm:text-5xl font-bold text-white"
-                            style={{ fontFamily: "var(--font-heading)" }}
-                        >
-                            Our <span className="text-accent">Rental</span> Equipment
-                        </h2>
-                    </motion.div> */}
-
                     {/* Row: Slider (left) + Text (right) */}
                     <div className="flex flex-col lg:flex-row">
 
@@ -274,7 +248,7 @@ export default function ServicesPage() {
                             onMouseEnter={() => setIsPaused(true)}
                             onMouseLeave={() => setIsPaused(false)}
                         >
-                            <div className="relative h-[400px] sm:h-[520px] overflow-hidden">
+                            <div className="relative h-[400px] sm:h-[520px] overflow-hidden rounded-2xl shadow-2xl">
                                 <AnimatePresence mode="wait">
                                     <motion.div
                                         key={activeSlide}
@@ -341,7 +315,7 @@ export default function ServicesPage() {
                             </div>
 
                             {/* Dot indicators */}
-                            <div className="flex gap-2 justify-center py-6 bg-[var(--color-navy)]">
+                            <div className="flex gap-2 justify-center py-6 bg-white">
                                 {equipmentSlides.map((_, i) => (
                                     <button
                                         key={i}
@@ -349,7 +323,7 @@ export default function ServicesPage() {
                                         aria-label={`Slide ${i + 1}`}
                                         className={`transition-all duration-300 rounded-full ${i === activeSlide
                                             ? "w-8 h-2 bg-accent"
-                                            : "w-2 h-2 bg-white/25 hover:bg-white/50"
+                                            : "w-2 h-2 bg-gray-300 hover:bg-gray-500"
                                             }`}
                                     />
                                 ))}
@@ -364,7 +338,7 @@ export default function ServicesPage() {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.65 }}
                             >
-                                <p className="text-white/40 text-xs font-bold uppercase tracking-widest mb-6">
+                                <p className="text-gray-400 text-xs font-bold uppercase tracking-widest mb-6">
                                     Available for your event
                                 </p>
 
@@ -384,7 +358,7 @@ export default function ServicesPage() {
                                             className="flex items-start gap-4 group"
                                         >
                                             <span className="w-2 h-2 rounded-sm bg-accent flex-shrink-0 mt-2 group-hover:scale-125 transition-transform duration-200" />
-                                            <span className="text-white/85 font-medium text-base sm:text-lg leading-snug group-hover:text-white transition-colors duration-200">
+                                            <span className="text-gray-700 font-medium text-base sm:text-lg leading-snug group-hover:text-gray-900 transition-colors duration-200">
                                                 {item.title}
                                             </span>
                                         </motion.li>
