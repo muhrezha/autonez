@@ -25,16 +25,16 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
     const prevService = currentIndex > 0 ? services[currentIndex - 1] : null;
     const nextService = currentIndex < services.length - 1 ? services[currentIndex + 1] : null;
 
-    const relatedPortfolio = portfolioEvents
-        .filter((p) => p.category === svc.relatedCategory)
-        .slice(0, 3);
+    // const relatedPortfolio = portfolioEvents
+    //     .filter((p) => p.category === svc.relatedCategory)
+    //     .slice(0, 3);
 
     return (
         <ServiceDetailClient
             svc={svc}
             prevService={prevService}
             nextService={nextService}
-            relatedPortfolio={relatedPortfolio}
+            relatedPortfolio={portfolioEvents}
         />
     );
 }

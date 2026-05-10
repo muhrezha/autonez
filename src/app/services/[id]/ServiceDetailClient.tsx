@@ -292,15 +292,15 @@ export default function ServiceDetailClient({ svc, prevService, nextService, rel
                                 >
                                     <div className="flex items-center justify-between mb-3">
                                         <span className="text-xs font-bold tracking-wider uppercase text-accent bg-accent/10 px-3 py-1 rounded-full">
-                                            {item.category}
+                                            {item.location}
                                         </span>
-                                        <span className="text-xs text-slate-400 font-medium">{item.year}</span>
+                                        {/* <span className="text-xs text-slate-400 font-medium">{item.year}</span> */}
                                     </div>
                                     <h3 className="font-bold text-navy mb-1 text-base" style={{ fontFamily: "var(--font-heading)" }}>
                                         {item.title}
                                     </h3>
-                                    <p className="text-xs text-accent font-semibold mb-3">{item.client}</p>
-                                    <p className="text-sm text-slate-500 leading-relaxed">{item.description}</p>
+                                    {/* <p className="text-xs text-accent font-semibold mb-3">{item.client}</p> */}
+                                    {/* <p className="text-sm text-slate-500 leading-relaxed">{item.description}</p> */}
                                 </motion.div>
                             ))}
                         </div>
