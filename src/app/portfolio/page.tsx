@@ -6,12 +6,12 @@ import Image from "next/image";
 import SectionWrapper from "@/components/SectionWrapper";
 import {
     portfolioEvents,
-    portfolioCategories,
-    type PortfolioCategory,
+    // portfolioCategories,
+    // type PortfolioCategory,
 } from "@/lib/data";
 
 export default function PortfolioPage() {
-    const [activeCategory, setActiveCategory] = useState<PortfolioCategory>("All");
+    // const [activeCategory, setActiveCategory] = useState<PortfolioCategory>("All");
     const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
 
     // const filteredEvents =
