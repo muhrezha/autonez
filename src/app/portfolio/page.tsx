@@ -14,10 +14,10 @@ export default function PortfolioPage() {
     const [activeCategory, setActiveCategory] = useState<PortfolioCategory>("All");
     const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
 
-    const filteredEvents =
-        activeCategory === "All"
-            ? portfolioEvents
-            : portfolioEvents.filter((e) => e.category === activeCategory);
+    // const filteredEvents =
+    //     activeCategory === "All"
+    //         ? portfolioEvents
+    //         : portfolioEvents.filter((e) => e.category === activeCategory);
 
     return (
         <>
@@ -44,7 +44,7 @@ export default function PortfolioPage() {
                     {/* Events Grid */}
                     <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         <AnimatePresence mode="popLayout">
-                            {filteredEvents.map((event) => (
+                            {portfolioEvents.map((event) => (
                                 <motion.div
                                     key={event.id}
                                     layout
@@ -67,18 +67,18 @@ export default function PortfolioPage() {
                                                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                             />
                                             <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/20 to-transparent" />
-                                            <div className="absolute top-4 left-4">
+                                            {/* <div className="absolute top-4 left-4">
                                                 <span className="px-3 py-1 text-[10px] font-bold tracking-wider uppercase bg-white/20 text-white rounded-full backdrop-blur-sm">
-                                                    {event.category}
+                                                    {event.location}
                                                 </span>
-                                            </div>
+                                            </div> */}
                                             <div className="absolute inset-0 bg-accent/0 group-hover:bg-accent/10 transition-colors duration-300" />
                                         </div>
 
                                         {/* Content */}
                                         <div className="p-6">
                                             <div className="text-[10px] font-bold tracking-widest uppercase text-accent mb-2">
-                                                {event.client}
+                                                {event.location}
                                             </div>
                                             <h3 className="text-lg font-bold text-navy mb-3 group-hover:text-accent transition-colors" style={{ fontFamily: 'var(--font-heading)' }}>
                                                 {event.title}
@@ -99,12 +99,12 @@ export default function PortfolioPage() {
                         </AnimatePresence>
                     </motion.div>
 
-                    {filteredEvents.length === 0 && (
+                    {/* {filteredEvents.length === 0 && (
                         <div className="text-center py-20">
                             <div className="text-5xl mb-4">🔍</div>
                             <p className="text-slate-400 text-lg">Belum ada event di kategori ini.</p>
                         </div>
-                    )}
+                    )} */}
                 </div>
             </SectionWrapper>
 

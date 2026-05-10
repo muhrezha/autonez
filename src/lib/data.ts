@@ -351,357 +351,259 @@ export interface EventStat {
 export interface PortfolioEvent {
   id: string;
   title: string;
-  client: string;
-  category: PortfolioCategory;
-  year: number;
+  location: string;
   date: string;
   image: string;
-  description: string;
-  challenge: string;
-  solution: string;
-  highlights: string[];
-  scope: string[];
-  stats: EventStat[];
 }
 
 export const portfolioEvents: PortfolioEvent[] = [
   {
-    id: "strategic-session-mandiri",
-    title: "Strategic Session 2025",
-    client: "Bank Mandiri Taspen",
-    category: "MICE",
-    year: 2025,
+    id: "aqua-japan",
+    title: "AQUA JAPAN",
+    location: "Balai Kartini",
     date: "10 Januari 2025",
-    image: "/portofolio/portofolio_example.jpg",
-    description:
-      "Sesi strategis tahunan untuk manajemen senior Bank Mandiri Taspen dengan diskusi panel dan workshop interaktif.",
-    challenge:
-      "Bank Mandiri Taspen membutuhkan forum strategis yang mampu menyatukan seluruh jajaran manajemen senior dari berbagai wilayah untuk merumuskan arah perusahaan 5 tahun ke depan, dengan tetap menjaga kerahasiaan informasi dan suasana yang kondusif untuk diskusi mendalam.",
-    solution:
-      "Kami merancang sesi eksklusif di venue premium dengan tata ruang yang mendukung diskusi pleno dan breakout session secara bersamaan. Sistem registrasi tertutup, manajemen informasi terenkripsi, dan fasilitator berpengalaman menghasilkan output strategis yang terstruktur dan actionable.",
-    highlights: [
-      "Peserta 150+ eksekutif senior dari seluruh Indonesia",
-      "12 sesi breakout dengan output dokumen strategi",
-      "Sistem registrasi & akses eksklusif terintegrasi",
-      "Dokumentasi notulensi & action plan real-time",
-    ],
-    scope: ["MICE", "Productions Handling"],
-    stats: [
-      { label: "Peserta", value: "150+" },
-      { label: "Sesi Breakout", value: "12" },
-      { label: "Durasi", value: "3 Hari" },
-      { label: "Kota", value: "Bali" },
-    ],
+    image: "/portofolio/aqua_japan.png",
   },
   {
-    id: "hsbc-bwf",
+    id: "awarding-night-pegadaian",
+    title: "Awarding Night Rakortas Dirkeu Pegadaian",
+    location: "Skyline Dago - Bandung",
+    date: "10 Januari 2025",
+    image: "/portofolio/awarding_night_dirkeu_pagadaian.png",
+  },
+  {
+    id: "awarding-reg-iv-bank-mandiri",
+    title: "Awarding Reg IV - Bank Mandiri",
+    location: "Wisma Mandiri - Jakarta",
+    date: "10 Januari 2025",
+    image: "/portofolio/bank_mandiri_awarding.png",
+  },
+  {
+    id: "kick-off-rkap-2025-bank-mandiri-taspen",
+    title: "Kick off RKAP 20255 - Bank Mandiri Taspen",
+    location: "DoubleTree Hotel - Jakarta",
+    date: "10 Januari 2025",
+    image: "/portofolio/bank_mandiri_taspen_2.png",
+  },
+  {
+    id: "learning-maestro-bank-mandiri-taspen",
+    title: "Learning Maestro - Bank Mandiri Taspen",
+    location: "Mandiri university - Jakarta",
+    date: "10 Januari 2025",
+    image: "/portofolio/bank_mandiri_taspen_3.png",
+  },
+  {
+    id: "rapat-akselerasi-reg-iv-bank-mandiri",
+    title: "Rapat Akselerasi Reg IV - Bank Mandiri",
+    location: "Menara Danareksa - Jakarta",
+    date: "10 Januari 2025",
+    image: "/portofolio/bank_mandiri_taspen_4.png",
+  },
+  {
+    id: "strategic-session-2025-bank-mandiri-taspen",
+    title: "Strategic Session 2025 - Bank Mandiri Taspen",
+    location: "Raffles Hotel - Jakarta",
+    date: "10 Januari 2025",
+    image: "/portofolio/bank_mandiri_taspen.png",
+  },
+  {
+    id: "btn-idol",
+    title: "BTN IDOL",
+    location: "Jakarta | Menara BTN",
+    date: "10 Januari 2025",
+    image: "/portofolio/btn_idol.png",
+  },
+  {
+    id: "daihatsu-funtatic-generation",
+    title: "Daihatsu Funtatic Generation",
+    location: "GIIAS - Tangerang 2019",
+    date: "10 Januari 2025",
+    image: "/portofolio/daihatsu.png",
+  },
+  {
+    id: "greenfields-family-land",
+    title: "Greenfields Family Land",
+    location: "Greenfields Farm - Bogor",
+    date: "10 Januari 2025",
+    image: "/portofolio/greenfields.png",
+  },
+  {
+    id: "hansaplast-kidzania-media-launch-2019",
+    title: "Hansaplast Kidzania Media Launch 2019",
+    location: "Kidzania - Jakarta",
+    date: "10 Januari 2025",
+    image: "/portofolio/hansaplast.png",
+  },
+  {
+    id: "hsbc-bwf-world-tour",
     title: "HSBC BWF World Tour",
-    client: "HSBC / BWF",
-    category: "Sports",
-    year: 2024,
-    date: "15 Maret 2024",
-    image: "/portofolio/portofolio_example.jpg",
-    description:
-      "Event management untuk turnamen bulu tangkis internasional HSBC BWF World Tour di Indonesia.",
-    challenge:
-      "Mengelola event olahraga internasional bertaraf dunia dengan standar BWF yang sangat ketat, melibatkan atlet dari 40+ negara, ribuan penonton, serta liputan media internasional — semua harus terkoordinasi secara presisi selama satu minggu penuh.",
-    solution:
-      "Tim kami menangani seluruh aspek event management mulai dari akreditasi media, koordinasi atlet, hospitality VIP, manajemen venue, hingga produksi laporan. Sistem komunikasi terpusat memungkinkan respons cepat terhadap perubahan jadwal pertandingan yang dinamis.",
-    highlights: [
-      "Event olahraga internasional bertaraf BWF",
-      "Atlet dari 40+ negara berpartisipasi",
-      "Pengelolaan media center & akreditasi internasional",
-      "Zero incident selama pelaksanaan 7 hari",
-    ],
-    scope: ["Special Event", "Productions Handling"],
-    stats: [
-      { label: "Negara", value: "40+" },
-      { label: "Penonton", value: "8.000+" },
-      { label: "Durasi", value: "7 Hari" },
-      { label: "Media", value: "50+ Outlet" },
-    ],
+    location: "Gelora Bung Karno - Jakarta",
+    date: "10 Januari 2025",
+    image: "/portofolio/hsbc.png",
   },
   {
-    id: "beauty-star-tiktok",
-    title: "Beauty Star in TikTok",
-    client: "TikTok Indonesia",
-    category: "Virtual Event",
-    year: 2024,
-    date: "22 April 2024",
-    image: "/portofolio/portofolio_example.jpg",
-    description:
-      "Kampanye digital kreatif dan event virtual kolaborasi dengan content creator TikTok di industri kecantikan.",
-    challenge:
-      "TikTok Indonesia ingin menciptakan kampanye yang mampu mengangkat ekosistem beauty creator lokal sekaligus mendorong engagement platform secara masif, dengan format yang fresh dan berbeda dari kompetitor.",
-    solution:
-      "Kami merancang format kompetisi kreatif online yang diproduksi dengan kualitas broadcast penuh, menggabungkan live streaming interaktif, voting real-time, dan integrasi seamless dengan fitur TikTok. Hasilnya adalah campaign yang viral secara organik.",
-    highlights: [
-      "200+ creator beauty berpartisipasi",
-      "10 juta+ penonton live streaming",
-      "Trending #1 di TikTok Indonesia selama 3 hari",
-      "Engagement rate 3x rata-rata industri",
-    ],
-    scope: ["Virtual Event", "Brand Activation"],
-    stats: [
-      { label: "Creator", value: "200+" },
-      { label: "Penonton", value: "10M+" },
-      { label: "Views Total", value: "50M+" },
-      { label: "Engagement", value: "3x Rate" },
-    ],
+    id: "hut-triparta-48th",
+    title: "HUT Triparta 48TH",
+    location: "Tripatra Head Office",
+    date: "10 Januari 2025",
+    image: "/portofolio/hut_tripatra_48th.png",
   },
   {
-    id: "bank-indonesia-award",
-    title: "BI Award Ceremony",
-    client: "Bank Indonesia",
-    category: "Awarding",
-    year: 2024,
-    date: "5 Juni 2024",
-    image: "/portofolio/portofolio_example.jpg",
-    description:
-      "Upacara penghargaan tahunan Bank Indonesia dengan gala dinner dan entertainment kelas dunia.",
-    challenge:
-      "Bank Indonesia memerlukan penyelenggaraan award ceremony yang mencerminkan prestise institusi bank sentral, dengan standar protokol yang sangat tinggi, melibatkan pejabat negara, dan disaksikan oleh seluruh pemangku kepentingan industri keuangan Indonesia.",
-    solution:
-      "Kami mengeksekusi ceremony dengan desain panggung megah berlapis marmer dan emas, sistem award presentation yang dramatis, serta entertainment berkelas yang tetap menjaga nuansa formal. Setiap detail protokol dikonsultasikan langsung dengan tim protokol BI.",
-    highlights: [
-      "Dihadiri Gubernur BI & pejabat kementerian",
-      "500+ tamu undangan dari industri keuangan",
-      "Produksi panggung 360° dengan LED dinding",
-      "Liputan live CNBC Indonesia & media nasional",
-    ],
-    scope: ["Special Event", "Productions Handling"],
-    stats: [
-      { label: "Tamu VIP", value: "500+" },
-      { label: "Kategori Award", value: "18" },
-      { label: "Durasi Show", value: "4 Jam" },
-      { label: "Media Hadir", value: "30+" },
-    ],
+    id: "iel-battle",
+    title: "IEL Battle",
+    location: "Jakarta",
+    date: "10 Januari 2025",
+    image: "/portofolio/iel_battle.png",
   },
   {
-    id: "telkom-digital-summit",
-    title: "Digital Innovation Summit",
-    client: "Telkom Indonesia",
-    category: "MICE",
-    year: 2024,
-    date: "18 Juli 2024",
-    image: "/portofolio/portofolio_example.jpg",
-    description:
-      "Summit inovasi digital dengan keynote speakers internasional dan pameran teknologi mutakhir.",
-    challenge:
-      "Telkom Indonesia ingin memposisikan diri sebagai thought leader di ekosistem digital Indonesia dengan menghadirkan forum yang mampu menarik perhatian global, menampilkan inovasi terkini, dan membangun koneksi bisnis strategis antarpemangku kepentingan.",
-    solution:
-      "Kami membangun ekosistem event terintegrasi: main stage conference berkapasitas 2.000 orang, innovation exhibition hall dengan 40 booth interaktif, networking lounge eksklusif, dan sesi bilateral matchmaking. Semua terkoneksi dengan sistem event app custom.",
-    highlights: [
-      "Speaker internasional dari Google, Microsoft, AWS",
-      "40 perusahaan teknologi di innovation exhibition",
-      "2.000+ delegasi dari 15 negara",
-      "100+ MoU & perjanjian bisnis ditandatangani",
-    ],
-    scope: ["MICE", "Brand Activation", "Productions Handling"],
-    stats: [
-      { label: "Delegasi", value: "2.000+" },
-      { label: "Negara", value: "15" },
-      { label: "Booth Expo", value: "40" },
-      { label: "Speaker", value: "25" },
-    ],
+    id: "indonesia-startup-summit-2019",
+    title: "Indonesia Startup Summit 2019",
+    location: "Jiexpo Kemayoran - Jakarta",
+    date: "10 Januari 2025",
+    image: "/portofolio/indo_startup_summit.png",
   },
-  {
-    id: "samsung-galaxy-launch",
-    title: "Galaxy Product Launch",
-    client: "Samsung Indonesia",
-    category: "Brand Activation",
-    year: 2024,
-    date: "3 November 2024",
-    image: "/portofolio/portofolio_example.jpg",
-    description:
-      "Peluncuran produk Samsung Galaxy dengan experiential zone dan live streaming ke seluruh Indonesia.",
-    challenge:
-      "Samsung Indonesia membutuhkan peluncuran produk yang menciptakan dampak masif secara bersamaan di seluruh Indonesia — menjangkau konsumen di kota-kota besar maupun tier 2 — dengan pengalaman yang konsisten dan impactful.",
-    solution:
-      "Kami merancang format hybrid launch: event utama di Jakarta dengan produksi kelas dunia yang disiarkan live ke 20 kota melalui activation zone di mall premium. Setiap zona memiliki pengalaman hands-on produk yang disesuaikan dengan profil konsumen lokal.",
-    highlights: [
-      "Simultaneous launch di 20 kota Indonesia",
-      "500.000+ audience online & offline terjangkau",
-      "Experiential zone dengan AR & interactive display",
-      "Sold out pre-order dalam 24 jam pasca launch",
-    ],
-    scope: ["Brand Activation", "Virtual Event", "Productions Handling"],
-    stats: [
-      { label: "Kota", value: "20" },
-      { label: "Audience", value: "500K+" },
-      { label: "Live Views", value: "2M+" },
-      { label: "Pre-order", value: "Sold Out" },
-    ],
+    {
+    id: "inauguration-factory",
+    title: "Innauguration Factory",
+    location: "Cikarang",
+    date: "10 Januari 2025",
+    image: "/portofolio/innauguration_factory.png",
   },
-  {
-    id: "bni-anniversary",
-    title: "BNI Anniversary Celebration",
-    client: "Bank BNI",
-    category: "Special Event",
-    year: 2023,
-    date: "10 November 2023",
-    image: "/portofolio/portofolio_example.jpg",
-    description:
-      "Perayaan anniversary BNI dengan konsep immersive dan pertunjukan multimedia spektakuler.",
-    challenge:
-      "BNI ingin merayakan milestone anniversary yang bermakna bagi seluruh karyawan dan stakeholder — sebuah perayaan yang bukan hanya ceremonial, tetapi juga mampu membangkitkan kebanggaan dan semangat kolektif seluruh insan BNI.",
-    solution:
-      "Kami menciptakan 'Journey of Excellence' — sebuah pertunjukan multimedia immersive yang mengajak tamu menapaki perjalanan BNI melalui instalasi interaktif, projection mapping pada seluruh dinding venue, dan puncak acara berupa pertunjukan seni spektakuler yang melibatkan 200 seniman.",
-    highlights: [
-      "Pertunjukan multimedia immersive 360°",
-      "Projection mapping 6 proyektor simultan",
-      "200 seniman & performer dalam puncak acara",
-      "3.000+ tamu dari seluruh Indonesia",
-    ],
-    scope: ["Special Event", "Productions Handling"],
-    stats: [
-      { label: "Tamu", value: "3.000+" },
-      { label: "Performer", value: "200" },
-      { label: "Proyektor", value: "6 Unit" },
-      { label: "Durasi Show", value: "5 Jam" },
-    ],
+    {
+    id: "mandiri-cashless-fai",
+    title: "Mandiri Cashless Fair",
+    location: "Tahmrin City - Jakarta",
+    date: "10 Januari 2025",
+    image: "/portofolio/mandiri_cashless_fair.png",
   },
-  {
-    id: "aqua-brand-campaign",
-    title: "Aqua Sustainability Campaign",
-    client: "Aqua / Danone",
-    category: "Brand Activation",
-    year: 2023,
-    date: "14 Februari 2023",
-    image: "/portofolio/portofolio_example.jpg",
-    description:
-      "Kampanye brand activation bertema sustainability dengan roadshow ke 10 kota besar di Indonesia.",
-    challenge:
-      "Aqua ingin mengomunikasikan komitmen sustainability mereka secara autentik kepada konsumen generasi muda yang semakin peduli lingkungan — bukan sekadar iklan, melainkan pengalaman nyata yang mengubah perilaku.",
-    solution:
-      "Kami merancang 'Aqua Green Journey' — roadshow interaktif dengan instalasi edukatif tentang daur ulang, workshop lingkungan, dan program donasi pohon yang terhubung langsung dengan pembelian produk. Setiap kota memiliki adaptasi lokal yang relevan.",
-    highlights: [
-      "Roadshow 10 kota: Jakarta, Surabaya, Bandung, dll.",
-      "50.000+ konsumen berinteraksi langsung",
-      "10.000 pohon ditanam melalui program donasi",
-      "Net Promoter Score meningkat 40%",
-    ],
-    scope: ["Brand Activation"],
-    stats: [
-      { label: "Kota", value: "10" },
-      { label: "Peserta", value: "50.000+" },
-      { label: "Pohon Ditanam", value: "10.000" },
-      { label: "NPS Naik", value: "+40%" },
-    ],
+    {
+    id: "mandiri-fantastic-4-award",
+    title: "Mandiri Fantastic 4 Award",
+    location: "Graha Mandiri - Jakarta",
+    date: "10 Januari 2025",
+    image: "/portofolio/mandiri_fantastic_4_award.png",
   },
-  {
-    id: "tokopedia-virtual-fest",
-    title: "Tokopedia Virtual Festival",
-    client: "Tokopedia",
-    category: "Virtual Event",
-    year: 2023,
-    date: "20 Maret 2023",
-    image: "/portofolio/portofolio_example.jpg",
-    description:
-      "Festival virtual tahunan Tokopedia dengan konser musik, flash sale interaktif, dan talkshow inspiratif.",
-    challenge:
-      "Tokopedia ingin mengadakan festival tahunan yang mampu menggerakkan transaksi secara masif sekaligus menghadirkan hiburan berkualitas kepada jutaan pengguna mereka, dalam format virtual yang tidak terasa membosankan.",
-    solution:
-      "Kami memproduksi festival virtual 3-hari dengan studio produksi kelas broadcast: konser artis top, talkshow inspiratif dengan entrepreneur sukses, game show berhadiah, dan flash sale yang terintegrasi langsung dengan platform. Semua diproduksi dengan grafis real-time yang memukau.",
-    highlights: [
-      "3 malam konser virtual artis nasional & internasional",
-      "5 juta+ penonton unik selama 3 hari",
-      "Transaksi meningkat 300% selama festival",
-      "15 talkshow dengan 40+ narasumber inspiratif",
-    ],
-    scope: ["Virtual Event", "Productions Handling"],
-    stats: [
-      { label: "Penonton Unik", value: "5M+" },
-      { label: "Artis", value: "20+" },
-      { label: "Transaksi Naik", value: "300%" },
-      { label: "Durasi", value: "3 Hari" },
-    ],
+    {
+    id: "mandiri-fantastic-4-march-2019",
+    title: "Mandiri Fantastic 4 March 2019",
+    location: "Ballroom Graha Mandiri - Jakarta",
+    date: "10 Januari 2025",
+    image: "/portofolio/mandiri_fantastic.png",
   },
-  {
-    id: "mandiri-excellence-award",
-    title: "Mandiri Excellence Award",
-    client: "Bank Mandiri",
-    category: "Awarding",
-    year: 2023,
-    date: "7 Desember 2023",
-    image: "/portofolio/portofolio_example.jpg",
-    description:
-      "Penghargaan tahunan Bank Mandiri untuk unit bisnis terbaik dengan produksi panggung mewah.",
-    challenge:
-      "Bank Mandiri memerlukan ceremony penghargaan yang mampu mengapresiasi ribuan karyawan berprestasi secara bermartabat dan memorable, sekaligus menjadi momentum penyemangat seluruh insan Mandiri untuk terus berprestasi di tahun mendatang.",
-    solution:
-      "Kami menghadirkan 'Night of Excellence' — award ceremony dengan panggung LED dinding 30 meter, sistem audio line array premium, dan konsep visual storytelling yang menceritakan perjalanan setiap pemenang melalui video sinematik yang diproduksi khusus.",
-    highlights: [
-      "Panggung LED dinding 30 meter x 8 meter",
-      "Video sinematik custom untuk setiap pemenang",
-      "1.500 tamu undangan dari seluruh wilayah",
-      "Gala dinner dengan menu fine dining",
-    ],
-    scope: ["Awarding", "Productions Handling", "Special Event"],
-    stats: [
-      { label: "Tamu", value: "1.500+" },
-      { label: "Kategori Award", value: "25" },
-      { label: "LED Wall", value: "30m x 8m" },
-      { label: "Durasi", value: "5 Jam" },
-    ],
+    {
+    id: "mandiri-porseni",
+    title: "Mandiri Porseni",
+    location: "Plaza Balpindo - Jakarta",
+    date: "10 Januari 2025",
+    image: "/portofolio/mandiri_porseni.png",
   },
-  {
-    id: "pertamina-national-gathering",
-    title: "National Gathering 2024",
-    client: "Pertamina",
-    category: "MICE",
-    year: 2024,
-    date: "25 September 2024",
-    image: "/portofolio/portofolio_example.jpg",
-    description:
-      "Gathering nasional Pertamina dengan 2000+ peserta, team building, dan strategic planning session.",
-    challenge:
-      "Pertamina perlu mengumpulkan lebih dari 2.000 karyawan dari seluruh penjuru Indonesia dalam satu forum yang sekaligus membangun kohesi tim, menyampaikan visi strategis, dan memberikan apresiasi nyata atas kontribusi karyawan.",
-    solution:
-      "Kami mengelola logistik perjalanan 2.000+ peserta dari 30 lokasi berbeda, merancang program team building outdoor yang menantang namun inklusif, serta memproduksi malam gala yang menjadi puncak apresiasi perusahaan kepada karyawan terbaiknya.",
-    highlights: [
-      "2.000+ peserta dari 30 lokasi di seluruh Indonesia",
-      "Program team building 3 sesi paralel",
-      "Manajemen transportasi & akomodasi terintegrasi",
-      "Gala dinner dengan hiburan artis nasional",
-    ],
-    scope: ["MICE", "Special Event"],
-    stats: [
-      { label: "Peserta", value: "2.000+" },
-      { label: "Lokasi Asal", value: "30" },
-      { label: "Durasi", value: "4 Hari" },
-      { label: "Kota", value: "Lombok" },
-    ],
+    {
+    id: "the-meat-gala",
+    title: "The Meat Gala - Meatguy Steakhouse",
+    location: "SCBD - Jakarta",
+    date: "10 Januari 2025",
+    image: "/portofolio/meat_guy_steak_house.png",
   },
-  {
-    id: "xl-esports-tournament",
-    title: "XL Esports Championship",
-    client: "XL Axiata",
-    category: "Sports",
-    year: 2023,
-    date: "12 Agustus 2023",
-    image: "/portofolio/portofolio_example.jpg",
-    description:
-      "Turnamen esports nasional dari XL Axiata dengan live streaming dan prize pool jutaan rupiah.",
-    challenge:
-      "XL Axiata ingin masuk ke ekosistem esports sebagai brand yang relevan bagi generasi muda, dengan mengadakan turnamen yang kompetitif, menghibur, dan mampu menampilkan keunggulan jaringan XL sebagai backbone esports Indonesia.",
-    solution:
-      "Kami merancang format turnamen multi-game dengan kualifikasi online di seluruh Indonesia yang diikuti final besar di Jakarta. Studio esports custom kami memungkinkan produksi broadcast berkualitas TV dengan panel komentator, visualisasi statistik real-time, dan koneksi 5G XL sebagai showcase teknologi.",
-    highlights: [
-      "10.000+ pendaftar dari seluruh Indonesia",
-      "Final digelar di Jakarta Convention Center",
-      "Live streaming dengan 1 juta+ penonton",
-      "Prize pool total Rp 2 miliar",
-    ],
-    scope: ["Sports", "Virtual Event", "Productions Handling"],
-    stats: [
-      { label: "Pendaftar", value: "10.000+" },
-      { label: "Live Viewers", value: "1M+" },
-      { label: "Prize Pool", value: "Rp 2M" },
-      { label: "Game Titles", value: "4" },
-    ],
+    {
+    id: "ngobras-b2b-ut-service-telkom-indonesia",
+    title: "Ngobras B2B UT Service - TelKom Indonesia",
+    location: "Gedung Multimedia - Telkom",
+    date: "10 Januari 2025",
+    image: "/portofolio/ngobras_b2b.png",
+  },
+    {
+    id: "nivea-jakarta-x-beauty",
+    title: "Nivea Jakarta x Beauty 2019",
+    location: "Jakarta",
+    date: "10 Januari 2025",
+    image: "/portofolio/nivea_2.png",
+  },
+    {
+    id: "nivea-sentuhan-ibu-dongeng-pohon-impian-2018",
+    title: "Nivea #SentuhanIbu Dongeng Pohon Impian 2018",
+    location: "Jakarta",
+    date: "10 Januari 2025",
+    image: "/portofolio/nivea.png",
+  },
+    {
+    id: "nu-oceana-summer-attack",
+    title: "NU Oceana Summer Attack",
+    location: "Epicentrum - Jakarta",
+    date: "10 Januari 2025",
+    image: "/portofolio/nu_oceana_sumber_attack.png",
+  },
+    {
+    id: "nutragen-cfd-roadshow",
+    title: "Nutragen CFD Roadshow",
+    location: "Jakarta - Bogor - Bekasi",
+    date: "10 Januari 2025",
+    image: "/portofolio/nutragen_cfd.png",
+  },
+    {
+    id: "peresmian-penghargaan-pasar-rakyat-serta-rapat-kerja-kementrian-perdagangan-2019",
+    title: "Peresmian & Penghargaan Pasar Rakyat Serta Rapat Kerja Kementrian Perdagangan 2019",
+    location: "Jakarta - Bogor - Bekasi",
+    date: "10 Januari 2025",
+    image: "/portofolio/peresmian_penghargaan_pasar.png",
+  },
+    {
+    id: "pt-pupuk-indonesia-family",
+    title: "PT Pupuk Indonesia Family",
+    location: "Bandung",
+    date: "10 Januari 2025",
+    image: "/portofolio/pt_pupuk_indo.png",
+  },
+    {
+    id: "suryanation",
+    title: "Suryanation",
+    location: "Bandara Pondok Cabe - Jakarta",
+    date: "10 Januari 2025",
+    image: "/portofolio/suryanation.png",
+  },
+    {
+    id: "beauty-star-in-tiktok",
+    title: "Beauty Star in Tiktok",
+    location: "Grand Sheraton Hotel - Jakarta",
+    date: "10 Januari 2025",
+    image: "/portofolio/tiktok_maybelline.png",
+  },
+    {
+    id: "virtual-event-bi",
+    title: "Virtual Event BI",
+    location: "Gedung BI - Jakarta",
+    date: "10 Januari 2025",
+    image: "/portofolio/virtual_event_bi.png",
+  },
+    {
+    id: "virtual-event-bni",
+    title: "Virtual Event BNI",
+    location: "Gedung Tempo Pavilion 1 - Jakarta",
+    date: "10 Januari 2025",
+    image: "/portofolio/virtual_event_bni.png",
+  },
+    {
+    id: "virtual-launching-m4rch-fest-bank-mandiri",
+    title: "Virtual Launching M4rch Fest bank Mandiri",
+    location: "Wisma Mandiri II - Jakarta",
+    date: "10 Januari 2025",
+    image: "/portofolio/virtual_launching_bank_mandiri.png",
+  },
+    {
+    id: "xl-perscon",
+    title: "XL Perscon",
+    location: "Empirica Building - Jakarta",
+    date: "10 Januari 2025",
+    image: "/portofolio/xl_3_perscon.png",
+  },
+    {
+    id: "xl-future-leaders-2020",
+    title: "XL Future Leaders 2020",
+    location: "XL Tower - Jakarta",
+    date: "10 Januari 2025",
+    image: "/portofolio/xl_4_future_leaders_2020.png",
   },
 ];
+
 
 export const portfolioCategories: PortfolioCategory[] = [
   "All",
