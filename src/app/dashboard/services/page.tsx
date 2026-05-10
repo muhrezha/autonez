@@ -75,7 +75,7 @@ export default function DashboardServicesPage() {
                 </div>
                 <button
                     onClick={() => setShowCreate(true)}
-                    className="px-4 py-2 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primary/90 transition-colors flex items-center gap-2"
+                    className="px-4 py-2 bg-accent text-white text-sm font-semibold rounded-lg hover:bg-accent/90 transition-colors flex items-center gap-2"
                 >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
@@ -91,7 +91,7 @@ export default function DashboardServicesPage() {
                     placeholder="Cari berdasarkan judul..."
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    className="w-full max-w-sm px-4 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
+                    className="w-full max-w-sm px-4 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent"
                 />
             </div>
 
@@ -106,26 +106,26 @@ export default function DashboardServicesPage() {
                                 placeholder="Judul"
                                 value={newTitle}
                                 onChange={(e) => setNewTitle(e.target.value)}
-                                className="w-full px-4 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                                className="w-full px-4 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/30"
                             />
                             <input
                                 type="text"
                                 placeholder="Icon (emoji)"
                                 value={newIcon}
                                 onChange={(e) => setNewIcon(e.target.value)}
-                                className="w-full px-4 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                                className="w-full px-4 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/30"
                             />
                             <textarea
                                 placeholder="Deskripsi"
                                 rows={3}
                                 value={newDesc}
                                 onChange={(e) => setNewDesc(e.target.value)}
-                                className="w-full px-4 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 resize-none"
+                                className="w-full px-4 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/30 resize-none"
                             />
                         </div>
                         <div className="flex justify-end gap-2 mt-5">
                             <button onClick={() => setShowCreate(false)} className="px-4 py-2 text-sm text-slate-600 hover:bg-slate-100 rounded-lg transition-colors">Batal</button>
-                            <button onClick={createRow} className="px-4 py-2 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primary/90 transition-colors">Simpan</button>
+                            <button onClick={createRow} className="px-4 py-2 bg-accent text-white text-sm font-semibold rounded-lg hover:bg-accent/90 transition-colors">Simpan</button>
                         </div>
                     </div>
                 </div>
@@ -141,18 +141,18 @@ export default function DashboardServicesPage() {
                                 type="text"
                                 value={editTitle}
                                 onChange={(e) => setEditTitle(e.target.value)}
-                                className="w-full px-4 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30"
+                                className="w-full px-4 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/30"
                             />
                             <textarea
                                 rows={3}
                                 value={editDesc}
                                 onChange={(e) => setEditDesc(e.target.value)}
-                                className="w-full px-4 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/30 resize-none"
+                                className="w-full px-4 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/30 resize-none"
                             />
                         </div>
                         <div className="flex justify-end gap-2 mt-5">
                             <button onClick={() => setEditId(null)} className="px-4 py-2 text-sm text-slate-600 hover:bg-slate-100 rounded-lg transition-colors">Batal</button>
-                            <button onClick={saveEdit} className="px-4 py-2 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primary/90 transition-colors">Simpan</button>
+                            <button onClick={saveEdit} className="px-4 py-2 bg-accent text-white text-sm font-semibold rounded-lg hover:bg-accent/90 transition-colors">Simpan</button>
                         </div>
                     </div>
                 </div>

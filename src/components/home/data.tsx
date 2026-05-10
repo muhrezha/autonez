@@ -12,7 +12,7 @@ export const ideasData = {
 
 const dataIdeasOne = {
     title: "Our Ideas",
-    desc: "we will always try to be partners whounderstand all the need so four colleagues, and we will walk together to the same destination and ensurewe will always arrive at that destination.",
+    desc: "We are committed to being partners who understand your every need. As a solid team, we will walk together toward the same goals and ensure the best results in every achievement.",
     image: imageOne,
     bullets: [
         {

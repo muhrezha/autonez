@@ -58,7 +58,7 @@ export default function InfoDetailClient({ post, prevPost, nextPost }: Props) {
             {/* Hero */}
             <section className="relative pt-36 pb-16 bg-gradient-to-br from-navy via-navy-light to-navy overflow-hidden">
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:3rem_3rem]" />
-                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
                 <div className="relative z-10 w-full max-w-4xl mx-auto px-6 lg:px-8 text-white">
                     {/* Breadcrumb */}
                     <motion.nav
@@ -77,7 +77,7 @@ export default function InfoDetailClient({ post, prevPost, nextPost }: Props) {
 
                     {/* Category */}
                     <motion.div custom={1} initial="hidden" animate="visible" variants={fadeUp}>
-                        <span className="inline-block px-4 py-1.5 mb-4 text-xs font-bold tracking-widest uppercase bg-primary/80 rounded-full">
+                        <span className="inline-block px-4 py-1.5 mb-4 text-xs font-bold tracking-widest uppercase bg-accent/80 rounded-full">
                             {post.category}
                         </span>
                     </motion.div>
@@ -198,7 +198,7 @@ export default function InfoDetailClient({ post, prevPost, nextPost }: Props) {
                                         style={{
                                             width: 56,
                                             height: 40,
-                                            borderColor: i === activeIdx ? "var(--color-primary)" : "transparent",
+                                            borderColor: i === activeIdx ? "var(--color-accent)" : "transparent",
                                             opacity: i === activeIdx ? 1 : 0.55,
                                         }}
                                     >
@@ -222,7 +222,7 @@ export default function InfoDetailClient({ post, prevPost, nextPost }: Props) {
                         whileInView="visible"
                         viewport={{ once: true }}
                         variants={fadeUp}
-                        className="text-lg text-slate-600 leading-relaxed font-medium border-l-4 border-primary pl-5 mb-10"
+                        className="text-lg text-slate-600 leading-relaxed font-medium border-l-4 border-accent pl-5 mb-10"
                     >
                         {post.description}
                     </motion.p>
@@ -254,16 +254,16 @@ export default function InfoDetailClient({ post, prevPost, nextPost }: Props) {
                             {prevPost ? (
                                 <Link
                                     href={`/info/${prevPost.id}`}
-                                    className="group flex items-center gap-4 p-5 rounded-2xl border border-slate-200 bg-white hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
+                                    className="group flex items-center gap-4 p-5 rounded-2xl border border-slate-200 bg-white hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300"
                                 >
-                                    <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-full bg-slate-100 group-hover:bg-primary/10 transition-colors">
-                                        <svg className="w-5 h-5 text-slate-400 group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                                    <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-full bg-slate-100 group-hover:bg-accent/10 transition-colors">
+                                        <svg className="w-5 h-5 text-slate-400 group-hover:text-accent transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
                                         </svg>
                                     </div>
                                     <div className="min-w-0">
                                         <div className="text-[10px] font-bold tracking-widest uppercase text-slate-400 mb-1">Sebelumnya</div>
-                                        <div className="text-sm font-semibold text-navy group-hover:text-primary transition-colors truncate">
+                                        <div className="text-sm font-semibold text-navy group-hover:text-accent transition-colors truncate">
                                             {prevPost.title}
                                         </div>
                                     </div>
@@ -274,16 +274,16 @@ export default function InfoDetailClient({ post, prevPost, nextPost }: Props) {
                             {nextPost ? (
                                 <Link
                                     href={`/info/${nextPost.id}`}
-                                    className="group flex items-center gap-4 p-5 rounded-2xl border border-slate-200 bg-white hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 sm:flex-row-reverse sm:text-right"
+                                    className="group flex items-center gap-4 p-5 rounded-2xl border border-slate-200 bg-white hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300 sm:flex-row-reverse sm:text-right"
                                 >
-                                    <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-full bg-slate-100 group-hover:bg-primary/10 transition-colors">
-                                        <svg className="w-5 h-5 text-slate-400 group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                                    <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-full bg-slate-100 group-hover:bg-accent/10 transition-colors">
+                                        <svg className="w-5 h-5 text-slate-400 group-hover:text-accent transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                                         </svg>
                                     </div>
                                     <div className="min-w-0">
                                         <div className="text-[10px] font-bold tracking-widest uppercase text-slate-400 mb-1">Berikutnya</div>
-                                        <div className="text-sm font-semibold text-navy group-hover:text-primary transition-colors truncate">
+                                        <div className="text-sm font-semibold text-navy group-hover:text-accent transition-colors truncate">
                                             {nextPost.title}
                                         </div>
                                     </div>
@@ -297,7 +297,7 @@ export default function InfoDetailClient({ post, prevPost, nextPost }: Props) {
             )}
 
             {/* CTA */}
-            <section className="bg-gradient-to-r from-navy to-primary py-16">
+            <section className="bg-gradient-to-r from-navy to-accent py-16">
                 <div className="w-full max-w-3xl mx-auto px-6 lg:px-8 text-center text-white">
                     <h2
                         className="text-2xl md:text-3xl font-black mb-4"

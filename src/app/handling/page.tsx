@@ -17,7 +17,7 @@ export default function HandlingPage() {
 
                 {/* Header */}
                 <div className="text-center mt-8 mb-10">
-                    <span className="inline-block px-4 py-1 mb-4 text-xs font-bold tracking-widest uppercase text-primary bg-primary/8 rounded-full">
+                    <span className="inline-block px-4 py-1 mb-4 text-xs font-bold tracking-widest uppercase text-accent bg-accent/8 rounded-full">
                         Equipment Rental
                     </span>
                     <h1

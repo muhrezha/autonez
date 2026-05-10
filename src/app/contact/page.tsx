@@ -86,14 +86,14 @@ export default function ContactPage() {
             {/* Hero */}
             <section className="relative pt-36 pb-24 bg-white overflow-hidden">
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.025)_1px,transparent_1px)] bg-[size:3rem_3rem]" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[36rem] h-[36rem] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[36rem] h-[36rem] bg-accent/5 rounded-full blur-3xl pointer-events-none" />
                 <div className="relative z-10 w-full max-w-3xl mx-auto px-6 lg:px-8 text-center">
                     <motion.span
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest uppercase bg-primary/8 border border-primary/15 text-primary rounded-full"
+                        className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest uppercase bg-accent/8 border border-accent/15 text-accent rounded-full"
                     >
-                        Hubungi Kami
+                        LET&apos;S TALK
                     </motion.span>
                     {/* <motion.h1
                         initial={{ opacity: 0, y: 30 }}
@@ -111,7 +111,7 @@ export default function ContactPage() {
                         transition={{ delay: 0.2 }}
                         className="text-base md:text-lg text-slate-500 max-w-xl mx-auto leading-relaxed"
                     >
-                        Kami siap mendampingi Anda dari konsep hingga eksekusi. Pilih saluran komunikasi yang paling nyaman untuk Anda.
+                        Have an exciting idea or need help with your next event? We’re here to support you every step of the way. Feel free to reach out through your preferred channel.
                     </motion.p>
                 </div>
             </section>
@@ -127,7 +127,7 @@ export default function ContactPage() {
                         viewport={{ once: true }}
                         className="text-center mb-14"
                     >
-                        <span className="inline-block px-4 py-1 mb-4 text-xs font-bold tracking-widest uppercase text-primary bg-primary/8 rounded-full">
+                        <span className="inline-block px-4 py-1 mb-4 text-xs font-bold tracking-widest uppercase text-accent bg-accent/8 rounded-full">
                             Informasi Kontak
                         </span>
                         <h2
@@ -169,9 +169,9 @@ export default function ContactPage() {
                                         <div className="text-base font-bold text-navy truncate mb-1">
                                             {ch.value}
                                         </div>
-                                        <div className="text-xs text-slate-400 leading-relaxed">
+                                        {/* <div className="text-xs text-slate-400 leading-relaxed">
                                             {ch.description}
-                                        </div>
+                                        </div> */}
                                     </div>
 
                                     {/* Arrow for clickable cards */}
@@ -201,10 +201,10 @@ export default function ContactPage() {
                     </div>
 
                     {/* Divider */}
-                    <div className="my-14 border-t border-slate-100" />
+                    <div className="my-0 border-t border-slate-100" />
 
                     {/* Business Hours */}
-                    <motion.div
+                    {/* <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -239,13 +239,13 @@ export default function ContactPage() {
                                 Mulai Percakapan
                             </a>
                         </div>
-                    </motion.div>
+                    </motion.div> */}
                 </div>
             </SectionWrapper>
 
             {/* Map */}
             <section className="h-72 bg-slate-100 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-navy/5 to-primary/5 flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-br from-navy/5 to-accent/5 flex items-center justify-center">
                     <div className="text-center">
                         <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-navy/10 flex items-center justify-center">
                             <svg className="w-5 h-5 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>

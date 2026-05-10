@@ -24,7 +24,7 @@ export default function HomePage() {
       {/* ============ HERO ============ */}
       <section className="relative min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50">
         {/* Decorative blobs */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/5 rounded-full blur-3xl" />
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 
@@ -34,8 +34,8 @@ export default function HomePage() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <span className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest uppercase bg-primary/10 text-primary rounded-full">
-              Event Organizer & Creative Agency
+            <span className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest uppercase bg-accent/10 text-accent rounded-full">
+              Event Management & Production
             </span>
           </motion.div>
 
@@ -78,8 +78,7 @@ export default function HomePage() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="max-w-2xl mx-auto text-slate-500 text-sm md:text-base lg:text-lg leading-relaxed mb-8 md:mb-10"
           >
-            We are a circle of positive energy with one
-            goal client satisfaction.
+            Bringing positive energy to every project, with a heart for client satisfaction.
           </motion.p>
 
           <motion.div
@@ -90,13 +89,13 @@ export default function HomePage() {
           >
             <Link
               href="/portfolio"
-              className="px-8 py-4 bg-gradient-to-r from-primary to-primary-dark text-white font-semibold rounded-full hover:shadow-xl hover:shadow-primary/25 transition-all duration-300 hover:-translate-y-0.5"
+              className="px-8 py-4 bg-gradient-to-r from-accent to-accent-light text-white font-semibold rounded-full hover:shadow-xl hover:shadow-accent/25 transition-all duration-300 hover:-translate-y-0.5"
             >
               See Our Work
             </Link>
             <Link
               href="/about"
-              className="px-8 py-4 border-2 border-slate-200 text-navy font-semibold rounded-full hover:border-primary hover:text-primary transition-all duration-300"
+              className="px-8 py-4 border-2 border-slate-200 text-navy font-semibold rounded-full hover:border-accent hover:text-accent transition-all duration-300"
             >
               Learn More
             </Link>
@@ -114,7 +113,7 @@ export default function HomePage() {
             <motion.div
               animate={{ y: [0, 12, 0] }}
               transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-              className="w-1.5 h-1.5 bg-primary rounded-full mt-2"
+              className="w-1.5 h-1.5 bg-accent rounded-full mt-2"
             />
           </div>
         </motion.div>
@@ -174,17 +173,17 @@ export default function HomePage() {
       <SectionWrapper className="bg-white">
         <div className="w-full max-w-7xl mx-auto px-12">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-navy mb-3 md:mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4" style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-accent)' }}>
               Our Clients
             </h2>
             <p className="max-w-2xl mx-auto text-slate-500 text-sm md:text-base">
-              Dari BUMN hingga perusahaan swasta terkemuka, kami bangga menjadi mitra terpercaya dalam menghadirkan event berkualitas.
+              From state-owned enterprises to leading private companies, we are proud to be a trusted partner in delivering high-quality events.
             </p>
           </div>
           {/* BUMN */}
           <div className="mb-12">
-            <h3 className="text-xs font-bold tracking-widest uppercase text-slate-400 mb-6 text-center">
-              BUMN & Institusi
+            <h3 className="text-sm font-bold tracking-widest uppercase text-black mb-6 text-center">
+              Government & Public Institutions
             </h3>
             <motion.div
               variants={containerVariants}
@@ -195,7 +194,7 @@ export default function HomePage() {
             >
               {clients.filter((c) => c.category === "BUMN").map((c) => (
                 <motion.div key={c.name} variants={itemVariants}
-                  className="relative flex items-center justify-center p-3 h-20 rounded-xl bg-white border border-slate-100 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 group"
+                  className="relative flex items-center justify-center p-3 h-20 rounded-xl bg-white border border-slate-100 hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10 transition-all duration-300 group"
                 >
                   <div className="relative w-full h-full">
                     <Image
@@ -215,8 +214,8 @@ export default function HomePage() {
           </div>
           {/* Swasta */}
           <div>
-            <h3 className="text-xs font-bold tracking-widest uppercase text-slate-400 mb-6 text-center">
-              Perusahaan Swasta
+            <h3 className="text-sm font-bold tracking-widest uppercase text-black mb-6 text-center">
+              ⁠⁠Private Companies
             </h3>
             <motion.div
               variants={containerVariants}
@@ -251,16 +250,16 @@ export default function HomePage() {
       <div className="h-17" /> {/* Spacer */}
 
       {/* ============ CTA ============ */}
-      <SectionWrapper className="section-padding bg-gradient-to-r from-primary to-primary-dark text-white">
+      <SectionWrapper className="section-padding text-white bg-[var(--color-accent)]">
         <div className="w-full max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
-            Siap Mewujudkan Event Impian Anda?
+            Ready to Create Unforgettable Moments?
           </h2>
-          <p className="text-base md:text-lg text-white/80 mb-8 md:mb-10 max-w-2xl mx-auto">
-            Hubungi kami sekarang dan mari wujudkan circle of positive energy untuk event Anda berikutnya.
+          <p className="text-base md:text-lg font-bold text-white/80 mb-8 md:mb-10 max-w-2xl mx-auto">
+            Let’s collaborate to bring positive energy and success to every detail of your event. Discuss your ideas with us today.
           </p>
-          <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary font-bold rounded-full hover:shadow-2xl hover:shadow-black/20 transition-all duration-300 hover:-translate-y-1">
-            Hubungi Kami
+          <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-white text-accent font-bold rounded-full hover:shadow-2xl hover:shadow-black/20 transition-all duration-300 hover:-translate-y-1">
+            Start Your Free Consultation
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
