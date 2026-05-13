@@ -5,12 +5,12 @@
 // ---------- Navigation ----------
 export const navLinks = [
   { label: "Home", href: "/" },
-  // { label: "Info", href: "/info" },
-  // { label: "About", href: "/about" },
-  // { label: "Services", href: "/services" },
-  // { label: "Portfolio", href: "/portfolio" },
+  { label: "Info", href: "/info" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Portfolio", href: "/portfolio" },
   // { label: "Handling", href: "/handling" },
-  // { label: "Contact", href: "/contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 // ---------- Services ----------
