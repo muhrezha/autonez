@@ -53,7 +53,7 @@ export default function MaintenancePage() {
                 </div>
 
                 {/* Contact */}
-                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                {/*<div className="flex flex-col sm:flex-row gap-3 justify-center">
                     <a href="mailto:hello@autonez.com"
                         className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium text-white transition-all"
                         style={{ background: "rgba(37,99,235,0.2)", border: "1px solid rgba(37,99,235,0.4)" }}>
@@ -71,7 +71,7 @@ export default function MaintenancePage() {
                         </svg>
                         WhatsApp
                     </a>
-                </div>
+                </div>*/}
 
             </div>
 
