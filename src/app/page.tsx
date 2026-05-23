@@ -333,7 +333,7 @@ export default function HomePage() {
                     <div className="w-full">
                         <div className="flex flex-col lg:flex-row">
                             <div
-                                className="w-full lg:w-[60%] relative"
+                                className="w-full lg:w-[60%] relative pl-2 md:pl-6 lg:pl-8"
                                 onMouseEnter={() => setIsPaused(true)}
                                 onMouseLeave={() => setIsPaused(false)}
                             >

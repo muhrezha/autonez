@@ -55,13 +55,21 @@ export default function Navbar() {
     const handleNavClick = (e: React.MouseEvent, link: { href: string; sectionId: string | null }) => {
         if (link.sectionId && pathname === "/") {
             e.preventDefault();
-            const el = document.getElementById(link.sectionId);
-            if (el) {
-                const navbarHeight = 80;
-                const top = el.getBoundingClientRect().top + window.scrollY - navbarHeight;
-                window.scrollTo({ top, behavior: "smooth" });
+            const sectionId = link.sectionId;
+            const scrollToSection = () => {
+                const el = document.getElementById(sectionId);
+                if (el) {
+                    const top = el.getBoundingClientRect().top + window.scrollY - 80;
+                    window.scrollTo({ top, behavior: "smooth" });
+                }
+            };
+            if (isOpen) {
+                // Tutup mobile menu dulu, scroll setelah animasi selesai (300ms)
+                setIsOpen(false);
+                setTimeout(scrollToSection, 350);
+            } else {
+                scrollToSection();
             }
-            setIsOpen(false);
         }
     };
 
