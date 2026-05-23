@@ -37,7 +37,7 @@ export default function Footer() {
                             {navLinks.map((link) => (
                                 <li key={link.href}>
                                     <Link
-                                        href={link.href}
+                                        href={link.sectionId ? `/#${link.sectionId}` : link.href}
                                         className="text-gray-400 text-sm hover:text-accent transition-colors duration-300"
                                     >
                                         {link.label}

@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(lsof -i TCP -sTCP:LISTEN -p 3572)",
+      "Bash(getent services *)",
+      "Read(//private/etc/**)",
+      "Bash(npx playwright *)",
+      "Bash(npm list *)",
+      "Bash(mkdir -p /tmp/pw-verify)",
+      "Read(//tmp/**)",
+      "Bash(npm init *)",
+      "Bash(npm install *)",
+      "Bash(cp /tmp/verify-scroll.mjs /tmp/pw-verify/verify-scroll.mjs)",
+      "Bash(node verify-scroll.mjs)"
+    ]
+  }
+}

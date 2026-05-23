@@ -4,13 +4,13 @@
 
 // ---------- Navigation ----------
 export const navLinks = [
-  { label: "Home", href: "/" },
-  // { label: "Info", href: "/info" },
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Portfolio", href: "/portfolio" },
-  // { label: "Handling", href: "/handling" },
-  { label: "Contact", href: "/contact" },
+  { label: "Home", href: "/", sectionId: "home" },
+  // { label: "Info", href: "/info", sectionId: null },
+  { label: "About", href: "/#about", sectionId: "about" },
+  { label: "Services", href: "/#services", sectionId: "services" },
+  { label: "Portfolio", href: "/#portfolio", sectionId: "portfolio" },
+  // { label: "Handling", href: "/handling", sectionId: null },
+  { label: "Contact", href: "/contact", sectionId: null },
 ];
 
 // ---------- Services ----------
