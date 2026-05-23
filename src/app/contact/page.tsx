@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import SectionWrapper from "@/components/SectionWrapper";
 import { contactInfo } from "@/lib/data";
+import Image from "next/image";
 
 const channels = [
     {
@@ -88,9 +89,24 @@ export default function ContactPage() {
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.025)_1px,transparent_1px)] bg-[size:3rem_3rem]" />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[36rem] h-[36rem] bg-accent/5 rounded-full blur-3xl pointer-events-none" />
                 <div className="relative z-10 w-full max-w-3xl mx-auto px-6 lg:px-8 text-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="flex justify-center mb-4"
+                    >
+                        <Image
+                            src="/autonez_logo_font_black.png"
+                            alt="Autonez Logo"
+                            width={360}
+                            height={88}
+                            className="object-contain"
+                            priority
+                        />
+                    </motion.div>
                     <motion.span
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.05 }}
                         className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest uppercase bg-accent/8 border border-accent/15 text-accent rounded-full"
                     >
                         LET&apos;S TALK
@@ -254,7 +270,7 @@ export default function ContactPage() {
                             </svg>
                         </div>
                         <div className="text-lg font-black text-navy" style={{ fontFamily: 'var(--font-heading)' }}>Jakarta, Indonesia</div>
-                        <div className="text-sm text-slate-400 mt-1 tracking-wide">Autonez Communications — Kantor Pusat</div>
+                        <div className="text-sm text-slate-400 mt-1 tracking-wide">Autonez Communications — Head Office</div>
                     </div>
                 </div>
             </section>

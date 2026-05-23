@@ -10,6 +10,18 @@ import {
     // type PortfolioCategory,
 } from "@/lib/data";
 
+import { services, clients, processSteps } from "@/lib/data";
+
+
+const containerVariants = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.1 } },
+};
+const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
 export default function PortfolioPage() {
     // const [activeCategory, setActiveCategory] = useState<PortfolioCategory>("All");
     const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
@@ -21,6 +33,86 @@ export default function PortfolioPage() {
 
     return (
         <>
+            <SectionWrapper className="mt-10 bg-white"> </SectionWrapper>
+
+
+            {/* ============ CLIENT EXPERIENCES ============ */}
+            <SectionWrapper className="bg-white">
+                <div className="w-full max-w-7xl mx-auto px-12">
+                    <div className="text-center mb-12 md:mb-16">
+                        <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4" style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-accent)' }}>
+                            Our Clients
+                        </h2>
+                        <p className="max-w-2xl mx-auto text-black text-sm md:text-base">
+                            From state-owned enterprises to leading private companies, we are proud to be a trusted partner in delivering high-quality events.
+                        </p>
+                    </div>
+                    {/* BUMN */}
+                    <div className="mb-12">
+                        <h2 className="text-sm font-bold tracking-widest uppercase text-black mb-6 text-center">
+                            Government & Public Institutions
+                        </h2>
+                        <motion.div
+                            variants={containerVariants}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4"
+                        >
+                            {clients.filter((c) => c.category === "BUMN").map((c) => (
+                                <motion.div key={c.name} variants={itemVariants}
+                                    className="relative flex items-center justify-center p-3 h-20 rounded-xl bg-white border border-slate-100 hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10 transition-all duration-300 group"
+                                >
+                                    <div className="relative w-full h-full">
+                                        <Image
+                                            src={c.logo}
+                                            alt={c.name}
+                                            fill
+                                            className="object-contain mix-blend-multiply"
+                                            sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 14vw"
+                                        />
+                                    </div>
+                                    <span className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[calc(100%+6px)] z-20 whitespace-nowrap rounded-md bg-navy px-2.5 py-1 text-xs font-medium text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                                        {c.name}
+                                    </span>
+                                </motion.div>
+                            ))}
+                        </motion.div>
+                    </div>
+                    {/* Swasta */}
+                    <div>
+                        <h2 className="text-sm font-bold tracking-widest uppercase text-black mb-6 text-center">
+                            ⁠⁠Private Companies
+                        </h2>
+                        <motion.div
+                            variants={containerVariants}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4"
+                        >
+                            {clients.filter((c) => c.category === "Swasta").map((c) => (
+                                <motion.div key={c.name} variants={itemVariants}
+                                    className="relative flex items-center justify-center p-3 h-20 rounded-xl bg-white border border-slate-100 hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10 transition-all duration-300 group"
+                                >
+                                    <div className="relative w-full h-full">
+                                        <Image
+                                            src={c.logo}
+                                            alt={c.name}
+                                            fill
+                                            className="object-contain mix-blend-multiply"
+                                            sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 12vw"
+                                        />
+                                    </div>
+                                    <span className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[calc(100%+6px)] z-20 whitespace-nowrap rounded-md bg-navy px-2.5 py-1 text-xs font-medium text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                                        {c.name}
+                                    </span>
+                                </motion.div>
+                            ))}
+                        </motion.div>
+                    </div>
+                </div>
+            </SectionWrapper>
 
             {/* Portfolio Grid */}
             <SectionWrapper className="section-padding bg-white">
@@ -40,6 +132,12 @@ export default function PortfolioPage() {
                             </button>
                         ))}
                     </div> */}
+
+                    <div className="text-center mb-12 mt-16 md:mt-6 md:mb-16">
+                        <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4" style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-accent)' }}>
+                            Our Events
+                        </h2>
+                    </div>
 
                     {/* Events Grid */}
                     <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

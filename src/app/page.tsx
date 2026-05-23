@@ -1,22 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import SectionWrapper from "@/components/SectionWrapper";
-import { services, clients, processSteps } from "@/lib/data";
 import { IdeasSection } from "@/components/home/IdeasSection";
 import { dataIdeasOne } from "@/components/home/data";
 
-
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
-};
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
 
 export default function HomePage() {
   return (
@@ -54,7 +43,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg md:text-xl lg:text-2xl text-slate-400 italic mb-3 md:mb-4"
+            className="text-lg md:text-xl lg:text-2xl text-black italic mb-3 md:mb-4"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             &ldquo;Always There For You&rdquo;
@@ -76,30 +65,10 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="max-w-2xl mx-auto text-slate-500 text-sm md:text-base lg:text-lg leading-relaxed mb-8 md:mb-10"
+            className="max-w-2xl mx-auto text-sm md:text-base text-black lg:text-lg leading-relaxed mb-8 md:mb-10"
           >
             Bringing positive energy to every project, with a heart for client satisfaction.
           </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            <Link
-              href="/portfolio"
-              className="px-8 py-4 bg-gradient-to-r from-accent to-accent-light text-white font-semibold rounded-full hover:shadow-xl hover:shadow-accent/25 transition-all duration-300 hover:-translate-y-0.5"
-            >
-              See Our Work
-            </Link>
-            <Link
-              href="/about"
-              className="px-8 py-4 border-2 border-slate-200 text-navy font-semibold rounded-full hover:border-accent hover:text-accent transition-all duration-300"
-            >
-              Learn More
-            </Link>
-          </motion.div>
         </div>
 
         {/* Scroll indicator */}
@@ -119,131 +88,11 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* ============ QUICK ABOUT / TENTANG KAMI============ */}
-      {/* <SectionWrapper className="section-padding bg-white">
-        <div className="w-full max-w-7xl mx-auto px-4 text-center">
-          <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-widest uppercase bg-accent/10 text-accent rounded-full">
-            Tentang Kami
-          </span>
-          <h2
-            className="text-2xl md:text-4xl lg:text-5xl font-bold text-navy mb-4 md:mb-6"
-            style={{ fontFamily: 'var(--font-heading)' }}
-          >
-            Lebih dari Sekadar Event Organizer
-          </h2>
-          <p className="max-w-3xl mx-auto text-slate-500 text-sm md:text-base lg:text-lg leading-relaxed mb-10 md:mb-12">
-            Berawal dari agensi digital dengan keahlian dalam desain, web, dan
-            multimedia, Autonez Communications telah bertransformasi menjadi
-            event organizer dan creative agency yang menggabungkan kekuatan
-            digital dengan manajemen event berskala besar.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
-            {[
-              { num: "10+", label: "Tahun Pengalaman", desc: "Sejak 2015 melayani klien terbaik Indonesia" },
-              { num: "200+", label: "Event Terselenggara", desc: "Brand Activation, MICE, hingga Virtual Events" },
-              { num: "50+", label: "Klien Percaya", desc: "BUMN dan perusahaan swasta terkemuka" },
-            ].map((stat, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
-                className="p-8 rounded-2xl bg-slate-50 hover:bg-white hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-500"
-              >
-                <div className="text-4xl md:text-5xl font-black gradient-text mb-2" style={{ fontFamily: 'var(--font-heading)' }}>
-                  {stat.num}
-                </div>
-                <div className="text-base font-semibold text-navy mb-1">{stat.label}</div>
-                <div className="text-sm text-slate-400">{stat.desc}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </SectionWrapper> */}
 
       {/* ============ OUR IDEAS ============ */}
       <SectionWrapper className="bg-white">
         <div className="w-full max-w-7xl mx-auto text-center">
           <IdeasSection imgPos="left" data={dataIdeasOne} />
-        </div>
-      </SectionWrapper>
-
-      {/* ============ CLIENT EXPERIENCES ============ */}
-      <SectionWrapper className="bg-white">
-        <div className="w-full max-w-7xl mx-auto px-12">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4" style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-accent)' }}>
-              Our Clients
-            </h2>
-            <p className="max-w-2xl mx-auto text-slate-500 text-sm md:text-base">
-              From state-owned enterprises to leading private companies, we are proud to be a trusted partner in delivering high-quality events.
-            </p>
-          </div>
-          {/* BUMN */}
-          <div className="mb-12">
-            <h3 className="text-sm font-bold tracking-widest uppercase text-black mb-6 text-center">
-              Government & Public Institutions
-            </h3>
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4"
-            >
-              {clients.filter((c) => c.category === "BUMN").map((c) => (
-                <motion.div key={c.name} variants={itemVariants}
-                  className="relative flex items-center justify-center p-3 h-20 rounded-xl bg-white border border-slate-100 hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10 transition-all duration-300 group"
-                >
-                  <div className="relative w-full h-full">
-                    <Image
-                      src={c.logo}
-                      alt={c.name}
-                      fill
-                      className="object-contain mix-blend-multiply"
-                      sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 14vw"
-                    />
-                  </div>
-                  <span className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[calc(100%+6px)] z-20 whitespace-nowrap rounded-md bg-navy px-2.5 py-1 text-xs font-medium text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-                    {c.name}
-                  </span>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-          {/* Swasta */}
-          <div>
-            <h3 className="text-sm font-bold tracking-widest uppercase text-black mb-6 text-center">
-              ⁠⁠Private Companies
-            </h3>
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4"
-            >
-              {clients.filter((c) => c.category === "Swasta").map((c) => (
-                <motion.div key={c.name} variants={itemVariants}
-                  className="relative flex items-center justify-center p-3 h-20 rounded-xl bg-white border border-slate-100 hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10 transition-all duration-300 group"
-                >
-                  <div className="relative w-full h-full">
-                    <Image
-                      src={c.logo}
-                      alt={c.name}
-                      fill
-                      className="object-contain mix-blend-multiply"
-                      sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 12vw"
-                    />
-                  </div>
-                  <span className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[calc(100%+6px)] z-20 whitespace-nowrap rounded-md bg-navy px-2.5 py-1 text-xs font-medium text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-                    {c.name}
-                  </span>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
         </div>
       </SectionWrapper>
 
