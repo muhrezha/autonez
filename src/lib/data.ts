@@ -5,7 +5,7 @@
 // ---------- Navigation ----------
 export const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Info", href: "/info" },
+  // { label: "Info", href: "/info" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Portfolio", href: "/portfolio" },
