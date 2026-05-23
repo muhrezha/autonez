@@ -6,6 +6,8 @@ import SectionWrapper from "@/components/SectionWrapper";
 export default function AboutPage() {
     return (
         <>
+            <SectionWrapper className="mt-10 bg-white"> </SectionWrapper>
+
             <SectionWrapper className="section-padding mt-2 bg-white">
                 <div className="w-full max-w-6xl mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -16,7 +18,7 @@ export default function AboutPage() {
                             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
                                 Autonez Communications
                             </h2>
-                            <div className="space-y-4 text-slate-500 leading-relaxed">
+                            <div className="space-y-4 text-black leading-relaxed">
                                 <p>
                                     Since 2015, Autonez Communications has been a leading force in the <strong>Event Management and Production</strong> industry. We offer a comprehensive <strong>One-Stop Solution</strong>, streamlining the complex process of event planning into a single, seamless experience.
                                     Our expertise spans from conceptualizing innovative ideas to delivering flawless execution. We take pride in our in-house production capabilities, providing custom-built booths, stages, and high-quality backdrops. Equipped with professional sound, lighting, and premium LED technology, alongside curated talent management, we ensure every element of your event is handled with precision.

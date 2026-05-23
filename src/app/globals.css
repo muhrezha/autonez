@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-accent: #f59e0b;
-  --color-accent-light: #fbbf24;
+  --color-accent: #F0A12A;
+  --color-accent-dark: #D46C2A;
+  --color-accent-light: #FAB32C;
   --color-navy: #0a1628;
   --color-navy-light: #1e293b;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
@@ -79,7 +80,7 @@
   }
 
   .section-padding {
-    padding-top: 0rem;
+    padding-top: 3rem;
     padding-bottom: 4rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;

@@ -4,7 +4,8 @@ import {
     CursorArrowRaysIcon,
 } from "@heroicons/react/24/solid";
 
-import imageOne from "../../../public/home/img_clients/our_ideas_vector.jpg";
+// import imageOne from "../../../public/home/img_clients/our_ideas_vector.jpg";
+import imageOne from "../../../public/autonez_logo_font_black.png";
 
 export const ideasData = {
     image: imageOne,

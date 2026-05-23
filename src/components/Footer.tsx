@@ -20,8 +20,8 @@ export default function Footer() {
                             />
                         </div>
                         <p className="text-gray-400 text-sm leading-relaxed mb-4">
-                            A circle of positive energy with one goal: client satisfaction.
-                            Event Organizer & Creative Agency since 2015.
+                            Bringing positive energy to every project, with a heart for client satisfaction.
+                            Event Management & Production since 2015.
                         </p>
                         <p className="text-accent font-medium text-sm italic">
                             &ldquo;Always There For You&rdquo;

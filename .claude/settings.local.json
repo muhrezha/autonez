@@ -6,7 +6,10 @@
       "Bash(npm run *)",
       "Bash(git stash *)",
       "Bash(xargs cat)",
-      "Bash(xargs sed -i '' -e s/text-primary-dark/text-accent/g -e s/text-primary-light/text-accent-light/g -e s/bg-primary-dark/bg-accent/g -e s/bg-primary-light/bg-accent-light/g -e s/border-primary-dark/border-accent/g -e s/border-primary-light/border-accent-light/g -e s/ring-primary-dark/ring-accent/g -e s/ring-primary-light/ring-accent-light/g -e s/shadow-primary-dark/shadow-accent/g -e s/shadow-primary-light/shadow-accent-light/g -e s/from-primary-dark/from-accent/g -e s/from-primary-light/from-accent-light/g -e s/to-primary-dark/to-accent-light/g -e s/to-primary-light/to-accent-light/g -e s/via-primary-dark/via-accent/g -e s/via-primary-light/via-accent-light/g -e s/text-primary/text-accent/g -e s/bg-primary/bg-accent/g -e s/border-primary/border-accent/g -e s/ring-primary/ring-accent/g -e s/shadow-primary/shadow-accent/g -e s/from-primary/from-accent/g -e s/to-primary/to-accent/g -e s/via-primary/via-accent/g)"
+      "Bash(xargs sed -i '' -e s/text-primary-dark/text-accent/g -e s/text-primary-light/text-accent-light/g -e s/bg-primary-dark/bg-accent/g -e s/bg-primary-light/bg-accent-light/g -e s/border-primary-dark/border-accent/g -e s/border-primary-light/border-accent-light/g -e s/ring-primary-dark/ring-accent/g -e s/ring-primary-light/ring-accent-light/g -e s/shadow-primary-dark/shadow-accent/g -e s/shadow-primary-light/shadow-accent-light/g -e s/from-primary-dark/from-accent/g -e s/from-primary-light/from-accent-light/g -e s/to-primary-dark/to-accent-light/g -e s/to-primary-light/to-accent-light/g -e s/via-primary-dark/via-accent/g -e s/via-primary-light/via-accent-light/g -e s/text-primary/text-accent/g -e s/bg-primary/bg-accent/g -e s/border-primary/border-accent/g -e s/ring-primary/ring-accent/g -e s/shadow-primary/shadow-accent/g -e s/from-primary/from-accent/g -e s/to-primary/to-accent/g -e s/via-primary/via-accent/g)",
+      "Bash(git rm *)",
+      "Bash(git add *)",
+      "Bash(git commit *)"
     ],
     "additionalDirectories": [
       "/Volumes/DATA/Projects/nextjs/autonez/public"
