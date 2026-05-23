@@ -11,6 +11,7 @@ export default function Navbar() {
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [activeSection, setActiveSection] = useState("home");
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -19,9 +20,50 @@ export default function Navbar() {
     }, []);
 
     useEffect(() => {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
         setIsOpen(false);
     }, [pathname]);
+
+    useEffect(() => {
+        if (pathname !== "/") return;
+
+        const sections = ["home", "about", "services", "portfolio"];
+
+        const handleScroll = () => {
+            const scrollY = window.scrollY;
+            let current = "home";
+            for (const id of sections) {
+                const el = document.getElementById(id);
+                if (!el) continue;
+                if (scrollY >= el.offsetTop - 120) {
+                    current = id;
+                }
+            }
+            setActiveSection(current);
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        handleScroll();
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [pathname]);
+
+    const isActive = (link: { href: string; sectionId: string | null }) => {
+        if (pathname !== "/") return pathname === link.href;
+        if (link.sectionId) return activeSection === link.sectionId;
+        return false;
+    };
+
+    const handleNavClick = (e: React.MouseEvent, link: { href: string; sectionId: string | null }) => {
+        if (link.sectionId && pathname === "/") {
+            e.preventDefault();
+            const el = document.getElementById(link.sectionId);
+            if (el) {
+                const navbarHeight = 80;
+                const top = el.getBoundingClientRect().top + window.scrollY - navbarHeight;
+                window.scrollTo({ top, behavior: "smooth" });
+            }
+            setIsOpen(false);
+        }
+    };
 
     return (
         <nav
@@ -44,18 +86,19 @@ export default function Navbar() {
                 {/* Desktop Links */}
                 <div className="hidden md:flex items-center gap-2">
                     {navLinks.map((link) => {
-                        const isActive = pathname === link.href;
+                        const active = isActive(link);
                         return (
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${isActive
+                                onClick={(e) => handleNavClick(e, link)}
+                                className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${active
                                     ? "text-accent bg-accent/5"
                                     : "text-slate-600 hover:text-navy hover:bg-slate-200"
                                     }`}
                             >
                                 {link.label}
-                                {isActive && (
+                                {active && (
                                     <motion.div
                                         layoutId="nav-indicator"
                                         className="absolute inset-0 bg-accent/5 rounded-full -z-10"
@@ -108,7 +151,7 @@ export default function Navbar() {
                     >
                         <div className="mx-4 mt-2 p-4 rounded-2xl bg-white shadow-xl border border-slate-100 flex flex-col gap-1">
                             {navLinks.map((link, i) => {
-                                const isActive = pathname === link.href;
+                                const active = isActive(link);
                                 return (
                                     <motion.div
                                         key={link.href}
@@ -118,7 +161,8 @@ export default function Navbar() {
                                     >
                                         <Link
                                             href={link.href}
-                                            className={`block px-4 py-3 rounded-xl text-sm font-medium transition-all ${isActive
+                                            onClick={(e) => handleNavClick(e, link)}
+                                            className={`block px-4 py-3 rounded-xl text-sm font-medium transition-all ${active
                                                 ? "bg-accent/10 text-accent"
                                                 : "text-slate-600 hover:bg-slate-50 hover:text-navy"
                                                 }`}
