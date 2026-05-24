@@ -2,16 +2,18 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useState, useEffect, useRef, startTransition } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { navLinks } from "@/lib/data";
 
 export default function Navbar() {
     const pathname = usePathname();
+    const router = useRouter();
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState("home");
+    const pendingScrollRef = useRef<string | null>(null);
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -20,7 +22,27 @@ export default function Navbar() {
     }, []);
 
     useEffect(() => {
-        setIsOpen(false);
+        startTransition(() => setIsOpen(false));
+    }, [pathname]);
+
+    // Scroll ke section target setelah navigasi dari halaman lain ke "/"
+    useEffect(() => {
+        if (pathname !== "/") return;
+        if (!pendingScrollRef.current) return;
+
+        const target = pendingScrollRef.current;
+        pendingScrollRef.current = null;
+
+        // Double rAF memastikan browser sudah selesai render & Next.js sudah
+        // menyelesaikan scroll restoration-nya sendiri (scroll to 0)
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                const el = document.getElementById(target);
+                if (el) {
+                    window.scrollTo({ top: el.offsetTop - 80, behavior: "smooth" });
+                }
+            });
+        });
     }, [pathname]);
 
     useEffect(() => {
@@ -53,22 +75,35 @@ export default function Navbar() {
     };
 
     const handleNavClick = (e: React.MouseEvent, link: { href: string; sectionId: string | null }) => {
-        if (link.sectionId && pathname === "/") {
-            e.preventDefault();
-            const sectionId = link.sectionId;
-            const scrollToSection = () => {
-                const el = document.getElementById(sectionId);
-                if (el) {
-                    const top = el.getBoundingClientRect().top + window.scrollY - 80;
-                    window.scrollTo({ top, behavior: "smooth" });
-                }
-            };
+        if (!link.sectionId) return;
+
+        e.preventDefault();
+        const sectionId = link.sectionId;
+
+        const scrollToSection = () => {
+            const el = document.getElementById(sectionId);
+            if (el) {
+                window.scrollTo({ top: el.offsetTop - 80, behavior: "smooth" });
+            }
+        };
+
+        if (pathname === "/") {
             if (isOpen) {
-                // Tutup mobile menu dulu, scroll setelah animasi selesai (300ms)
                 setIsOpen(false);
                 setTimeout(scrollToSection, 350);
             } else {
                 scrollToSection();
+            }
+        } else {
+            // Dari halaman lain: simpan target di ref, navigate ke "/"
+            // router.push("/") tanpa scroll:false agar Next.js reset ke 0 dulu,
+            // lalu useEffect di atas scroll ke section yang benar
+            pendingScrollRef.current = sectionId;
+            if (isOpen) {
+                setIsOpen(false);
+                setTimeout(() => router.push("/"), 350);
+            } else {
+                router.push("/");
             }
         }
     };

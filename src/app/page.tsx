@@ -209,9 +209,6 @@ export default function HomePage() {
                                 <div className="w-12 h-[3px] bg-accent" />
                                 <div className="w-7 h-[3px] bg-accent" />
                             </div>
-                            <div className="absolute bottom-6 right-6">
-                                <div className="w-12 h-[3px] bg-accent" />
-                            </div>
                             <motion.div
                                 initial={{ opacity: 0, x: 40 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -241,9 +238,6 @@ export default function HomePage() {
                             <div className="absolute top-6 right-6 flex flex-col items-end gap-[6px]">
                                 <div className="w-12 h-[3px] bg-accent" />
                                 <div className="w-7 h-[3px] bg-accent" />
-                            </div>
-                            <div className="absolute bottom-6 right-6">
-                                <div className="w-12 h-[3px] bg-accent" />
                             </div>
                             <motion.div
                                 initial={{ opacity: 0, x: 40 }}
