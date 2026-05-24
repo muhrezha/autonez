@@ -75,7 +75,21 @@ export default function Navbar() {
     };
 
     const handleNavClick = (e: React.MouseEvent, link: { href: string; sectionId: string | null }) => {
-        if (!link.sectionId) return;
+        if (!link.sectionId) {
+            // Navigasi ke halaman biasa (mis. Contact) — selalu scroll ke paling atas
+            e.preventDefault();
+            const navigate = () => {
+                window.scrollTo(0, 0);
+                router.push(link.href);
+            };
+            if (isOpen) {
+                setIsOpen(false);
+                setTimeout(navigate, 350);
+            } else {
+                navigate();
+            }
+            return;
+        }
 
         e.preventDefault();
         const sectionId = link.sectionId;
