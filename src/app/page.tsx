@@ -119,8 +119,6 @@ export default function HomePage() {
                 </div>
             </SectionWrapper>
 
-            <div className="h-17" />
-
             {/* ============ ABOUT ============ */}
             <section id="about">
                 <SectionWrapper className="section-padding bg-white">
@@ -205,13 +203,6 @@ export default function HomePage() {
                         </div>
 
                         <div className="w-full md:w-3/5 bg-white relative overflow-hidden flex items-center justify-center py-20 px-0 sm:py-14 sm:px-0 min-h-[400px] sm:min-h-[480px]">
-                            <div className="absolute top-6 right-6 flex flex-col items-end gap-[6px]">
-                                <div className="w-12 h-[3px] bg-accent" />
-                                <div className="w-7 h-[3px] bg-accent" />
-                            </div>
-                            <div className="absolute bottom-6 right-6">
-                                <div className="w-12 h-[3px] bg-accent" />
-                            </div>
                             <motion.div
                                 initial={{ opacity: 0, x: 40 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -238,13 +229,7 @@ export default function HomePage() {
                         className="w-full flex flex-col md:flex-row overflow-hidden"
                     >
                         <div className="w-full md:w-3/5 bg-white relative overflow-hidden flex items-center justify-center py-20 px-0 sm:py-14 sm:px-0 min-h-[400px] sm:min-h-[480px]">
-                            <div className="absolute top-6 right-6 flex flex-col items-end gap-[6px]">
-                                <div className="w-12 h-[3px] bg-accent" />
-                                <div className="w-7 h-[3px] bg-accent" />
-                            </div>
-                            <div className="absolute bottom-6 right-6">
-                                <div className="w-12 h-[3px] bg-accent" />
-                            </div>
+
                             <motion.div
                                 initial={{ opacity: 0, x: 40 }}
                                 whileInView={{ opacity: 1, x: 0 }}
